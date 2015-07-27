@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		591CCC781B65BF7F0049F3F4 /* ManagedObjectSubClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC6F1B65BF7F0049F3F4 /* ManagedObjectSubClass.m */; };
+		591CCC791B65BF7F0049F3F4 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC711B65BF7F0049F3F4 /* Notification.m */; };
+		591CCC7A1B65BF7F0049F3F4 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC731B65BF7F0049F3F4 /* Person.m */; };
+		591CCC7B1B65BF7F0049F3F4 /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC751B65BF7F0049F3F4 /* Schedule.m */; };
+		591CCC7C1B65BF7F0049F3F4 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC771B65BF7F0049F3F4 /* Subscription.m */; };
 		59CBB22F1B64AE5000527B9C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21D1B64AE5000527B9C /* AFHTTPRequestOperation.m */; };
 		59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21F1B64AE5000527B9C /* AFHTTPRequestOperationManager.m */; };
 		59CBB2311B64AE5000527B9C /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2211B64AE5000527B9C /* AFHTTPSessionManager.m */; };
@@ -56,6 +61,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		591CCC6E1B65BF7F0049F3F4 /* ManagedObjectSubClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedObjectSubClass.h; path = ManagedObjectSubClass/ManagedObjectSubClass.h; sourceTree = "<group>"; };
+		591CCC6F1B65BF7F0049F3F4 /* ManagedObjectSubClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedObjectSubClass.m; path = ManagedObjectSubClass/ManagedObjectSubClass.m; sourceTree = "<group>"; };
+		591CCC701B65BF7F0049F3F4 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Notification.h; path = ManagedObjectSubClass/Notification.h; sourceTree = "<group>"; };
+		591CCC711B65BF7F0049F3F4 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Notification.m; path = ManagedObjectSubClass/Notification.m; sourceTree = "<group>"; };
+		591CCC721B65BF7F0049F3F4 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = ManagedObjectSubClass/Person.h; sourceTree = "<group>"; };
+		591CCC731B65BF7F0049F3F4 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = ManagedObjectSubClass/Person.m; sourceTree = "<group>"; };
+		591CCC741B65BF7F0049F3F4 /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Schedule.h; path = ManagedObjectSubClass/Schedule.h; sourceTree = "<group>"; };
+		591CCC751B65BF7F0049F3F4 /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Schedule.m; path = ManagedObjectSubClass/Schedule.m; sourceTree = "<group>"; };
+		591CCC761B65BF7F0049F3F4 /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Subscription.h; path = ManagedObjectSubClass/Subscription.h; sourceTree = "<group>"; };
+		591CCC771B65BF7F0049F3F4 /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subscription.m; path = ManagedObjectSubClass/Subscription.m; sourceTree = "<group>"; };
 		59CBB21C1B64AE5000527B9C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		59CBB21D1B64AE5000527B9C /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		59CBB21E1B64AE5000527B9C /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = AFNetworking/AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -147,6 +162,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		591CCC6D1B65BF5B0049F3F4 /* ManagedObjectSubClass */ = {
+			isa = PBXGroup;
+			children = (
+				591CCC6E1B65BF7F0049F3F4 /* ManagedObjectSubClass.h */,
+				591CCC6F1B65BF7F0049F3F4 /* ManagedObjectSubClass.m */,
+				591CCC701B65BF7F0049F3F4 /* Notification.h */,
+				591CCC711B65BF7F0049F3F4 /* Notification.m */,
+				591CCC721B65BF7F0049F3F4 /* Person.h */,
+				591CCC731B65BF7F0049F3F4 /* Person.m */,
+				591CCC741B65BF7F0049F3F4 /* Schedule.h */,
+				591CCC751B65BF7F0049F3F4 /* Schedule.m */,
+				591CCC761B65BF7F0049F3F4 /* Subscription.h */,
+				591CCC771B65BF7F0049F3F4 /* Subscription.m */,
+			);
+			name = ManagedObjectSubClass;
+			sourceTree = "<group>";
+		};
 		59CBB21B1B64AE3600527B9C /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +246,7 @@
 		EDE6F29118F4E3F5001C7755 = {
 			isa = PBXGroup;
 			children = (
+				591CCC6D1B65BF5B0049F3F4 /* ManagedObjectSubClass */,
 				59CBB25D1B64AEEB00527B9C /* Model.xcdatamodeld */,
 				59CBB2521B64AE7700527B9C /* BUAAH */,
 				59CBB2381B64AE5600527B9C /* UIKit+AFNetworking */,
@@ -388,10 +421,12 @@
 			files = (
 				59CBB22F1B64AE5000527B9C /* AFHTTPRequestOperation.m in Sources */,
 				59CBB25B1B64AEA400527B9C /* BUAAHNetworking.m in Sources */,
+				591CCC7B1B65BF7F0049F3F4 /* Schedule.m in Sources */,
 				59CBB24E1B64AE6D00527B9C /* UIImageView+AFNetworking.m in Sources */,
 				59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */,
 				EDE6F2B418F4E3F5001C7755 /* ViewController.m in Sources */,
 				59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */,
+				591CCC7A1B65BF7F0049F3F4 /* Person.m in Sources */,
 				59CBB24F1B64AE6D00527B9C /* UIProgressView+AFNetworking.m in Sources */,
 				59CBB2321B64AE5000527B9C /* AFNetworkReachabilityManager.m in Sources */,
 				59CBB2361B64AE5000527B9C /* AFURLResponseSerialization.m in Sources */,
@@ -399,6 +434,7 @@
 				59CBB24D1B64AE6D00527B9C /* UIButton+AFNetworking.m in Sources */,
 				59CBB25F1B64AEEB00527B9C /* Model.xcdatamodeld in Sources */,
 				59CBB24B1B64AE6D00527B9C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				591CCC781B65BF7F0049F3F4 /* ManagedObjectSubClass.m in Sources */,
 				59CBB2331B64AE5000527B9C /* AFSecurityPolicy.m in Sources */,
 				59CBB2501B64AE6D00527B9C /* UIRefreshControl+AFNetworking.m in Sources */,
 				59CBB2511B64AE6D00527B9C /* UIWebView+AFNetworking.m in Sources */,
@@ -407,6 +443,8 @@
 				59CBB2351B64AE5000527B9C /* AFURLRequestSerialization.m in Sources */,
 				59CBB24A1B64AE6D00527B9C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				59CBB25A1B64AEA400527B9C /* BUAAHCoredata.m in Sources */,
+				591CCC791B65BF7F0049F3F4 /* Notification.m in Sources */,
+				591CCC7C1B65BF7F0049F3F4 /* Subscription.m in Sources */,
 				59CBB2371B64AE5000527B9C /* AFURLSessionManager.m in Sources */,
 				EDE6F2AE18F4E3F5001C7755 /* AppDelegate.m in Sources */,
 				EDE6F2AA18F4E3F5001C7755 /* main.m in Sources */,
