@@ -11,12 +11,12 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface GatewayLoginViewController ()
-@property (strong, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) IBOutlet UITextField *accountText;  // 账号
-@property (strong, nonatomic) IBOutlet UITextField *passwordText; // 密码
-@property (strong, nonatomic) IBOutlet UIImageView *accountIcon;  // 账号图标
-@property (strong, nonatomic) IBOutlet UIImageView *passwordIcon; // 密码图标
-@property (strong, nonatomic) NSUserDefaults *userDefaults;        // 存储信息
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UITextField *accountText;  // 账号
+@property (weak, nonatomic) IBOutlet UITextField *passwordText; // 密码
+@property (weak, nonatomic) IBOutlet UIImageView *accountIcon;  // 账号图标
+@property (weak, nonatomic) IBOutlet UIImageView *passwordIcon; // 密码图标
+@property (weak, nonatomic) NSUserDefaults *userDefaults;        // 存储信息
 @end
 
 @implementation GatewayLoginViewController
@@ -29,8 +29,8 @@ static float cornerRadius = 5.0;    // View圆角大小
     
     UIColor *placeholderColor = [UIColor whiteColor];   // 设置placeholder颜色为白色
     
-    // 设置圆角
-    self.containerView.layer.masksToBounds = YES;
+    // 初始化containerView
+    self.containerView.layer.masksToBounds = YES;   // 设置圆角
     self.containerView.layer.cornerRadius = cornerRadius;
     
     // 初始化textfield
@@ -59,7 +59,7 @@ static float cornerRadius = 5.0;    // View圆角大小
     [gatewaySaveBtn setText:@"保 存" withTextColor:nil];
     gatewaySaveBtn.layer.masksToBounds = YES;
     gatewaySaveBtn.layer.cornerRadius = cornerRadius;
-    gatewaySaveBtn.clickBlock = ^void{
+    gatewaySaveBtn.clickBlock = ^void{  // 将用户账号密码储存
         if ([self.accountText.text  isEqual:@""]){
             alert.message = @"账号为空";
             [self presentViewController:alert animated:YES completion:nil];
@@ -70,19 +70,22 @@ static float cornerRadius = 5.0;    // View圆角大小
             NSString *account = self.accountText.text;
             NSString *password = self.passwordText.text;
             
+            // 储存用户账号密码
             _userDefaults = [NSUserDefaults standardUserDefaults];
             [_userDefaults setObject:account forKey:@"gatewayAccount"];
             [_userDefaults setObject:password forKey:@"gatewayPassword"];
             
             alert.message = @"保存成功";
-            [self presentViewController:alert animated:YES completion:nil];
+            [self presentViewController:alert animated:YES completion:nil]; // 保存成功提示
             
             [self updateUI];
         }
     };
     [self.view addSubview:gatewaySaveBtn];
 }
-
+/*
+ *  更新UI所需信息
+ */
 - (void)updateUI{
     _userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *account = [_userDefaults objectForKey:@"gatewayAccount"];
