@@ -34,6 +34,9 @@
 		59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2591B64AEA400527B9C /* BUAAHSetting.m */; };
 		59CBB25F1B64AEEB00527B9C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB25D1B64AEEB00527B9C /* Model.xcdatamodeld */; };
 		59CBB2611B64AFF800527B9C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CBB2601B64AFF800527B9C /* CoreData.framework */; };
+		8609F2651B6FDB1C00682928 /* GatewayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8609F2641B6FDB1C00682928 /* GatewayViewController.m */; };
+		8609F2681B6FDB2D00682928 /* GatewayLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */; };
+		867553BD1B6FF0F7001FE26B /* WZFlashButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 867553BC1B6FF0F7001FE26B /* WZFlashButton.m */; };
 		EDE6F29E18F4E3F5001C7755 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29D18F4E3F5001C7755 /* Foundation.framework */; };
 		EDE6F2A018F4E3F5001C7755 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */; };
 		EDE6F2A218F4E3F5001C7755 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F2A118F4E3F5001C7755 /* UIKit.framework */; };
@@ -116,6 +119,12 @@
 		59CBB2591B64AEA400527B9C /* BUAAHSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHSetting.m; path = AnimatTabbarSample/BUAAHSetting.m; sourceTree = "<group>"; };
 		59CBB25E1B64AEEB00527B9C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		59CBB2601B64AFF800527B9C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8609F2631B6FDB1C00682928 /* GatewayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatewayViewController.h; sourceTree = "<group>"; };
+		8609F2641B6FDB1C00682928 /* GatewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayViewController.m; sourceTree = "<group>"; };
+		8609F2661B6FDB2D00682928 /* GatewayLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatewayLoginViewController.h; sourceTree = "<group>"; };
+		8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayLoginViewController.m; sourceTree = "<group>"; };
+		867553BB1B6FF0F7001FE26B /* WZFlashButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZFlashButton.h; path = AnimatTabbarSample/WZFlashButton.h; sourceTree = "<group>"; };
+		867553BC1B6FF0F7001FE26B /* WZFlashButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZFlashButton.m; path = AnimatTabbarSample/WZFlashButton.m; sourceTree = "<group>"; };
 		EDE6F29A18F4E3F5001C7755 /* AnimatTabbarSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatTabbarSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE6F29D18F4E3F5001C7755 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -243,6 +252,28 @@
 			name = BUAAH;
 			sourceTree = "<group>";
 		};
+		8609F25F1B6FDA1700682928 /* GatewayLogin */ = {
+			isa = PBXGroup;
+			children = (
+				867553B81B6FF051001FE26B /* WZRippleButton */,
+				8609F2631B6FDB1C00682928 /* GatewayViewController.h */,
+				8609F2641B6FDB1C00682928 /* GatewayViewController.m */,
+				8609F2661B6FDB2D00682928 /* GatewayLoginViewController.h */,
+				8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */,
+			);
+			name = GatewayLogin;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		867553B81B6FF051001FE26B /* WZRippleButton */ = {
+			isa = PBXGroup;
+			children = (
+				867553BB1B6FF0F7001FE26B /* WZFlashButton.h */,
+				867553BC1B6FF0F7001FE26B /* WZFlashButton.m */,
+			);
+			name = WZRippleButton;
+			sourceTree = "<group>";
+		};
 		EDE6F29118F4E3F5001C7755 = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +313,7 @@
 		EDE6F2A318F4E3F5001C7755 /* AnimatTabbarSample */ = {
 			isa = PBXGroup;
 			children = (
+				8609F25F1B6FDA1700682928 /* GatewayLogin */,
 				EDE6F2AC18F4E3F5001C7755 /* AppDelegate.h */,
 				EDE6F2AD18F4E3F5001C7755 /* AppDelegate.m */,
 				EDE6F2AF18F4E3F5001C7755 /* Main.storyboard */,
@@ -424,6 +456,7 @@
 				591CCC7B1B65BF7F0049F3F4 /* Schedule.m in Sources */,
 				59CBB24E1B64AE6D00527B9C /* UIImageView+AFNetworking.m in Sources */,
 				59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */,
+				867553BD1B6FF0F7001FE26B /* WZFlashButton.m in Sources */,
 				EDE6F2B418F4E3F5001C7755 /* ViewController.m in Sources */,
 				59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */,
 				591CCC7A1B65BF7F0049F3F4 /* Person.m in Sources */,
@@ -444,10 +477,12 @@
 				59CBB24A1B64AE6D00527B9C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				59CBB25A1B64AEA400527B9C /* BUAAHCoredata.m in Sources */,
 				591CCC791B65BF7F0049F3F4 /* Notification.m in Sources */,
+				8609F2681B6FDB2D00682928 /* GatewayLoginViewController.m in Sources */,
 				591CCC7C1B65BF7F0049F3F4 /* Subscription.m in Sources */,
 				59CBB2371B64AE5000527B9C /* AFURLSessionManager.m in Sources */,
 				EDE6F2AE18F4E3F5001C7755 /* AppDelegate.m in Sources */,
 				EDE6F2AA18F4E3F5001C7755 /* main.m in Sources */,
+				8609F2651B6FDB1C00682928 /* GatewayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
