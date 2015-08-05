@@ -34,6 +34,7 @@
 		59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2591B64AEA400527B9C /* BUAAHSetting.m */; };
 		59CBB25F1B64AEEB00527B9C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB25D1B64AEEB00527B9C /* Model.xcdatamodeld */; };
 		59CBB2611B64AFF800527B9C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CBB2601B64AFF800527B9C /* CoreData.framework */; };
+		59FFFDAE1B71FE9D00833F18 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FFFDAD1B71FE9D00833F18 /* TabBarController.m */; };
 		EDE6F29E18F4E3F5001C7755 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29D18F4E3F5001C7755 /* Foundation.framework */; };
 		EDE6F2A018F4E3F5001C7755 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */; };
 		EDE6F2A218F4E3F5001C7755 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F2A118F4E3F5001C7755 /* UIKit.framework */; };
@@ -116,6 +117,8 @@
 		59CBB2591B64AEA400527B9C /* BUAAHSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHSetting.m; path = AnimatTabbarSample/BUAAHSetting.m; sourceTree = "<group>"; };
 		59CBB25E1B64AEEB00527B9C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		59CBB2601B64AFF800527B9C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		59FFFDAC1B71FE9D00833F18 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		59FFFDAD1B71FE9D00833F18 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		EDE6F29A18F4E3F5001C7755 /* AnimatTabbarSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatTabbarSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE6F29D18F4E3F5001C7755 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -285,10 +288,10 @@
 				EDE6F2AC18F4E3F5001C7755 /* AppDelegate.h */,
 				EDE6F2AD18F4E3F5001C7755 /* AppDelegate.m */,
 				EDE6F2AF18F4E3F5001C7755 /* Main.storyboard */,
-				EDE6F2B218F4E3F5001C7755 /* ViewController.h */,
-				EDE6F2B318F4E3F5001C7755 /* ViewController.m */,
 				EDE6F2B518F4E3F5001C7755 /* Images.xcassets */,
 				EDE6F2A418F4E3F5001C7755 /* Supporting Files */,
+				59FFFDAC1B71FE9D00833F18 /* TabBarController.h */,
+				59FFFDAD1B71FE9D00833F18 /* TabBarController.m */,
 			);
 			path = AnimatTabbarSample;
 			sourceTree = "<group>";
@@ -296,6 +299,8 @@
 		EDE6F2A418F4E3F5001C7755 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EDE6F2B318F4E3F5001C7755 /* ViewController.m */,
+				EDE6F2B218F4E3F5001C7755 /* ViewController.h */,
 				EDE6F2A518F4E3F5001C7755 /* AnimatTabbarSample-Info.plist */,
 				EDE6F2A618F4E3F5001C7755 /* InfoPlist.strings */,
 				EDE6F2A918F4E3F5001C7755 /* main.m */,
@@ -446,6 +451,7 @@
 				591CCC791B65BF7F0049F3F4 /* Notification.m in Sources */,
 				591CCC7C1B65BF7F0049F3F4 /* Subscription.m in Sources */,
 				59CBB2371B64AE5000527B9C /* AFURLSessionManager.m in Sources */,
+				59FFFDAE1B71FE9D00833F18 /* TabBarController.m in Sources */,
 				EDE6F2AE18F4E3F5001C7755 /* AppDelegate.m in Sources */,
 				EDE6F2AA18F4E3F5001C7755 /* main.m in Sources */,
 			);
