@@ -24,6 +24,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GatewayRocket" translatesAutoresizingMaskIntoConstraints="NO" id="Uig-sm-QVL">
                                 <rect key="frame" x="140" y="275" width="40" height="80"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GatewayRocketFailed" translatesAutoresizingMaskIntoConstraints="NO" id="nve-3e-Ptz">
+                                <rect key="frame" x="135" y="281" width="51" height="74"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -37,6 +40,7 @@
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="rocketFailedImageView" destination="nve-3e-Ptz" id="lRO-gL-w8m"/>
                         <outlet property="rocketImageView" destination="Uig-sm-QVL" id="HNt-Ie-QT7"/>
                     </connections>
                 </viewController>
@@ -208,6 +212,7 @@
         <image name="GatewayIcon" width="44" height="44"/>
         <image name="GatewayPasswordIcon" width="44" height="44"/>
         <image name="GatewayRocket" width="694" height="1546"/>
+        <image name="GatewayRocketFailed" width="955" height="1197"/>
         <image name="GatewayUserIcon" width="44" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
