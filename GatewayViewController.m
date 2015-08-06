@@ -130,6 +130,7 @@ static BOOL networkStatus = NO;
                           _rocketImageView.frame.origin.x*2.5, _rocketImageView.frame.origin.y+_rocketImageView.frame.size.height);
     [animation setPath:animationPath];
     [animation setDuration:animationTime];
+    [animation setRotationMode:@"auto"];
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_rocketFailedImageView.layer addAnimation:animation forKey:@"position"];
 }
