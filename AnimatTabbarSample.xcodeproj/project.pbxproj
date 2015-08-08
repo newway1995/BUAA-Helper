@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		591CCC781B65BF7F0049F3F4 /* ManagedObjectSubClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC6F1B65BF7F0049F3F4 /* ManagedObjectSubClass.m */; };
 		591CCC791B65BF7F0049F3F4 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC711B65BF7F0049F3F4 /* Notification.m */; };
-		591CCC7A1B65BF7F0049F3F4 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC731B65BF7F0049F3F4 /* Person.m */; };
 		591CCC7B1B65BF7F0049F3F4 /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC751B65BF7F0049F3F4 /* Schedule.m */; };
 		591CCC7C1B65BF7F0049F3F4 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC771B65BF7F0049F3F4 /* Subscription.m */; };
+		598A01291B7628460049E959 /* BUAAHLoginGW.m in Sources */ = {isa = PBXBuildFile; fileRef = 598A01281B7628460049E959 /* BUAAHLoginGW.m */; };
+		598A01301B7637500049E959 /* BUAAHSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598A012F1B7637500049E959 /* BUAAHSchedule.m */; };
 		59CBB22F1B64AE5000527B9C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21D1B64AE5000527B9C /* AFHTTPRequestOperation.m */; };
 		59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21F1B64AE5000527B9C /* AFHTTPRequestOperationManager.m */; };
 		59CBB2311B64AE5000527B9C /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2211B64AE5000527B9C /* AFHTTPSessionManager.m */; };
@@ -34,7 +35,6 @@
 		59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2591B64AEA400527B9C /* BUAAHSetting.m */; };
 		59CBB25F1B64AEEB00527B9C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB25D1B64AEEB00527B9C /* Model.xcdatamodeld */; };
 		59CBB2611B64AFF800527B9C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CBB2601B64AFF800527B9C /* CoreData.framework */; };
-		59FFFDAE1B71FE9D00833F18 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FFFDAD1B71FE9D00833F18 /* TabBarController.m */; };
 		EDE6F29E18F4E3F5001C7755 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29D18F4E3F5001C7755 /* Foundation.framework */; };
 		EDE6F2A018F4E3F5001C7755 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */; };
 		EDE6F2A218F4E3F5001C7755 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F2A118F4E3F5001C7755 /* UIKit.framework */; };
@@ -66,12 +66,14 @@
 		591CCC6F1B65BF7F0049F3F4 /* ManagedObjectSubClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedObjectSubClass.m; path = ManagedObjectSubClass/ManagedObjectSubClass.m; sourceTree = "<group>"; };
 		591CCC701B65BF7F0049F3F4 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Notification.h; path = ManagedObjectSubClass/Notification.h; sourceTree = "<group>"; };
 		591CCC711B65BF7F0049F3F4 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Notification.m; path = ManagedObjectSubClass/Notification.m; sourceTree = "<group>"; };
-		591CCC721B65BF7F0049F3F4 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = ManagedObjectSubClass/Person.h; sourceTree = "<group>"; };
-		591CCC731B65BF7F0049F3F4 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = ManagedObjectSubClass/Person.m; sourceTree = "<group>"; };
 		591CCC741B65BF7F0049F3F4 /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Schedule.h; path = ManagedObjectSubClass/Schedule.h; sourceTree = "<group>"; };
 		591CCC751B65BF7F0049F3F4 /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Schedule.m; path = ManagedObjectSubClass/Schedule.m; sourceTree = "<group>"; };
 		591CCC761B65BF7F0049F3F4 /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Subscription.h; path = ManagedObjectSubClass/Subscription.h; sourceTree = "<group>"; };
 		591CCC771B65BF7F0049F3F4 /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subscription.m; path = ManagedObjectSubClass/Subscription.m; sourceTree = "<group>"; };
+		598A01281B7628460049E959 /* BUAAHLoginGW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHLoginGW.m; path = AnimatTabbarSample/BUAAHLoginGW.m; sourceTree = "<group>"; };
+		598A012A1B7628730049E959 /* BUAAHLoginGW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAAHLoginGW.h; path = AnimatTabbarSample/BUAAHLoginGW.h; sourceTree = "<group>"; };
+		598A012E1B7637500049E959 /* BUAAHSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAAHSchedule.h; path = AnimatTabbarSample/BUAAHSchedule.h; sourceTree = "<group>"; };
+		598A012F1B7637500049E959 /* BUAAHSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHSchedule.m; path = AnimatTabbarSample/BUAAHSchedule.m; sourceTree = "<group>"; };
 		59CBB21C1B64AE5000527B9C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		59CBB21D1B64AE5000527B9C /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		59CBB21E1B64AE5000527B9C /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = AFNetworking/AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -117,8 +119,6 @@
 		59CBB2591B64AEA400527B9C /* BUAAHSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHSetting.m; path = AnimatTabbarSample/BUAAHSetting.m; sourceTree = "<group>"; };
 		59CBB25E1B64AEEB00527B9C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		59CBB2601B64AFF800527B9C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		59FFFDAC1B71FE9D00833F18 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
-		59FFFDAD1B71FE9D00833F18 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		EDE6F29A18F4E3F5001C7755 /* AnimatTabbarSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatTabbarSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE6F29D18F4E3F5001C7755 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -172,8 +172,6 @@
 				591CCC6F1B65BF7F0049F3F4 /* ManagedObjectSubClass.m */,
 				591CCC701B65BF7F0049F3F4 /* Notification.h */,
 				591CCC711B65BF7F0049F3F4 /* Notification.m */,
-				591CCC721B65BF7F0049F3F4 /* Person.h */,
-				591CCC731B65BF7F0049F3F4 /* Person.m */,
 				591CCC741B65BF7F0049F3F4 /* Schedule.h */,
 				591CCC751B65BF7F0049F3F4 /* Schedule.m */,
 				591CCC761B65BF7F0049F3F4 /* Subscription.h */,
@@ -242,6 +240,10 @@
 				59CBB2571B64AEA400527B9C /* BUAAHNetworking.m */,
 				59CBB2581B64AEA400527B9C /* BUAAHSetting.h */,
 				59CBB2591B64AEA400527B9C /* BUAAHSetting.m */,
+				598A012A1B7628730049E959 /* BUAAHLoginGW.h */,
+				598A01281B7628460049E959 /* BUAAHLoginGW.m */,
+				598A012E1B7637500049E959 /* BUAAHSchedule.h */,
+				598A012F1B7637500049E959 /* BUAAHSchedule.m */,
 			);
 			name = BUAAH;
 			sourceTree = "<group>";
@@ -290,8 +292,6 @@
 				EDE6F2AF18F4E3F5001C7755 /* Main.storyboard */,
 				EDE6F2B518F4E3F5001C7755 /* Images.xcassets */,
 				EDE6F2A418F4E3F5001C7755 /* Supporting Files */,
-				59FFFDAC1B71FE9D00833F18 /* TabBarController.h */,
-				59FFFDAD1B71FE9D00833F18 /* TabBarController.m */,
 			);
 			path = AnimatTabbarSample;
 			sourceTree = "<group>";
@@ -425,13 +425,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				59CBB22F1B64AE5000527B9C /* AFHTTPRequestOperation.m in Sources */,
+				598A01291B7628460049E959 /* BUAAHLoginGW.m in Sources */,
 				59CBB25B1B64AEA400527B9C /* BUAAHNetworking.m in Sources */,
 				591CCC7B1B65BF7F0049F3F4 /* Schedule.m in Sources */,
 				59CBB24E1B64AE6D00527B9C /* UIImageView+AFNetworking.m in Sources */,
 				59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */,
 				EDE6F2B418F4E3F5001C7755 /* ViewController.m in Sources */,
 				59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */,
-				591CCC7A1B65BF7F0049F3F4 /* Person.m in Sources */,
 				59CBB24F1B64AE6D00527B9C /* UIProgressView+AFNetworking.m in Sources */,
 				59CBB2321B64AE5000527B9C /* AFNetworkReachabilityManager.m in Sources */,
 				59CBB2361B64AE5000527B9C /* AFURLResponseSerialization.m in Sources */,
@@ -444,6 +444,7 @@
 				59CBB2501B64AE6D00527B9C /* UIRefreshControl+AFNetworking.m in Sources */,
 				59CBB2511B64AE6D00527B9C /* UIWebView+AFNetworking.m in Sources */,
 				59CBB2311B64AE5000527B9C /* AFHTTPSessionManager.m in Sources */,
+				598A01301B7637500049E959 /* BUAAHSchedule.m in Sources */,
 				59CBB24C1B64AE6D00527B9C /* UIAlertView+AFNetworking.m in Sources */,
 				59CBB2351B64AE5000527B9C /* AFURLRequestSerialization.m in Sources */,
 				59CBB24A1B64AE6D00527B9C /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -451,7 +452,6 @@
 				591CCC791B65BF7F0049F3F4 /* Notification.m in Sources */,
 				591CCC7C1B65BF7F0049F3F4 /* Subscription.m in Sources */,
 				59CBB2371B64AE5000527B9C /* AFURLSessionManager.m in Sources */,
-				59FFFDAE1B71FE9D00833F18 /* TabBarController.m in Sources */,
 				EDE6F2AE18F4E3F5001C7755 /* AppDelegate.m in Sources */,
 				EDE6F2AA18F4E3F5001C7755 /* main.m in Sources */,
 			);
