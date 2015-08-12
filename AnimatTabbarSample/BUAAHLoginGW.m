@@ -15,8 +15,10 @@
 
 +(void)LoginGWWithUsername:(NSString *)username password:(NSString *)password success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure
 {
-    NSDictionary* dict=@{@"username":username,@"password":[BUAAHNetworking md5:password],@"drop":@"0",@"type":@"1",@"n":@"100"};
-    [BUAAHNetworking post:testUrl parameters:dict success:success failure:failure];
+    NSString* pass1 = [BUAAHNetworking md5:password];
+    NSString* pass2 = [pass1 substringWithRange:NSMakeRange(8,16)];
+    NSDictionary* dict=@{@"username":username,@"password":pass2,@"drop":@"0",@"type":@"1",@"n":@"100"};
+    [BUAAHNetworking post:loginUrl parameters:dict success:success failure:failure];
     
 }
 

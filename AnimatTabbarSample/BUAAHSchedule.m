@@ -16,7 +16,7 @@
 +(void)getWithId:(NSString *)id success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success failure:(nullable void (^)(AFHTTPRequestOperation * __nonnull, NSError * __nonnull))failure{
     
     NSDictionary* dict = @{@"userId":id};
-    [BUAAHNetworking post:scheduleUrl parameters:dict success:success failure:failure];
+    //[BUAAHNetworking post:scheduleUrl parameters:dict success:success failure:failure];
 }
 
 
@@ -24,4 +24,6 @@
     NSDictionary* dict = @{@"username":username,@"password":password};
     [BUAAHNetworking post:scheduleUrl parameters:dict success:success failure:failure];
 }
+
+
 @end

@@ -18,5 +18,17 @@
 
 
 
+/*
+ How to use
+ [BUAAHLoginGW LoginGWWithUsername:username(NSString*) password:password(NSString*)
+ success:^(AFHTTPRequestOperation *operation, id responseObject) {
+ NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+ NSLog(@"Result: %@", result);
+ }
+ failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+ NSLog(@"Error: %@", error);
+ }];
+ */
+
 @end
 #endif
