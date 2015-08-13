@@ -19,6 +19,11 @@
 
 -(BOOL)insert:(NSDictionary*)data;
 
+-(BOOL)update:(NSDictionary*)data;
+
+-(BOOL)isEqualToDictionary:(NSDictionary*)data;
+
+
 -(BOOL)isEqualTo:(Subscription*)another;
 
 @end

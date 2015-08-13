@@ -11,18 +11,18 @@
 
 
 #import "AFNetworking.h"
+#import "BUAAHCoredata.h"
+#import "Schedule.h"
 @interface BUAAHSchedule : NSObject
 
-+(void)getWithId:(NSString*)id success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
-(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
-
-+(void)getWithUsername:(NSString*)username password:password success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
-(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
++(void)getWithUsername:(NSString*)username password:password;
 
 
++(void)delete:(Schedule*)object;
 
++(void)clear;
 
-
++(void)insert:(NSDictionary*)data;
 @end
 
 #endif

@@ -28,7 +28,7 @@ static NSManagedObjectContext *context=nil;
     NSPersistentStoreCoordinator *tpsc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
     // 构建SQLite数据库文件的路径
     NSString *docs = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSURL *url = [NSURL fileURLWithPath:[docs stringByAppendingPathComponent:@"person.data"]];
+    NSURL *url = [NSURL fileURLWithPath:[docs stringByAppendingPathComponent:@"model.data"]];
     
     
     // 添加持久化存储库，这里使用SQLite作为存储库
@@ -117,6 +117,19 @@ static NSManagedObjectContext *context=nil;
         [NSException raise:@"删除错误" format:@"%@", [error localizedDescription]];
     }
 
+}
+
+
+
++(void)clear:(NSString*)managedObjectName {
+    if(context==nil){
+        context = [[NSManagedObjectContext alloc] init];
+        context.persistentStoreCoordinator=psc;
+    }
+    NSArray* arr =[BUAAHCoredata query:managedObjectName forSort:nil forPredicate:nil];
+    for(NSManagedObject* object in arr){
+        [BUAAHCoredata delete:object];
+    }
 }
 
 
