@@ -30,7 +30,7 @@ static BOOL networkStatus = NO;
     WZFlashButton *fireButton = [[WZFlashButton alloc] initWithFrame:rect];
     fireButton.buttonType = WZFlashButtonTypeOuter;
     fireButton.layer.cornerRadius = fireButtonWidth/2; // 设置为圆形
-    fireButton.backgroundColor = [UIColor colorWithRed:153.0f/255.0f green:204.0f/255.0f blue:0 alpha:1.0f];
+    fireButton.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:217.0f/255.0f blue:0 alpha:1.0f];
     fireButton.flashColor = [UIColor orangeColor];
     [fireButton setText:@"认 证" withTextColor:[UIColor whiteColor]];
     WZFlashButton *button = fireButton;
@@ -61,12 +61,12 @@ static BOOL networkStatus = NO;
             NSTimer *animationTimer = [[NSTimer alloc] init];
             animationTimer =[NSTimer scheduledTimerWithTimeInterval:waitTime target:self selector:@selector(rocketLaunchFailed) userInfo:nil repeats:NO];
             [button setText:@"认 证" withTextColor:[UIColor whiteColor]];
-            button.backgroundColor = [UIColor colorWithRed:153.0f/255.0f green:204.0f/255.0f blue:0 alpha:1.0f];
+            button.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:217.0f/255.0f blue:0 alpha:1.0f];
             gatewayStatus =NO;
 
             NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
             [dict setObject:@"认证失败" forKey:@"message"];
-
+            
             NSTimer *alertTimer = [[NSTimer alloc] init];
             alertTimer = [NSTimer scheduledTimerWithTimeInterval:waitTime*2 target:self selector:@selector(alertWithTimer:) userInfo:dict repeats:NO];
         }

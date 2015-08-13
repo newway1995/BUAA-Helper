@@ -54,7 +54,7 @@ static float cornerRadius = 5.0;    // View圆角大小
     CGRect rect = CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y+150,
                              self.containerView.frame.size.width, self.containerView.frame.size.height/2);  // 根据container位置设置按钮位置
     WZFlashButton *gatewaySaveBtn = [[WZFlashButton alloc] initWithFrame:rect];
-    gatewaySaveBtn.backgroundColor = [UIColor colorWithRed:153.0f/255.0f green:204.0f/255.0f blue:0 alpha:1.0f];
+    gatewaySaveBtn.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:217.0f/255.0f blue:0 alpha:1.0f];
     gatewaySaveBtn.flashColor = [UIColor orangeColor];
     [gatewaySaveBtn setText:@"保 存" withTextColor:nil];
     gatewaySaveBtn.layer.masksToBounds = YES;
