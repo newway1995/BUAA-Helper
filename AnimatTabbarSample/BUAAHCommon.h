@@ -12,6 +12,8 @@
 
 //常量
 
-const NSString* baseUrl =@"https://alpha-api.app.net/stream/0/posts/stream/global";
-
+extern NSString* const baseUrl;
+extern NSString* const loginUrl;
+extern NSString* const testUrl;
+extern NSString* const scheduleUrl;
 #endif

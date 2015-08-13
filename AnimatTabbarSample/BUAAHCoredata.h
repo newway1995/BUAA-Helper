@@ -24,7 +24,7 @@
 
 +(void)delete:(NSManagedObject*)object;
 
-
++(void)clear:(NSString*)managedObjectName ;
 //可能不用这个函数
 +(NSManagedObject*)getNSManagedObject:(NSString*)managedObjectName;
 
