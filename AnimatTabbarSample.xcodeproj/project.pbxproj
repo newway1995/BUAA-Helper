@@ -14,6 +14,11 @@
 		593E37E61B7B2D9800524E76 /* BUAAHCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 593E37E51B7B2D9800524E76 /* BUAAHCommon.m */; };
 		598A01291B7628460049E959 /* BUAAHLoginGW.m in Sources */ = {isa = PBXBuildFile; fileRef = 598A01281B7628460049E959 /* BUAAHLoginGW.m */; };
 		598A01301B7637500049E959 /* BUAAHSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598A012F1B7637500049E959 /* BUAAHSchedule.m */; };
+		59AD1C1A1B84697D0035D218 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD1C111B84697D0035D218 /* HeaderView.m */; };
+		59AD1C1B1B84697D0035D218 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD1C131B84697D0035D218 /* ProfileView.m */; };
+		59AD1C1C1B84697D0035D218 /* ScheduleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD1C151B84697D0035D218 /* ScheduleController.m */; };
+		59AD1C1D1B84697D0035D218 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD1C171B84697D0035D218 /* TableCell.m */; };
+		59AD1C1E1B84697D0035D218 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD1C191B84697D0035D218 /* TableView.m */; };
 		59CBB22F1B64AE5000527B9C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21D1B64AE5000527B9C /* AFHTTPRequestOperation.m */; };
 		59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21F1B64AE5000527B9C /* AFHTTPRequestOperationManager.m */; };
 		59CBB2311B64AE5000527B9C /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2211B64AE5000527B9C /* AFHTTPSessionManager.m */; };
@@ -76,6 +81,16 @@
 		598A012A1B7628730049E959 /* BUAAHLoginGW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAAHLoginGW.h; path = AnimatTabbarSample/BUAAHLoginGW.h; sourceTree = "<group>"; };
 		598A012E1B7637500049E959 /* BUAAHSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAAHSchedule.h; path = AnimatTabbarSample/BUAAHSchedule.h; sourceTree = "<group>"; };
 		598A012F1B7637500049E959 /* BUAAHSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHSchedule.m; path = AnimatTabbarSample/BUAAHSchedule.m; sourceTree = "<group>"; };
+		59AD1C101B84697D0035D218 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		59AD1C111B84697D0035D218 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		59AD1C121B84697D0035D218 /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
+		59AD1C131B84697D0035D218 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
+		59AD1C141B84697D0035D218 /* ScheduleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleController.h; sourceTree = "<group>"; };
+		59AD1C151B84697D0035D218 /* ScheduleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleController.m; sourceTree = "<group>"; };
+		59AD1C161B84697D0035D218 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
+		59AD1C171B84697D0035D218 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
+		59AD1C181B84697D0035D218 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
+		59AD1C191B84697D0035D218 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		59CBB21C1B64AE5000527B9C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		59CBB21D1B64AE5000527B9C /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		59CBB21E1B64AE5000527B9C /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = AFNetworking/AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -182,6 +197,23 @@
 			name = ManagedObjectSubClass;
 			sourceTree = "<group>";
 		};
+		59AD1C0F1B84697D0035D218 /* ScheduleController */ = {
+			isa = PBXGroup;
+			children = (
+				59AD1C101B84697D0035D218 /* HeaderView.h */,
+				59AD1C111B84697D0035D218 /* HeaderView.m */,
+				59AD1C121B84697D0035D218 /* ProfileView.h */,
+				59AD1C131B84697D0035D218 /* ProfileView.m */,
+				59AD1C141B84697D0035D218 /* ScheduleController.h */,
+				59AD1C151B84697D0035D218 /* ScheduleController.m */,
+				59AD1C161B84697D0035D218 /* TableCell.h */,
+				59AD1C171B84697D0035D218 /* TableCell.m */,
+				59AD1C181B84697D0035D218 /* TableView.h */,
+				59AD1C191B84697D0035D218 /* TableView.m */,
+			);
+			path = ScheduleController;
+			sourceTree = "<group>";
+		};
 		59CBB21B1B64AE3600527B9C /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +286,7 @@
 		EDE6F29118F4E3F5001C7755 = {
 			isa = PBXGroup;
 			children = (
+				59AD1C0F1B84697D0035D218 /* ScheduleController */,
 				591CCC6D1B65BF5B0049F3F4 /* ManagedObjectSubClass */,
 				59CBB25D1B64AEEB00527B9C /* Model.xcdatamodeld */,
 				59CBB2521B64AE7700527B9C /* BUAAH */,
@@ -436,18 +469,23 @@
 				EDE6F2B418F4E3F5001C7755 /* ViewController.m in Sources */,
 				59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */,
 				59CBB24F1B64AE6D00527B9C /* UIProgressView+AFNetworking.m in Sources */,
+				59AD1C1E1B84697D0035D218 /* TableView.m in Sources */,
 				59CBB2321B64AE5000527B9C /* AFNetworkReachabilityManager.m in Sources */,
 				59CBB2361B64AE5000527B9C /* AFURLResponseSerialization.m in Sources */,
+				59AD1C1A1B84697D0035D218 /* HeaderView.m in Sources */,
+				59AD1C1C1B84697D0035D218 /* ScheduleController.m in Sources */,
 				59CBB2341B64AE5000527B9C /* AFURLConnectionOperation.m in Sources */,
 				59CBB24D1B64AE6D00527B9C /* UIButton+AFNetworking.m in Sources */,
 				59CBB25F1B64AEEB00527B9C /* Model.xcdatamodeld in Sources */,
 				593E37E61B7B2D9800524E76 /* BUAAHCommon.m in Sources */,
 				59CBB24B1B64AE6D00527B9C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				59AD1C1D1B84697D0035D218 /* TableCell.m in Sources */,
 				591CCC781B65BF7F0049F3F4 /* ManagedObjectSubClass.m in Sources */,
 				59CBB2331B64AE5000527B9C /* AFSecurityPolicy.m in Sources */,
 				59CBB2501B64AE6D00527B9C /* UIRefreshControl+AFNetworking.m in Sources */,
 				59CBB2511B64AE6D00527B9C /* UIWebView+AFNetworking.m in Sources */,
 				59CBB2311B64AE5000527B9C /* AFHTTPSessionManager.m in Sources */,
+				59AD1C1B1B84697D0035D218 /* ProfileView.m in Sources */,
 				598A01301B7637500049E959 /* BUAAHSchedule.m in Sources */,
 				59CBB24C1B64AE6D00527B9C /* UIAlertView+AFNetworking.m in Sources */,
 				59CBB2351B64AE5000527B9C /* AFURLRequestSerialization.m in Sources */,

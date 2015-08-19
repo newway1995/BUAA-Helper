@@ -66,7 +66,7 @@ success failure:
     
 }
 
-+ (NSString *) md5:(NSString*)str;
++ (NSString *) md5:(NSString*)str
 {
     const char *cStr = [str UTF8String];
     unsigned char result[16];
