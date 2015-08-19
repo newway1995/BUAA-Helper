@@ -149,6 +149,7 @@
                 c.y=date;
                 NSString* text = [[NSString alloc] initWithFormat:@"%@,%@,%@",schedule.name,schedule.classroom,schedule.teacher];
                // NSLog(@"%@",text);
+                [self.cells addObject:c];
                 [c setText:text];
                 [self.rightScroll addSubview:c];
                 [self.rightScroll bringSubviewToFront:c];
@@ -170,51 +171,8 @@
 
 -(void)clear{
     [self.rightScroll removeFromSuperview];
-    CGRect tmp =self.frame;
-    NSArray* from = [[NSArray alloc] initWithObjects:@"8:00",@"8:55",@"9:50",@"10:45",@"14:00",@"14:55",@"15:50",@"16:45",@"18:30",@"19:25",@"20:20",@"21:15",nil];
-    NSArray* to= [[NSArray alloc] initWithObjects:@"8:50",@"9:45",@"10:40",@"11:35",@"14:50",@"15:45",@"16:40",@"17:35",@"19:20",@"20:15",@"21:10",@"22:05",nil];
-    float width = (tmp.size.width+7)/8;
-    float height= (tmp.size.height+12)/13;
-    
-    for(int i=0;i<7;i++){
-        for(int j=0;j<12;j++){
-            CGRect r= CGRectMake(i*width-i-1, j*height-j-1, width, height);
-            UIView* v=[[UIView alloc] initWithFrame:r];
-            v.layer.borderWidth = 1;
-            v.layer.borderColor = [[UIColor blackColor] CGColor];
-            [self.rightScroll addSubview:v];
-        }
-    }
-    
-    for(Schedule* schedule in self.schedules){
-        int date = [schedule.date intValue];
-        if([from containsObject:schedule.from]&&
-           [to containsObject:schedule.to]&&
-           date>=1&&
-           date<=7){
-            uint y1= [from indexOfObject:schedule.from];
-            uint y2= [to indexOfObject:schedule.to];
-            //添加课程
-            if(y1<=y2){
-                CGRect r;
-                r.size.width=width;
-                r.size.height=(y2-y1+1)*height-(y2-y1);
-                r.origin.x=width*(date-1)-(date);
-                r.origin.y=(y1+1)*height-(y1+2);
-                
-                TableCell* c = [[TableCell alloc] initWithFrame:r];
-                NSString* text = [[NSString alloc] initWithFormat:@"%@,%@,%@",schedule.name,schedule.classroom,schedule.teacher];
-                NSLog(@"%@",text);
-                [c setText:text];
-                [self.rightScroll addSubview:c];
-                [self.rightScroll bringSubviewToFront:c];
-            }
-            
-        }
-        else{
-            NSLog(@"数据错误");
-        }
-    }
+    [self.schedules removeAllObjects];
+    [self.cells removeAllObjects];
 
 }
 

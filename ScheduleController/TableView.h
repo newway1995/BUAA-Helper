@@ -20,6 +20,7 @@
 @property (nonatomic,strong) UIScrollView* leftScroll;
 @property (nonatomic,strong) UIScrollView* topScroll;
 -(void)Schedules:(NSArray *)schedules;
+-(void)clear;
 @end
 
 #endif
