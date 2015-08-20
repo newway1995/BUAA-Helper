@@ -15,12 +15,12 @@
 
 @implementation BUAAHSchedule
 
+/*
 
 
-
-+(void)getWithUsername:(NSString *)username password:(id)password{
++(void)getWithUsername:(NSString *)username password:(NSString*)password{
     [BUAAHCoredata initialize];
-    NSDictionary* dict = @{@"username":username,@"password":password};
+  //  NSDictionary* dict = @{@"username":username,@"password":password};
     [BUAAHNetworking post:scheduleUrl parameters:dict
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
                       for(NSDictionary* data in responseObject){
@@ -50,5 +50,5 @@
     [BUAAHCoredata initialize];
     [BUAAHCoredata insert:@"Schedule" forData:data];
 }
-
+*/
 @end

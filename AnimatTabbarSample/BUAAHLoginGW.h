@@ -20,7 +20,7 @@
 
 /*
  How to use
- [BUAAHLoginGW LoginGWWithUsername:username(NSString*) password:password(NSString*)
+ [BUAAHLoginGW LoginGWWithUsername:username password:password
  success:^(AFHTTPRequestOperation *operation, id responseObject) {
  NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
  NSLog(@"Result: %@", result);
