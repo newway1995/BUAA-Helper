@@ -10,7 +10,10 @@
 #import "MyInformation.h"
 
 @interface MyselfTableViewController ()
+@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) MyselfInfo *infomation;
+@property (nonatomic, strong) NSMutableArray *userInfo;
+@property (nonatomic, strong) NSMutableArray *collegeInfo;
 @end
 
 @implementation MyselfTableViewController
@@ -18,6 +21,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _infomation = [_infomation init];
+    _userInfo = _infomation.userInfo;
+    _collegeInfo= _infomation.collegeInfo;
+    
+    _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,13 +46,17 @@
 
 
 #pragma mark - 数据源方法
+//返回分组数
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
 //返回行数
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0){
-        return _infomation.userInfo.count;
+        return _userInfo.count;
     } else {
-        return _infomation.collegeInfo.count;
+        return _collegeInfo.count;
     }
 }
 
@@ -57,15 +70,31 @@
     }
     
     switch (indexPath.section) {
-        case 0:
-            NSMutableArray *array = 
+        case 0:{
+            [[cell textLabel] setText:[[_userInfo objectAtIndex:indexPath.row] getMyName]];
+            NSString *s =[[_userInfo objectAtIndex:indexPath.row] getMyName];
+            NSLog(@"name is %@",s);
+            [[cell detailTextLabel] setText:[[_userInfo objectAtIndex:indexPath.row] getMyValue]];
             break;
-            
+        }
+        case 1:{
+            [[cell textLabel] setText:[[_collegeInfo objectAtIndex:indexPath.row] getMyName]];
+            [[cell detailTextLabel] setText:[[_collegeInfo objectAtIndex:indexPath.row] getMyValue]];
+            break;
+        }
         default:
             break;
     }
     return cell;
 }
+//返回每组头标题名称
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"";
+}
 
+//返回每组尾部说明
+-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    return @"";
+}
 
 @end

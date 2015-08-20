@@ -8,6 +8,7 @@
 
 #import "GatewayViewController.h"
 #import "WZFlashButton.h"
+#import "BUAAHLoginGW.h"
 
 @interface GatewayViewController ()
 @property (strong, nonatomic) NSUserDefaults *userDefaults; // 存储信息
@@ -18,7 +19,7 @@
 @implementation GatewayViewController
 
 static BOOL gatewayStatus = NO;
-static BOOL networkStatus = NO;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -30,12 +31,60 @@ static BOOL networkStatus = NO;
     WZFlashButton *fireButton = [[WZFlashButton alloc] initWithFrame:rect];
     fireButton.buttonType = WZFlashButtonTypeOuter;
     fireButton.layer.cornerRadius = fireButtonWidth/2; // 设置为圆形
-    fireButton.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:217.0f/255.0f blue:0 alpha:1.0f];
+    fireButton.backgroundColor =  [UIColor colorWithRed:153.0f/255.0f green:204.0f/255.0f blue:0 alpha:1.0f];
     fireButton.flashColor = [UIColor orangeColor];
     [fireButton setText:@"认 证" withTextColor:[UIColor whiteColor]];
     WZFlashButton *button = fireButton;
     fireButton.clickBlock = ^void{     // 点击触发updateUI
-        [self updateUI:button];
+        
+        if (gatewayStatus){
+            [self rocketComeBack];
+            [button setText:@"认 证" withTextColor:[UIColor whiteColor]];
+            button.backgroundColor = [UIColor colorWithRed:153.0f/255.0f green:204.0f/255.0f blue:0 alpha:1.0f];
+            /*
+             * 断开连接
+             */
+            gatewayStatus = NO;
+        } else {
+            [self rocketLaunch];
+            
+            _userDefaults = [NSUserDefaults standardUserDefaults];
+            NSString *username = [_userDefaults objectForKey:@"gatewayAccount"];
+            NSString *password = [_userDefaults objectForKey:@"gatewayPassword"];
+            
+            if (!username){
+                username = @"";
+            }
+            if (!password){
+                password = @"";
+            }
+            
+            [BUAAHLoginGW LoginGWWithUsername:username password:password
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                    NSLog(@"Result: %@", result);
+                    if ([result isEqualToString:@"password_error"]){
+                        gatewayStatus = NO;
+                        NSString *message =@"用户名或密码错误";
+                        [self updateUIWhenFailed:button WithMessage:message];
+                    } else if ([result isEqualToString:@"ip_exist_error"]){
+                        gatewayStatus = YES;
+                        NSString *message =@"IP已存在";
+                        [self updateUIWhenFailed:button WithMessage:message];
+
+                    } else {
+                        gatewayStatus = YES;
+                        [button setText:@"断 开" withTextColor:[UIColor whiteColor]];
+                        [button setBackgroundColor:[UIColor redColor]];
+                    }
+                }
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    NSLog(@"Error: %@", error);
+                    gatewayStatus = NO;
+                    NSString *message =@"网络连接失败";
+                    [self updateUIWhenFailed:button WithMessage:message];
+                }];
+        }
     };
     [self.view addSubview:fireButton];
     
@@ -43,13 +92,13 @@ static BOOL networkStatus = NO;
 
 /*
  *  更新View
- */
+ *
 - (void)updateUI:(WZFlashButton*)button{
     if (gatewayStatus){
         [self rocketComeBack];
         [button setText:@"认 证" withTextColor:[UIColor whiteColor]];
         button.backgroundColor = [UIColor colorWithRed:153.0f/255.0f green:204.0f/255.0f blue:0 alpha:1.0f];
-        gatewayStatus =NO;
+        gatewayStatus = NO;
         
     } else {
         [self rocketLaunch];
@@ -63,7 +112,7 @@ static BOOL networkStatus = NO;
             [button setText:@"认 证" withTextColor:[UIColor whiteColor]];
             button.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:217.0f/255.0f blue:0 alpha:1.0f];
             gatewayStatus =NO;
-
+            
             NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
             [dict setObject:@"认证失败" forKey:@"message"];
             
@@ -71,6 +120,21 @@ static BOOL networkStatus = NO;
             alertTimer = [NSTimer scheduledTimerWithTimeInterval:waitTime*2 target:self selector:@selector(alertWithTimer:) userInfo:dict repeats:NO];
         }
     }
+}
+*/
+- (void)updateUIWhenFailed:(WZFlashButton *)button WithMessage:(NSString *) message{
+    CFTimeInterval waitTime = 1.5;
+    NSTimer *animationTimer = [[NSTimer alloc] init];
+    animationTimer =[NSTimer scheduledTimerWithTimeInterval:waitTime target:self selector:@selector(rocketLaunchFailed) userInfo:nil repeats:NO];
+    [button setText:@"认 证" withTextColor:[UIColor whiteColor]];
+    button.backgroundColor =  [UIColor colorWithRed:153.0f/255.0f green:204.0f/255.0f blue:0 alpha:1.0f];
+    gatewayStatus =NO;
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:message forKey:@"message"];
+    
+    NSTimer *alertTimer = [[NSTimer alloc] init];
+    alertTimer = [NSTimer scheduledTimerWithTimeInterval:waitTime*2 target:self selector:@selector(alertWithTimer:) userInfo:dict repeats:NO];
 }
 
 - (void)alertWithTimer:(NSTimer*)timer{

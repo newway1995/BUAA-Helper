@@ -10,8 +10,8 @@
 
 @interface MyInformation : NSObject
 
-@property (nonatomic, strong, getter=getName) NSString *name;
-@property (nonatomic, strong, getter=getVale) NSString *value;
+@property (nonatomic, strong, getter=getMyName) NSString *name;
+@property (nonatomic, strong, getter=getMyValue) NSString *value;
 
 - (MyInformation *)initWithName:(NSString *)name Value:(NSString *)value;
 + (MyInformation *)initWithName:(NSString *)name Value:(NSString *)value;
