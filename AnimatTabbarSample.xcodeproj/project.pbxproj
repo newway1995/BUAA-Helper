@@ -430,11 +430,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDE6F2CC18F4E3F6001C7755 /* Build configuration list for PBXNativeTarget "AnimatTabbarSample" */;
 			buildPhases = (
-				530A54996683D711D3AABE17 /* Check Pods Manifest.lock */,
 				EDE6F29618F4E3F5001C7755 /* Sources */,
 				EDE6F29718F4E3F5001C7755 /* Frameworks */,
 				EDE6F29818F4E3F5001C7755 /* Resources */,
-				166E8C672032FF672F680E25 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -516,39 +514,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		166E8C672032FF672F680E25 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		530A54996683D711D3AABE17 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EDE6F29618F4E3F5001C7755 /* Sources */ = {
