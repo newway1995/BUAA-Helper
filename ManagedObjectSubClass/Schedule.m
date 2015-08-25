@@ -16,7 +16,7 @@
 @dynamic from;
 @dynamic to;
 @dynamic teacher;
-@dynamic time;
+@dynamic date;
 
 
 -(BOOL)insert:(NSDictionary *)data{
@@ -63,7 +63,7 @@
        [self.teacher isEqualToString:[data valueForKey:@"teacher"]]&&
        (([self.from isEqualToDate:[data valueForKey:@"from"]]&&
         [self.to isEqualToDate:[data valueForKey:@"to"]])||
-        [self.time isEqualToString:[data valueForKey:@"time"]]))
+        [self.date isEqualToString:[data valueForKey:@"date"]]))
         return YES;
     return NO;
 }

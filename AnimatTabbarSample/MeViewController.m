@@ -8,7 +8,6 @@
 #import "MeModel.h"
 #import "MeViewController.h"
 #import "KeyValue.h"
-#import "MMParallaxCell.h"
 
 @interface MeViewController ()<UITableViewDelegate, UITableViewDataSource>{
     UITableView *_tableView;
@@ -105,9 +104,9 @@
  */
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifer = @"cell";
-    MMParallaxCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     if (cell == nil){
-        cell = [[MMParallaxCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
         UIFont *newFont = [UIFont fontWithName:@"Arial" size:13.0];
         //创建完字体格式之后就告诉cell
         cell.textLabel.font = newFont;

@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSDate * from;
 @property (nonatomic, retain) NSDate * to;
 @property (nonatomic, retain) NSString * teacher;
-@property (nonatomic, retain) NSString *time;
+@property (nonatomic, retain) NSString *date;
 
 
 -(BOOL)insert:(NSDictionary*)data;
