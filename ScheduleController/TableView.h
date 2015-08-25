@@ -19,6 +19,8 @@
 @property (nonatomic,strong) UIScrollView* rightScroll;
 @property (nonatomic,strong) UIScrollView* leftScroll;
 @property (nonatomic,strong) UIScrollView* topScroll;
+@property float widthScale;
+@property float heightScale;
 -(void)Schedules:(NSArray *)schedules;
 -(void)clear;
 @end

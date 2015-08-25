@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Msg-l2-GDc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Msg-l2-GDc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GatewayBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Vbc-kn-twt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GateWayBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Vbc-kn-twt">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GatewayRocket" translatesAutoresizingMaskIntoConstraints="NO" id="Uig-sm-QVL">
@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLA-ji-dIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1528" y="389"/>
+            <point key="canvasLocation" x="1534" y="389"/>
         </scene>
         <!--Gateway Login View Controller-->
         <scene sceneID="sWu-vP-bB1">
@@ -60,7 +60,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GatewayBackground" translatesAutoresizingMaskIntoConstraints="NO" id="MpW-Tz-SvR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GateWayBackground" translatesAutoresizingMaskIntoConstraints="NO" id="MpW-Tz-SvR">
                                 <rect key="frame" x="-2" y="-6" width="322" height="568"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES"/>
@@ -182,11 +182,12 @@
                     <connections>
                         <segue destination="uTb-t3-I8N" kind="relationship" relationship="viewControllers" id="nzR-RA-GxM"/>
                         <segue destination="c2t-pi-DNn" kind="relationship" relationship="viewControllers" id="YSY-oJ-SYg"/>
+                        <segue destination="Jsg-Im-mFr" kind="relationship" relationship="viewControllers" id="xFA-DX-mkD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRg-im-EPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="443" y="771"/>
+            <point key="canvasLocation" x="437" y="769"/>
         </scene>
         <!--网关认证-->
         <scene sceneID="8Yw-vZ-dVJ">
@@ -230,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngc-hX-QV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1533" y="1018"/>
+            <point key="canvasLocation" x="2597" y="1018"/>
         </scene>
         <!--Me Edit View Controller-->
         <scene sceneID="Foq-fx-Yzd">
@@ -249,7 +250,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NIR-8J-xjn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969" y="1021"/>
+            <point key="canvasLocation" x="3033" y="1021"/>
+        </scene>
+        <!--课程表-->
+        <scene sceneID="gjX-9e-2E3">
+            <objects>
+                <viewController id="Jsg-Im-mFr" customClass="ScheduleController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4gK-Dt-wSd"/>
+                        <viewControllerLayoutGuide type="bottom" id="yTX-nm-wcG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GwN-el-eoe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qpi-kT-wrX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="489"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Qpi-kT-wrX" secondAttribute="trailing" id="WJE-ON-sOM"/>
+                            <constraint firstItem="Qpi-kT-wrX" firstAttribute="top" secondItem="GwN-el-eoe" secondAttribute="topMargin" constant="30" id="d8Z-IM-o0E"/>
+                            <constraint firstItem="yTX-nm-wcG" firstAttribute="top" secondItem="Qpi-kT-wrX" secondAttribute="bottom" constant="30" id="emY-0g-vQl"/>
+                            <constraint firstItem="Qpi-kT-wrX" firstAttribute="leading" secondItem="GwN-el-eoe" secondAttribute="leading" id="zcQ-MJ-Omo"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="课程表" image="GatewayUserIcon" id="A7T-jw-ge9"/>
+                    <navigationItem key="navigationItem" id="lu7-yi-RBe"/>
+                    <connections>
+                        <outlet property="baseView" destination="Qpi-kT-wrX" id="Nsb-zi-1A5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pb0-Gv-TNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="724" y="1521"/>
         </scene>
         <!--我-->
         <scene sceneID="JOC-0f-jSn">
@@ -268,11 +304,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sd9-DW-87e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="1018"/>
+            <point key="canvasLocation" x="2165" y="1018"/>
         </scene>
     </scenes>
     <resources>
-        <image name="GatewayBackground" width="640" height="1136"/>
+        <image name="GateWayBackground" width="640" height="1136"/>
         <image name="GatewayIcon" width="44" height="44"/>
         <image name="GatewayPasswordIcon" width="44" height="44"/>
         <image name="GatewayRocket" width="694" height="1546"/>

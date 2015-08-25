@@ -50,8 +50,8 @@
 
 -(BOOL)isEqualTo:(Schedule *)another{
     if([self.name isEqualToString:another.name]&&
-       [self.from isEqualToDate:another.from]&&
-       [self.to isEqualToDate:another.to]&&
+       [self.from isEqualToString:another.from]&&
+       [self.to isEqualToString:another.to]&&
        [self.teacher isEqualToString:another.teacher])
         return YES;
     
@@ -61,8 +61,8 @@
 -(BOOL)isEqualToDictionary:(NSDictionary *)data{
     if([self.name isEqualToString:[data valueForKey:@"name"]]&&
        [self.teacher isEqualToString:[data valueForKey:@"teacher"]]&&
-       (([self.from isEqualToDate:[data valueForKey:@"from"]]&&
-        [self.to isEqualToDate:[data valueForKey:@"to"]])||
+       (([self.from isEqualToString:[data valueForKey:@"from"]]&&
+        [self.to isEqualToString:[data valueForKey:@"to"]])||
         [self.date isEqualToString:[data valueForKey:@"date"]]))
         return YES;
     return NO;

@@ -45,7 +45,7 @@
 -(void)tapView:(UITapGestureRecognizer *)tap
 {
  
-    NSArray* date=[[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日" ,nil];
+    //NSArray* date=[[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日" ,nil];
     NSString* message = [[NSString alloc] initWithFormat:@"%@至%@\n%@",self.from,self.to,[self getText] ];
     UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alter show];
@@ -56,7 +56,7 @@
 -(void)setText:(NSString*)text{
     if(text!=nil){
         self.content.text=text;
-        CGSize labelsize = [text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:self.content.frame.size lineBreakMode:UILineBreakModeWordWrap];
+        //CGSize labelsize = [text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:self.content.frame.size lineBreakMode:UILineBreakModeWordWrap];
         //[self.content setFrame:CGRectMake(0,0, labelsize.width, labelsize.height)];
     }
     else

@@ -9,6 +9,9 @@
 #import "ViewController.h"
 
 @interface ScheduleController : ViewController
-@property (strong, nonatomic) IBOutlet UIView *baseView;
+
+@property (weak, nonatomic) IBOutlet UIView *baseView;
+
+
 
 @end

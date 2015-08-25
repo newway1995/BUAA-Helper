@@ -22,12 +22,34 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    CGRect tmp =frame;
-    tmp.size.width*=2;
-    tmp.size.height*=1.5;
-    self=[super initWithFrame:tmp];
-    
+    self = [super initWithFrame:frame];
 
+    self.widthScale = 2;
+    self.heightScale =1.5;
+    [self addGestureRecognizer:[[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchView:)]];
+    
+    //为这些滚动条注册事件
+    return self;
+    
+}
+
+-(void)Schedules:(NSArray *)schedules{
+
+    self.schedules = [[NSMutableArray alloc] initWithArray:schedules];
+    [self schedulesDraw];
+
+}
+
+-(void)frameDraw{
+    
+  
+    CGRect frame=  self.frame;
+    CGRect tmp =self.frame;
+    tmp.size.width*=self.widthScale;
+    tmp.size.height*=self.heightScale;
+
+    
+    
     
     //NSLog(@"%@",frame);
     NSArray* date = [[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日", nil];
@@ -35,7 +57,7 @@
     // NSArray* time =[[NSArray alloc] initWithObjects:@"上一",@"上二",@"上三",@"上四",@"下一",@"下二",@"下三",@"下四",@"晚一",@"晚二",@"晚三",@"晚四" ,nil];
     float width = (tmp.size.width+7)/8;
     float height= (tmp.size.height+12)/13;
-
+    
     //leftScroll
     CGRect tmp2=CGRectMake(0, 0, width, frame.size.height);
     self.leftScroll= [[UIScrollView alloc] initWithFrame:tmp2];
@@ -101,18 +123,11 @@
     self.rightScroll.delegate = self;
     self.rightScroll.tag=2;
     [self addSubview:self.rightScroll];
-
-    
-    //为这些滚动条注册事件
-    return self;
-    
 }
 
--(void)Schedules:(NSArray *)schedules{
+-(void)schedulesDraw{
     NSArray* from = [[NSArray alloc] initWithObjects:@"8:00",@"8:55",@"9:50",@"10:45",@"14:00",@"14:55",@"15:50",@"16:45",@"18:30",@"19:25",@"20:20",@"21:15",nil];
     NSArray* to= [[NSArray alloc] initWithObjects:@"8:50",@"9:45",@"10:40",@"11:35",@"14:50",@"15:45",@"16:40",@"17:35",@"19:20",@"20:15",@"21:10",@"22:05",nil];
-    self.schedules = schedules;
-    
     CGRect tmp =self.frame;
     float width = (tmp.size.width+7)/8;
     float height= (tmp.size.height+12)/13;
@@ -133,8 +148,8 @@
            [to containsObject:schedule.to]&&
            date>=1&&
            date<=7){
-            uint y1= [from indexOfObject:schedule.from];
-            uint y2= [to indexOfObject:schedule.to];
+            NSUInteger y1= [from indexOfObject:schedule.from];
+            NSUInteger y2= [to indexOfObject:schedule.to];
             //添加课程
             if(y1<=y2){
                 CGRect r;
@@ -148,32 +163,41 @@
                 c.to = schedule.to;
                 c.y=date;
                 NSString* text = [[NSString alloc] initWithFormat:@"%@,%@,%@",schedule.name,schedule.classroom,schedule.teacher];
-               // NSLog(@"%@",text);
+                // NSLog(@"%@",text);
                 [self.cells addObject:c];
                 [c setText:text];
                 [self.rightScroll addSubview:c];
                 [self.rightScroll bringSubviewToFront:c];
             }
-
+            
         }
         else{
             NSLog(@"数据错误");
         }
-   
+        
     }
-    
-    
-
     
 }
 
 
 
+-(void) pinchView:(UIPinchGestureRecognizer*)pinch{
+    self.widthScale*=pinch.scale;
+    self.heightScale*=pinch.scale;
+    
+    if(self.widthScale>2) self.widthScale=2;
+    else if(self.widthScale<1) self.widthScale=1;
+    
+    if(self.heightScale>1.5) self.heightScale=1.5;
+    else if(self.heightScale<1) self.heightScale=1;
+    
+}
+
+
 -(void)clear{
     [self.rightScroll removeFromSuperview];
-    [self.schedules removeAllObjects];
-    [self.cells removeAllObjects];
-
+    [self.leftScroll removeFromSuperview];
+    [self.topScroll removeFromSuperview];
 }
 
 

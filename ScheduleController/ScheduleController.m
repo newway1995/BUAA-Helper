@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     TableView* t= [[TableView alloc] initWithFrame:[self.baseView frame]];
+    NSLog(@"%f",self.baseView.layer.frame.origin.y);
     //[BUAAHCoredata initialize];
     //[BUAAHCoredata insert:@"Schedule" forData:@{@"classroom":@"主M123",@"from":@"18:30",@"to":@"19:20",@"name":@"大学生职业生规划与心理辅导",@"teacher":@"郭耀星asasddqwdqwdxascasdqwd",@"date":[[NSNumber alloc] initWithInt:5]}];
     NSArray* arr = [BUAAHCoredata query:@"Schedule" forSort:nil forPredicate:nil];

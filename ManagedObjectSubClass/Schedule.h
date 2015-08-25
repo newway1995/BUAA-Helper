@@ -15,8 +15,8 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * classroom;
-@property (nonatomic, retain) NSDate * from;
-@property (nonatomic, retain) NSDate * to;
+@property (nonatomic, retain) NSString * from;
+@property (nonatomic, retain) NSString * to;
 @property (nonatomic, retain) NSString * teacher;
 @property (nonatomic, retain) NSString *date;
 
