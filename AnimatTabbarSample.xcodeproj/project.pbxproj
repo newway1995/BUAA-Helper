@@ -48,6 +48,7 @@
 		8609F2651B6FDB1C00682928 /* GatewayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8609F2641B6FDB1C00682928 /* GatewayViewController.m */; };
 		8609F2681B6FDB2D00682928 /* GatewayLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */; };
 		867553BD1B6FF0F7001FE26B /* WZFlashButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 867553BC1B6FF0F7001FE26B /* WZFlashButton.m */; };
+		86ED21201B8D3E0F00B98DFA /* MeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86ED211F1B8D3E0F00B98DFA /* MeInfoViewController.m */; };
 		EDE6F29E18F4E3F5001C7755 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29D18F4E3F5001C7755 /* Foundation.framework */; };
 		EDE6F2A018F4E3F5001C7755 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */; };
 		EDE6F2A218F4E3F5001C7755 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F2A118F4E3F5001C7755 /* UIKit.framework */; };
@@ -157,6 +158,8 @@
 		8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayLoginViewController.m; sourceTree = "<group>"; };
 		867553BB1B6FF0F7001FE26B /* WZFlashButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZFlashButton.h; path = AnimatTabbarSample/WZFlashButton.h; sourceTree = "<group>"; };
 		867553BC1B6FF0F7001FE26B /* WZFlashButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZFlashButton.m; path = AnimatTabbarSample/WZFlashButton.m; sourceTree = "<group>"; };
+		86ED211E1B8D3E0F00B98DFA /* MeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeInfoViewController.h; sourceTree = "<group>"; };
+		86ED211F1B8D3E0F00B98DFA /* MeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeInfoViewController.m; sourceTree = "<group>"; };
 		EDE6F29A18F4E3F5001C7755 /* AnimatTabbarSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatTabbarSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE6F29D18F4E3F5001C7755 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -315,6 +318,8 @@
 				860647C51B84ED9E006C27E5 /* KeyValue.m */,
 				860647C71B85016C006C27E5 /* MeEditViewController.h */,
 				860647C81B85016C006C27E5 /* MeEditViewController.m */,
+				86ED211E1B8D3E0F00B98DFA /* MeInfoViewController.h */,
+				86ED211F1B8D3E0F00B98DFA /* MeInfoViewController.m */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 				59CBB2361B64AE5000527B9C /* AFURLResponseSerialization.m in Sources */,
 				59AD1C1A1B84697D0035D218 /* HeaderView.m in Sources */,
 				59AD1C1C1B84697D0035D218 /* ScheduleController.m in Sources */,
+				86ED21201B8D3E0F00B98DFA /* MeInfoViewController.m in Sources */,
 				59CBB2341B64AE5000527B9C /* AFURLConnectionOperation.m in Sources */,
 				59CBB24D1B64AE6D00527B9C /* UIButton+AFNetworking.m in Sources */,
 				59CBB25F1B64AEEB00527B9C /* Model.xcdatamodeld in Sources */,

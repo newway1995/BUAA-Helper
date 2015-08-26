@@ -7,7 +7,7 @@
 //
 #import "MeModel.h"
 #import "MeViewController.h"
-#import "KeyValue.h"
+#import "MeInfoViewController.h"
 
 @interface MeViewController ()<UITableViewDelegate, UITableViewDataSource>{
     UITableView *_tableView;
@@ -29,9 +29,6 @@
     _tableView.bounces=NO;
     _tableView.showsVerticalScrollIndicator = NO;//不显示右侧滑块
     _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;//分割线
-    
-    MeModel *me = [[MeModel alloc] init];
-    dataSource = [me getDataSource];
     
     [self.view addSubview:_tableView];
 }
@@ -56,7 +53,7 @@
  *  设置分组数
  */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;   // 分组数 4
+    return 2;   // 分组数 2
 }
 /*
  *  设置各组行数
@@ -66,11 +63,7 @@
         return  1;
     } else if (section == 1){
         return 2;
-    } else if (section == 2){
-        return 1;
-    } else if (section == 3){
-        return 3;
-    } else {
+    }  else {
         return 0;
     }
 }
@@ -79,7 +72,6 @@
  */
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    
     return 0;
 }
 /*
@@ -95,7 +87,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return 40;
+        return 100;
     }
     return 40;
 }
@@ -107,49 +99,63 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
-        UIFont *newFont = [UIFont fontWithName:@"Arial" size:13.0];
-        //创建完字体格式之后就告诉cell
-        cell.textLabel.font = newFont;
-        cell.detailTextLabel.font =newFont;
     }
     
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
     if (indexPath.section == 0){
-        KeyValue *keyValue = [KeyValue alloc];
-        if ([[dataSource objectAtIndex:indexPath.row] isKindOfClass:[KeyValue class]]){
-            keyValue = [keyValue initWithKey:[[dataSource objectAtIndex:indexPath.row] getKey] andValue:[[dataSource objectAtIndex:indexPath.row] getValue]];
-        }
-       
-        cell.textLabel.text = keyValue.getKey;
-        cell.detailTextLabel.text = keyValue.getValue;
-        NSLog(@"%@:%@",keyValue.getKey,keyValue.getValue);
         
-    } else if (indexPath.section ==1){
-        KeyValue *keyValue = [KeyValue alloc];
-        if ([[dataSource objectAtIndex:indexPath.row] isKindOfClass:[KeyValue class]]){
-            keyValue = [keyValue initWithKey:[[dataSource objectAtIndex:indexPath.row+1] getKey] andValue:[[dataSource objectAtIndex:indexPath.row] getValue]];
+        CGFloat margin = 10;
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        UIFont *font = [UIFont fontWithName:@"Arial" size:14];
+        
+        // 头像
+        UIImageView *portraitImage = [[UIImageView alloc] initWithFrame:CGRectMake(margin, margin, 80, 80)];
+        [portraitImage setImage:[UIImage imageNamed:@"MeDefaultPortrait.png"]];
+        [portraitImage.layer setMasksToBounds:YES];
+        [portraitImage.layer setCornerRadius:portraitImage.frame.size.width/2];
+        [portraitImage setContentMode:UIViewContentModeScaleAspectFill];
+        [cell.contentView addSubview:portraitImage];
+     
+        UILabel *usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(portraitImage.frame.size.width+margin*2, margin, 200, 40)];
+        if ([userDefaults objectForKey:@"username"]==nil||[[userDefaults objectForKey:@"username"] isEqualToString:@""]){
+            [userDefaults setObject:@"未填写" forKey:@"username"];
         }
-        cell.textLabel.text = keyValue.getKey;
-        cell.detailTextLabel.text = keyValue.getValue;
-        NSLog(@"%@:%@",keyValue.getKey,keyValue.getValue);
-    } else if (indexPath.section ==2){
-        KeyValue *keyValue = [KeyValue alloc];
-        if ([[dataSource objectAtIndex:indexPath.row] isKindOfClass:[KeyValue class]]){
-            keyValue = [keyValue initWithKey:[[dataSource objectAtIndex:indexPath.row+3] getKey] andValue:[[dataSource objectAtIndex:indexPath.row] getValue]];
+        NSString *username = [userDefaults objectForKey:@"username"];
+        [usernameLabel setText:username];
+        [cell.contentView addSubview:usernameLabel];
+        
+        UILabel *whatsupLabel = [[UILabel alloc] initWithFrame:CGRectMake(usernameLabel.frame.origin.x
+                                                                         , usernameLabel.frame.origin.y+usernameLabel.frame.size.height, 200, 30)];
+        if ([userDefaults objectForKey:@"whatsUp"]==nil||[[userDefaults objectForKey:@"whatsUp"] isEqualToString:@""]){
+            [userDefaults setObject:@"未填写" forKey:@"whatsUp"];
         }
-        cell.textLabel.text = keyValue.getKey;
-        cell.detailTextLabel.text = keyValue.getValue;
-        NSLog(@"%@:%@",keyValue.getKey,keyValue.getValue);
-    } else if (indexPath.section ==3){
-        KeyValue *keyValue = [KeyValue alloc];
-        if ([[dataSource objectAtIndex:indexPath.row] isKindOfClass:[KeyValue class]]){
-            keyValue = [keyValue initWithKey:[[dataSource objectAtIndex:indexPath.row+4] getKey] andValue:[[dataSource objectAtIndex:indexPath.row] getValue]];
+        NSString *whatsUp = [userDefaults objectForKey:@"whatsUp"];
+        [whatsupLabel setText:[NSString stringWithFormat:@"个性签名：%@",whatsUp]];
+        [whatsupLabel setTextColor:[UIColor grayColor]];
+        [whatsupLabel setFont:font];
+        [cell.contentView addSubview:whatsupLabel];
+        
+    } else if (indexPath.section == 1){
+        UIFont *font = [UIFont fontWithName:@"Arial" size:16];
+        [cell.textLabel setFont:font];
+        if (indexPath.row == 0){
+            cell.textLabel.text = @"账号设置";
+        } else if (indexPath.row == 1){
+            cell.textLabel.text = @"课表设置";
         }
-        cell.textLabel.text = keyValue.getKey;
-        cell.detailTextLabel.text = keyValue.getValue;
-        NSLog(@"%@:%@",keyValue.getKey,keyValue.getValue);
     }
-
+    
     return cell;
+}
+/*
+ *  每行点击事件
+ */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0){
+        MeInfoViewController *info = [[MeInfoViewController alloc] init];
+        [self.navigationController pushViewController:info animated:YES];
+    }
 }
 
 @end
