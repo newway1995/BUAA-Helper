@@ -10,12 +10,11 @@
 #define config_TableView_h
 #import <UIKit/UIKit.h>
 
-@interface TableView : UIView <UIScrollViewDelegate>
+@interface TableView : UIView <UIScrollViewDelegate,UIAlertViewDelegate>
 
 @property NSMutableArray* schedules;    //data
-@property (nonatomic,strong) NSMutableArray* headers;
-@property (nonatomic,strong) NSMutableArray* profiles;
-@property (nonatomic,strong) NSMutableArray* cells;   //view
+@property NSMutableArray* cellColor;
+@property NSArray* colorArray;
 @property (nonatomic,strong) UIScrollView* rightScroll;
 @property (nonatomic,strong) UIScrollView* leftScroll;
 @property (nonatomic,strong) UIScrollView* topScroll;
@@ -23,6 +22,10 @@
 @property float heightScale;
 -(void)Schedules:(NSArray *)schedules;
 -(void)clear;
+
++(NSArray*)from;
++(NSArray*)to;
++(NSArray*)date;
 @end
 
 #endif

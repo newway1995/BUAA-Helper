@@ -14,10 +14,19 @@
 
 @interface BUAAHNetworking : NSObject
 
-+(void)get:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
++(void)getHTML:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
 (nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
 
-+(void)post:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
+
++(void)getJSON:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
+(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
+
+
++(void)postHTML:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
+(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
+
+
++(void)postJSON:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
 (nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
 
 +(void)postImage:(NSString*)url parameters:(NSDictionary*)param filepath:(NSURL*)path success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:

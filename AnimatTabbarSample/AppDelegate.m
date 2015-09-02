@@ -8,21 +8,28 @@
 
 #import "AppDelegate.h"
 #import "BUAAHLoginGW.h"
-
+#import "BUAAHSetting.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    id campus = [BUAAHSetting getValue:EACampus];
+    if(campus==NULL)
+    {
+        [BUAAHSetting setValue:@"学院路" forkey:EACampus];
+    }
     // Override point for customization after application launch.
-    [BUAAHLoginGW LoginGWWithUsername:@"" password:@""
-                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                  NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                                  NSLog(@"Result: %@", result);
-                              }
-                              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                  NSLog(@"Error: %@", error);
-                              }];
-
+//    [BUAAHLoginGW LoginGWWithUsername:@"" password:@""
+//                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                                  NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//                                  NSLog(@"Result: %@", result);
+//                              }
+//                              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                                  NSLog(@"Error: %@", error);
+//                              }];
+    
+    
     return YES;
 }
 							

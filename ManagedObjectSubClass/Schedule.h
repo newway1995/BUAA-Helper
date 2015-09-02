@@ -15,10 +15,11 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * classroom;
-@property (nonatomic, retain) NSString * from;
-@property (nonatomic, retain) NSString * to;
+@property (nonatomic) NSInteger from;   //从第几节课开始
+@property (nonatomic) NSInteger last;   //持续几节课
 @property (nonatomic, retain) NSString * teacher;
-@property (nonatomic, retain) NSString *date;
+@property (nonatomic) NSInteger date;   //星期几。从1开始
+@property (nonatomic) NSString* time;   //第几周到第几周
 
 
 -(BOOL)insert:(NSDictionary*)data;

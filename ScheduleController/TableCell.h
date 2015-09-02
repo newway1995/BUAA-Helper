@@ -12,13 +12,15 @@
 
 @interface TableCell : UIView
 
-@property NSString* from;
-@property NSString* to;
-@property int y;    //时间所对应的表格列数
-
+@property NSInteger from;
+@property NSInteger last;
+@property int date;    //时间所对应的表格列数
+@property uint index;
 
 -(void)setText:(NSString*)text;
 -(NSString*)getText;
+
+-(void)setColor:(UIColor*)color;
 @end
 
 #endif

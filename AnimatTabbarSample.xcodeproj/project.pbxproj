@@ -19,6 +19,7 @@
 		59AD1C1C1B84697D0035D218 /* ScheduleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD1C151B84697D0035D218 /* ScheduleController.m */; };
 		59AD1C1D1B84697D0035D218 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD1C171B84697D0035D218 /* TableCell.m */; };
 		59AD1C1E1B84697D0035D218 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD1C191B84697D0035D218 /* TableView.m */; };
+		59AF4DAD1B948D5D00B9E1B4 /* SchedulePassController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AF4DAC1B948D5D00B9E1B4 /* SchedulePassController.m */; };
 		59CBB22F1B64AE5000527B9C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21D1B64AE5000527B9C /* AFHTTPRequestOperation.m */; };
 		59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21F1B64AE5000527B9C /* AFHTTPRequestOperationManager.m */; };
 		59CBB2311B64AE5000527B9C /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2211B64AE5000527B9C /* AFHTTPSessionManager.m */; };
@@ -41,6 +42,8 @@
 		59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2591B64AEA400527B9C /* BUAAHSetting.m */; };
 		59CBB25F1B64AEEB00527B9C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB25D1B64AEEB00527B9C /* Model.xcdatamodeld */; };
 		59CBB2611B64AFF800527B9C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CBB2601B64AFF800527B9C /* CoreData.framework */; };
+		59E852FB1B8CBFA100A436C6 /* InsertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E852FA1B8CBFA100A436C6 /* InsertController.m */; };
+		59E852FE1B8CC34D00A436C6 /* BlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E852FD1B8CC34D00A436C6 /* BlankView.m */; };
 		860647C01B84BD53006C27E5 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 860647BF1B84BD53006C27E5 /* MeViewController.m */; };
 		860647C31B84C121006C27E5 /* MeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 860647C21B84C121006C27E5 /* MeModel.m */; };
 		860647C61B84ED9E006C27E5 /* KeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 860647C51B84ED9E006C27E5 /* KeyValue.m */; };
@@ -98,6 +101,8 @@
 		59AD1C171B84697D0035D218 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
 		59AD1C181B84697D0035D218 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		59AD1C191B84697D0035D218 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
+		59AF4DAB1B948D5D00B9E1B4 /* SchedulePassController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchedulePassController.h; sourceTree = "<group>"; };
+		59AF4DAC1B948D5D00B9E1B4 /* SchedulePassController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchedulePassController.m; sourceTree = "<group>"; };
 		59CBB21C1B64AE5000527B9C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		59CBB21D1B64AE5000527B9C /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		59CBB21E1B64AE5000527B9C /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = AFNetworking/AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -143,6 +148,10 @@
 		59CBB2591B64AEA400527B9C /* BUAAHSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHSetting.m; path = AnimatTabbarSample/BUAAHSetting.m; sourceTree = "<group>"; };
 		59CBB25E1B64AEEB00527B9C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		59CBB2601B64AFF800527B9C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		59E852F91B8CBFA100A436C6 /* InsertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertController.h; sourceTree = "<group>"; };
+		59E852FA1B8CBFA100A436C6 /* InsertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertController.m; sourceTree = "<group>"; };
+		59E852FC1B8CC34D00A436C6 /* BlankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankView.h; sourceTree = "<group>"; };
+		59E852FD1B8CC34D00A436C6 /* BlankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankView.m; sourceTree = "<group>"; };
 		860647BE1B84BD53006C27E5 /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		860647BF1B84BD53006C27E5 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		860647C11B84C121006C27E5 /* MeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeModel.h; sourceTree = "<group>"; };
@@ -231,6 +240,12 @@
 				59AD1C171B84697D0035D218 /* TableCell.m */,
 				59AD1C181B84697D0035D218 /* TableView.h */,
 				59AD1C191B84697D0035D218 /* TableView.m */,
+				59E852FC1B8CC34D00A436C6 /* BlankView.h */,
+				59E852FD1B8CC34D00A436C6 /* BlankView.m */,
+				59E852F91B8CBFA100A436C6 /* InsertController.h */,
+				59E852FA1B8CBFA100A436C6 /* InsertController.m */,
+				59AF4DAB1B948D5D00B9E1B4 /* SchedulePassController.h */,
+				59AF4DAC1B948D5D00B9E1B4 /* SchedulePassController.m */,
 			);
 			path = ScheduleController;
 			sourceTree = "<group>";
@@ -520,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59E852FE1B8CC34D00A436C6 /* BlankView.m in Sources */,
 				59CBB22F1B64AE5000527B9C /* AFHTTPRequestOperation.m in Sources */,
 				598A01291B7628460049E959 /* BUAAHLoginGW.m in Sources */,
 				59CBB25B1B64AEA400527B9C /* BUAAHNetworking.m in Sources */,
@@ -534,6 +550,7 @@
 				860647C01B84BD53006C27E5 /* MeViewController.m in Sources */,
 				59CBB24F1B64AE6D00527B9C /* UIProgressView+AFNetworking.m in Sources */,
 				59AD1C1E1B84697D0035D218 /* TableView.m in Sources */,
+				59E852FB1B8CBFA100A436C6 /* InsertController.m in Sources */,
 				59CBB2321B64AE5000527B9C /* AFNetworkReachabilityManager.m in Sources */,
 				59CBB2361B64AE5000527B9C /* AFURLResponseSerialization.m in Sources */,
 				59AD1C1A1B84697D0035D218 /* HeaderView.m in Sources */,
@@ -557,6 +574,7 @@
 				59CBB24A1B64AE6D00527B9C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				59CBB25A1B64AEA400527B9C /* BUAAHCoredata.m in Sources */,
 				591CCC791B65BF7F0049F3F4 /* Notification.m in Sources */,
+				59AF4DAD1B948D5D00B9E1B4 /* SchedulePassController.m in Sources */,
 				8609F2681B6FDB2D00682928 /* GatewayLoginViewController.m in Sources */,
 				591CCC7C1B65BF7F0049F3F4 /* Subscription.m in Sources */,
 				59CBB2371B64AE5000527B9C /* AFURLSessionManager.m in Sources */,

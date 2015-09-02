@@ -14,7 +14,8 @@
 @dynamic name;
 @dynamic classroom;
 @dynamic from;
-@dynamic to;
+@dynamic last;
+@dynamic time;
 @dynamic teacher;
 @dynamic date;
 
@@ -50,8 +51,8 @@
 
 -(BOOL)isEqualTo:(Schedule *)another{
     if([self.name isEqualToString:another.name]&&
-       [self.from isEqualToString:another.from]&&
-       [self.to isEqualToString:another.to]&&
+       self.from ==another.from&&self.last==another.last&&
+       self.date == another.date&&self.time==another.time&&
        [self.teacher isEqualToString:another.teacher])
         return YES;
     
@@ -61,9 +62,10 @@
 -(BOOL)isEqualToDictionary:(NSDictionary *)data{
     if([self.name isEqualToString:[data valueForKey:@"name"]]&&
        [self.teacher isEqualToString:[data valueForKey:@"teacher"]]&&
-       (([self.from isEqualToString:[data valueForKey:@"from"]]&&
-        [self.to isEqualToString:[data valueForKey:@"to"]])||
-        [self.date isEqualToString:[data valueForKey:@"date"]]))
+       ((self.from==(NSInteger)[data valueForKey:@"from"]&&
+        self.last==(NSInteger)[data valueForKey:@"to"])&&
+        self.date==(NSInteger)[data valueForKey:@"date"]&&
+        [self.time isEqualToString:[data valueForKey:@"time"]]))
         return YES;
     return NO;
 }

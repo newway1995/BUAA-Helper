@@ -11,27 +11,39 @@
 #import "HeaderView.h"
 #import "ProfileView.h"
 #import "TableCell.h"
-
+#import "BlankView.h"
 #import "Schedule.h"
+#import "BUAAHCoredata.h"
+#import "BUAAHSetting.h"
 
 @interface TableView()
+@property TableCell* willDeleteCell;
 
 @end
 
+
+
+
 @implementation TableView
+
+
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
 
-    self.widthScale = 2;
+    self.colorArray = [[NSArray alloc] initWithObjects:[UIColor colorWithRed:255.0f/255.0f green:73.0f/255.0f blue:129.0f/255.0f alpha:1.0f],[UIColor colorWithRed:88.0f/255.0f green:202.0f/255.0f blue:255.0f/255.0f alpha:1.0f],[UIColor colorWithRed:79.0f/255.0f green:217.0f/255.0f blue:100.0f/255.0f alpha:1.0f],[UIColor colorWithRed:137.0f/255.0f green:140.0f/255.0f blue:144.0f/255.0f alpha:1.0f],[UIColor colorWithRed:255.0f/255.0f green:204.0f/255.0f blue:0.0f/255.0f alpha:1.0f],[UIColor colorWithRed:198.0f/255.0f green:67.0f/255.0f blue:252.0f/255.0f alpha:1.0f],nil];
+    self.cellColor = [[NSMutableArray alloc] init];
+    self.widthScale = 1.5;
     self.heightScale =1.5;
     [self addGestureRecognizer:[[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchView:)]];
-    
+    [self frameDraw];
     //为这些滚动条注册事件
     return self;
     
 }
+
+
 
 -(void)Schedules:(NSArray *)schedules{
 
@@ -39,6 +51,8 @@
     [self schedulesDraw];
 
 }
+
+
 
 -(void)frameDraw{
     
@@ -52,16 +66,22 @@
     
     
     //NSLog(@"%@",frame);
-    NSArray* date = [[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日", nil];
-    NSArray* time =[[NSArray alloc] initWithObjects:@"上午第一节\n8:00~8:50",@"上午第二节\n8:55~9:45",@"上午第三节\n9:50~10:40",@"上午第四节\n10:45~11:35",@"下午第一节\n14:00~14:50",@"下午第二节\n14:55~15:45",@"下午第三节\n15:50~16:40",@"下午第四节\n16:45~17:35",@"晚上第一节\n18:30~19:20",@"晚上第二节\n19:25~20:15",@"晚上第三节\n20:20~21:10",@"晚上第四节\n21:15~22:05" ,nil];
+    NSArray* date =[TableView date];
+   // NSArray* time =[[NSArray alloc] initWithObjects:@"上午第一节\n8:00~8:50",@"上午第二节\n8:55~9:45",@"上午第三节\n9:50~10:40",@"上午第四节\n10:45~11:35",@"下午第一节\n14:00~14:50",@"下午第二节\n14:55~15:45",@"下午第三节\n15:50~16:40",@"下午第四节\n16:45~17:35",@"晚上第一节\n18:30~19:20",@"晚上第二节\n19:25~20:15",@"晚上第三节\n20:20~21:10",@"晚上第四节\n21:15~22:05" ,nil];
+    NSArray* time=[[NSArray alloc] initWithObjects:@"1\n8:00",@"2\n8:55",@"3\n9:50",@"4\n10:45",@"5\n14:00",@"6\n14:55",@"7\n15:50",@"8\n16:45",@"9\n18:30",@"10\n19:25",@"11\n20:20",@"12\n21:15" ,nil];
     // NSArray* time =[[NSArray alloc] initWithObjects:@"上一",@"上二",@"上三",@"上四",@"下一",@"下二",@"下三",@"下四",@"晚一",@"晚二",@"晚三",@"晚四" ,nil];
-    float width = (tmp.size.width+7)/8;
-    float height= (tmp.size.height+12)/13;
+    float leftWidth = [[ProfileView alloc] getWidth:@"星期一"];
+    float topHeight= [[HeaderView alloc] getHeight:@"12\n21:15"];
+    float width = (tmp.size.width-leftWidth+6)/7;
+    float height = (tmp.size.height-topHeight+11)/12;
+
+    
+    
     
     //leftScroll
-    CGRect tmp2=CGRectMake(0, 0, width, frame.size.height);
+    CGRect tmp2=CGRectMake(0, 0, leftWidth, frame.size.height);
     self.leftScroll= [[UIScrollView alloc] initWithFrame:tmp2];
-    self.leftScroll.contentSize = CGSizeMake(width, tmp.size.height);
+    self.leftScroll.contentSize = CGSizeMake(leftWidth, tmp.size.height);
     self.leftScroll.bounces=false;
     self.leftScroll.showsHorizontalScrollIndicator=false;
     self.leftScroll.showsVerticalScrollIndicator=false;
@@ -69,54 +89,59 @@
     self.leftScroll.tag=0;
     [self addSubview:self.leftScroll];
     
-    for(int i=0;i<13;i++){
+    for(int i=1;i<13;i++){
         CGRect f;
-        f.origin.x = tmp.origin.x;
-        f.origin.y = tmp.origin.y+i*height-i;
-        f.size.width=width;
+        f.origin.x = 0;
+        f.origin.y = topHeight+(i-1)*height-i;
+        f.size.width=leftWidth;
         f.size.height=height;
         ProfileView* p = [[ProfileView alloc] initWithFrame:f];
         p.y=i-1;
-        if(i==0){
-            [p setText:@""];
+        if(i%2==0){
+            [p setColor:[UIColor colorWithRed:245.0f/255.0f green:245.0f/255.0f blue:245.0f/255.0f alpha:1]];
         }
         else{
-            [p setText:[time objectAtIndex:i-1]];
+            [p setColor:[UIColor whiteColor]];
         }
-        [self.profiles addObject:p];
+        [p setText:[time objectAtIndex:i-1]];
         [self.leftScroll addSubview:p];
     }
     
-    
+
     //topScroll
-    CGRect tmp3 = CGRectMake(width, 0, frame.size.width-width, height);
+    CGRect tmp3 = CGRectMake(0, 0, frame.size.width, topHeight);
     self.topScroll = [[UIScrollView alloc] initWithFrame:tmp3];
-    self.topScroll.contentSize = CGSizeMake(tmp.size.width-width, height);
+    self.topScroll.contentSize = CGSizeMake(tmp.size.width, topHeight);
     self.topScroll.bounces=false;
     self.topScroll.showsHorizontalScrollIndicator=false;
     self.topScroll.showsVerticalScrollIndicator=false;
     self.topScroll.delegate=self;
     self.topScroll.tag=1;
     [self addSubview:self.topScroll];
-    for(int i=0;i<7;i++){
+    for(int i=0;i<8;i++){
         CGRect f;
-        f.origin.x = tmp.origin.x+(i)*width-i-1;
+        f.origin.x = (i-1)*width+leftWidth-i-1;
         f.origin.y = 0;
         f.size.width=width;
-        f.size.height=height;
+        f.size.height=topHeight;
+        if(i==0){
+            f.origin.x=0;
+            f.size.width=leftWidth;
+        }
         HeaderView* h = [[HeaderView alloc] initWithFrame:f];
         h.x= i;
-        [h setText:[date objectAtIndex:i]];
-        
-        [self.headers addObject:h];
+        if(i==0)
+            [h setText:@""];
+        else
+            [h setText:[date objectAtIndex:i-1]];
         [self.topScroll addSubview:h];
         
     }
     
     //rightScroll
-    CGRect tmp4 = CGRectMake(width, height, frame.size.width-width, frame.size.height-height);
+    CGRect tmp4 = CGRectMake(leftWidth, topHeight, frame.size.width-leftWidth, frame.size.height-topHeight);
     self.rightScroll = [[UIScrollView alloc] initWithFrame:tmp4];
-    self.rightScroll.contentSize = CGSizeMake(tmp.size.width-width, tmp.size.height-height);
+    self.rightScroll.contentSize = CGSizeMake(tmp.size.width-leftWidth, tmp.size.height);
     self.rightScroll.bounces=false;
     self.rightScroll.showsHorizontalScrollIndicator=false;
     self.rightScroll.showsVerticalScrollIndicator=false;
@@ -126,49 +151,65 @@
 }
 
 -(void)schedulesDraw{
-    NSArray* from = [[NSArray alloc] initWithObjects:@"8:00",@"8:55",@"9:50",@"10:45",@"14:00",@"14:55",@"15:50",@"16:45",@"18:30",@"19:25",@"20:20",@"21:15",nil];
-    NSArray* to= [[NSArray alloc] initWithObjects:@"8:50",@"9:45",@"10:40",@"11:35",@"14:50",@"15:45",@"16:40",@"17:35",@"19:20",@"20:15",@"21:10",@"22:05",nil];
+
+    NSArray* from = [TableView from];
+    NSArray* to=[TableView to];
     CGRect tmp =self.frame;
-    float width = (tmp.size.width+7)/8;
-    float height= (tmp.size.height+12)/13;
-    
+    tmp.size.width*=self.widthScale;
+    tmp.size.height*=self.heightScale;
+    float leftWidth = [[ProfileView alloc] getWidth:@"星期一"];
+    float topHeight= [[HeaderView alloc] getHeight:@"12\n21:15"];
+    float width = (tmp.size.width-leftWidth+6)/7;
+    float height = (tmp.size.height-topHeight+11)/12;
     for(int i=0;i<7;i++){
         for(int j=0;j<12;j++){
             CGRect r= CGRectMake(i*width-i-1, j*height-j-1, width, height);
-            UIView* v=[[UIView alloc] initWithFrame:r];
-            v.layer.borderWidth = 1;
-            v.layer.borderColor = [[UIColor blackColor] CGColor];
+            BlankView* v= [[BlankView alloc] initWithFrame:r];
+            v.from=[from objectAtIndex:j];
+            v.to=[to objectAtIndex:j];
+            v.date=i;
+            if(j%2==1){
+                [v setColor:[UIColor colorWithRed:245.0f/255.0f green:245.0f/255.0f blue:245.0f/255.0f alpha:1]];
+            }
+            else{
+                [v setColor:[UIColor whiteColor]];
+            }
+           
             [self.rightScroll addSubview:v];
         }
     }
     
-    for(Schedule* schedule in self.schedules){
-        int date = [schedule.date intValue];
-        if([from containsObject:schedule.from]&&
-           [to containsObject:schedule.to]&&
-           date>=1&&
-           date<=7){
-            NSUInteger y1= [from indexOfObject:schedule.from];
-            NSUInteger y2= [to indexOfObject:schedule.to];
+    for(int i=0;i<[self.schedules count];i++){
+        Schedule* schedule = [self.schedules objectAtIndex:i];
+        NSInteger date =schedule.date;
+        if(schedule.from>=1&&schedule.from<=12&&
+           schedule.last+schedule.from-1<=12&&
+           date>=1&&date<=7){
             //添加课程
-            if(y1<=y2){
-                CGRect r;
-                r.size.width=width;
-                r.size.height=(y2-y1+1)*height-(y2-y1);
-                r.origin.x=width*(date-1)-(date);
-                r.origin.y=(y1+1)*height-(y1+2);
+            CGRect r;
+            r.size.width=width;
+            r.size.height=(schedule.last)*height-(schedule.last-1);
+            r.origin.x=width*(date-1)-(date-1);
+            r.origin.y=(schedule.from-1)*height-(schedule.from+1);
                 
-                TableCell* c = [[TableCell alloc] initWithFrame:r];
-                c.from=schedule.from;
-                c.to = schedule.to;
-                c.y=date;
-                NSString* text = [[NSString alloc] initWithFormat:@"%@,%@,%@",schedule.name,schedule.classroom,schedule.teacher];
+            TableCell* c = [[TableCell alloc] initWithFrame:r];
+            c.from=schedule.from;
+            c.last = schedule.last;
+            c.date=date;
+            c.index= i;
+                while([self.cellColor count]<[self.schedules count]){
+                    int j=arc4random()%[self.colorArray count];
+                    [self.cellColor addObject:[[NSNumber alloc] initWithInt:j]];
+                }
+                NSNumber* index = [self.cellColor objectAtIndex:i];
+                [c setColor:[self.colorArray objectAtIndex:[index intValue]]];
+                NSString* text = [[NSString alloc] initWithFormat:@"%@,%@,%@,%@",schedule.name,schedule.classroom,schedule.teacher,schedule.time];
                 // NSLog(@"%@",text);
-                [self.cells addObject:c];
                 [c setText:text];
+                [c addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)]];
                 [self.rightScroll addSubview:c];
                 [self.rightScroll bringSubviewToFront:c];
-            }
+            
             
         }
         else{
@@ -179,18 +220,45 @@
     
 }
 
+-(void)longPress:(UILongPressGestureRecognizer*)press{
+    if([press.view isMemberOfClass:[TableCell class]]){
+        if (press.state == UIGestureRecognizerStateBegan) {
+            self.willDeleteCell = press.view;
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"确定要删除？" message:@"确认要删除此处的课程么？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"删除", nil];
+            alertView.delegate=self;
+            [alertView show];
+        }
+    }
+    
+}
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex==1){
+        [BUAAHCoredata initialize];
+        
+        [BUAAHCoredata delete:[self.schedules objectAtIndex:self.willDeleteCell.index]];
+        [self.schedules removeObjectAtIndex:self.willDeleteCell.index];
+        self.willDeleteCell=nil;
+        [self clear];
+        [self frameDraw];
+        [self schedulesDraw];
+    }
+}
 
 -(void) pinchView:(UIPinchGestureRecognizer*)pinch{
-    self.widthScale*=pinch.scale;
-    self.heightScale*=pinch.scale;
+    self.widthScale*=(pinch.scale);
+    self.heightScale*=(pinch.scale);
     
-    if(self.widthScale>2) self.widthScale=2;
+    if(self.widthScale>1.5) self.widthScale=1.5;
     else if(self.widthScale<1) self.widthScale=1;
     
     if(self.heightScale>1.5) self.heightScale=1.5;
     else if(self.heightScale<1) self.heightScale=1;
     
+    [self clear];
+    [self frameDraw];
+    [self schedulesDraw];
+ 
 }
 
 
@@ -225,6 +293,29 @@
     // 注意：当ContentSize属性小于Frame时，将不会出发滚动
     
     
+}
+
++(NSArray*)from{
+    NSString* campus =(NSString*)[BUAAHSetting getValue:EACampus];
+    NSArray* from ;
+    if([campus isEqualToString:@"学院路"])
+        from = [[NSArray alloc] initWithObjects:@"8:00",@"8:55",@"9:50",@"10:45",@"14:00",@"14:55",@"15:50",@"16:45",@"18:30",@"19:25",@"20:20",@"21:15",nil];
+//    else
+//        from = [NSArray alloc] initWithObjects:<#(id), ...#>, nil
+    return from;
+}
+
++(NSArray*)to{
+    NSString* campus =(NSString*)[BUAAHSetting getValue:EACampus];
+    NSArray* to ;
+    if([campus isEqualToString:@"学院路"])
+        to= [[NSArray alloc] initWithObjects:@"8:50",@"9:45",@"10:40",@"11:35",@"14:50",@"15:45",@"16:40",@"17:35",@"19:20",@"20:15",@"21:10",@"22:05",nil];
+    return to;
+}
+
++(NSArray*)date{
+    NSArray* date = [[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日", nil];
+    return date;
 }
 
 @end

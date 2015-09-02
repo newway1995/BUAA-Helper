@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "BUAAHNetworking.h"
 #import "AFNetworking.h"
+#import "BUAAHCommon.h"
 #import <CommonCrypto/CommonDigest.h>
-
+#import "BUAAHSchedule.h"
 @interface BUAAHNetworking()
 
 @end
@@ -21,27 +22,114 @@
 
 
 
-+(void)get:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure
++(void)getHTML:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+//    manager.requestSerializer.timeoutInterval = 10.f;
+//    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager GET:url parameters:param success:success failure:failure];
+    
+    
+//    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+//    NSArray* cookies= [cookieJar cookies];
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+//    [request setHTTPMethod:@"GET"];
+//    NSDictionary *sheaders = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
+//    [request setAllHTTPHeaderFields:sheaders];
+//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+//    operation.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    
+//    [operation setCompletionBlockWithSuccess:success failure:failure];
+//    [operation start];
 }
 
 
 
-
-+(void)post:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure
++(void)getJSON:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     // 设置返回格式
-    NSLog(@"%@",param);
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    //    manager.requestSerializer.timeoutInterval = 10.f;
+    //    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    //  [BUAAHSchedule setCookieForUrl:scheduleUrl1];
     [manager POST:url parameters:param success:success failure:failure];
+    
+    
+    
+    
+    
+    //    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    //    operation.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //
+    //    [operation setCompletionBlockWithSuccess:success failure:failure];
+    //    [operation start];
+    //    
 }
+
++(void)postHTML:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    // 设置返回格式
+    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+//    manager.requestSerializer.timeoutInterval = 10.f;
+//    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+          //  [BUAAHSchedule setCookieForUrl:scheduleUrl1];
+   [manager POST:url parameters:param success:success failure:failure];
+
+
+
+
+
+//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+//    operation.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    
+//    [operation setCompletionBlockWithSuccess:success failure:failure];
+//    [operation start];
+//    
+}
+
+
+
+
+
++(void)postJSON:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    // 设置返回格式
+    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    //    manager.requestSerializer.timeoutInterval = 10.f;
+    //    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    //  [BUAAHSchedule setCookieForUrl:scheduleUrl1];
+    [manager POST:url parameters:param success:success failure:failure];
+    
+    
+    
+    
+    
+    //    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    //    operation.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //
+    //    [operation setCompletionBlockWithSuccess:success failure:failure];
+    //    [operation start];
+    //    
+}
+
+
+
 
 
 
