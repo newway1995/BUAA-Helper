@@ -18,6 +18,7 @@
 
 -(void)setText:(NSString*)text;
 -(NSString*)getText;
+-(CGFloat)getHeight:(NSString*)text;
 @end
 
 #endif
