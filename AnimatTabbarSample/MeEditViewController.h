@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MeEditViewController : UIViewController
-
+@property (nonatomic, strong, getter=getTag, setter=setTag:) NSString *tag;
+@property UITextField *textField;
 @end

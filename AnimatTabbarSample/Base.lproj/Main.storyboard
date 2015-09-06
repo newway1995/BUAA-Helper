@@ -31,7 +31,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="网关认证" image="GatewayIcon" id="ti2-Dv-X82"/>
-                    <navigationItem key="navigationItem" id="GKs-o2-5bE">
+                    <navigationItem key="navigationItem" title="网关认证" id="GKs-o2-5bE">
                         <barButtonItem key="rightBarButtonItem" title="账号" id="Duh-bt-6hx">
                             <connections>
                                 <segue destination="Ttd-QO-O99" kind="push" id="RKr-Ii-WQs"/>
@@ -207,7 +207,7 @@
             </objects>
             <point key="canvasLocation" x="1101" y="389"/>
         </scene>
-        <!--Me View Controller-->
+        <!--我-->
         <scene sceneID="M6m-U3-gIq">
             <objects>
                 <viewController id="0Dc-6h-9aI" customClass="MeViewController" sceneMemberID="viewController">
@@ -220,7 +220,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WNd-5m-Zke"/>
+                    <navigationItem key="navigationItem" title="我" id="WNd-5m-Zke"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngc-hX-QV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

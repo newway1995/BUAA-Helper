@@ -44,26 +44,25 @@
     
     [self checkValueOfKey:@"username"];
     [self checkValueOfKey:@"gender"];
-    [self checkValueOfKey:@"age"];
     [self checkValueOfKey:@"whatsUp"];
     [self checkValueOfKey:@"grade"];
     [self checkValueOfKey:@"type"];
     [self checkValueOfKey:@"college"];
     
-    _username = [[KeyValue alloc] initWithKey:@"  昵称" andValue:[_userDefaults objectForKey:@"username"]] ;
-    _gender = [[KeyValue alloc] initWithKey:@"  性别" andValue:[_userDefaults objectForKey:@"gender"]] ;
-    _age = [[KeyValue alloc] initWithKey:@"  年龄" andValue:[_userDefaults objectForKey:@"age"]] ;
+    _username = [[KeyValue alloc] initWithKey:@"昵称" andValue:[_userDefaults objectForKey:@"username"]] ;
+    _gender = [[KeyValue alloc] initWithKey:@"性别" andValue:[_userDefaults objectForKey:@"gender"]] ;
     _whatsUp = [[KeyValue alloc] initWithKey:@"个性签名" andValue:[_userDefaults objectForKey:@"whatsUp"]] ;
     _grade = [[KeyValue alloc] initWithKey:@"入学时间" andValue:[_userDefaults objectForKey:@"grade"]] ;
-    _type = [[KeyValue alloc] initWithKey:@"  在读" andValue:[_userDefaults objectForKey:@"type"]] ;
-    _college = [[KeyValue alloc] initWithKey:@"  学院" andValue:[_userDefaults objectForKey:@"college"]] ;
+    _type = [[KeyValue alloc] initWithKey:@"在读" andValue:[_userDefaults objectForKey:@"type"]] ;
+    _college = [[KeyValue alloc] initWithKey:@"学院" andValue:[_userDefaults objectForKey:@"college"]] ;
     
-    _dataSource = @[_username,_gender,_age,_whatsUp,_grade,_type,_college];
+    _dataSource = @[_username,_gender,_whatsUp,_grade,_type,_college];
+    
 }
 
 - (void) checkValueOfKey:(NSString *)key{
-    if ([[_userDefaults objectForKey:key] isEqualToString:@""]||[_userDefaults objectForKey:key]==nil){
-        [_userDefaults setValue:@"未填写" forKey:key];
+    if ([_userDefaults objectForKey:key]==nil){
+        [_userDefaults setValue:@"" forKey:key];
     }
 
 }

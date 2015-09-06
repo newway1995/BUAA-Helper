@@ -9,6 +9,7 @@
 #import "MeEditViewController.h"
 #import "MeModel.h"
 #import "KeyValue.h"
+#import "MeInfoViewController.h"
 
 @interface MeEditViewController ()<UITableViewDelegate, UITableViewDataSource>{
     UITableView *_tableView;
@@ -21,18 +22,158 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    _tableView.bounces=NO;
-    _tableView.showsVerticalScrollIndicator = NO;//不显示右侧滑块
-    _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;//分割线
     
-    MeModel *me = [[MeModel alloc] init];
-    dataSource = [me getDataSource];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.view addSubview:_tableView];
+    UIBarButtonItem *save = [[UIBarButtonItem alloc] init];
+    [save setTitle:@"保存"];
+    [save setTarget:self];
+    
+    if ([_tag isEqualToString:@"username"]){
+        
+        self.navigationItem.rightBarButtonItem = save;
+                
+        _textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 100, 300, 30)];
+        UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(_textField.frame.origin.x-5, _textField.frame.origin.y+_textField.frame.size.height+0.5, 300, 1)];
+        line.layer.borderWidth = 0.5;
+        line.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        if ([[userDefaults objectForKey:@"username"] isEqualToString:@""]||![userDefaults objectForKey:@"username"]){
+            [_textField setPlaceholder:@"给自己取个昵称吧~"];
+        } else {
+            [_textField setPlaceholder:@"给自己取个昵称吧~"];
+            [_textField setText:[userDefaults objectForKey:@"username"]];
+        }
+        
+        [self.view addSubview:_textField];
+        [self.view addSubview:line];
+        [save setAction:@selector(saveUsername)];
+    }
+    
+    if([_tag isEqualToString:@"gender"]){
+        dataSource = @[@"男", @"女"];        
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.bounces=NO;
+        _tableView.showsVerticalScrollIndicator = NO;//不显示右侧滑块
+        [self.view addSubview:_tableView];
+
+    }
+    
+    if ([_tag isEqualToString:@"whatsUp"]){
+        
+        self.navigationItem.rightBarButtonItem = save;
+        
+        _textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 100, 300, 30)];
+        UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(_textField.frame.origin.x-5, _textField.frame.origin.y+_textField.frame.size.height+0.5, 300, 1)];
+        line.layer.borderWidth = 0.5;
+        line.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        if ([[userDefaults objectForKey:@"whatsUp"] isEqualToString:@""]||![userDefaults objectForKey:@"whatsUp"]){
+            [_textField setPlaceholder:@"介绍一下吧~"];
+        } else {
+            [_textField setPlaceholder:@"介绍一下吧~"];
+            [_textField setText:[userDefaults objectForKey:@"whatsUp"]];
+        }
+        
+        [self.view addSubview:_textField];
+        [self.view addSubview:line];
+        [save setAction:@selector(saveWhatsUp)];
+    }
+    
+    if ([_tag isEqualToString:@"grade"]){
+        dataSource = @[@"2011",@"2012",@"2013",@"2014",@"2015"];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.bounces=NO;
+        _tableView.showsVerticalScrollIndicator = NO;//不显示右侧滑块
+        [self.view addSubview:_tableView];
+    }
+    
+    if ([_tag isEqualToString:@"type"]){
+        dataSource = @[@"本科生", @"硕士", @"博士"];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.bounces=NO;
+        _tableView.showsVerticalScrollIndicator = NO;//不显示右侧滑块
+        [self.view addSubview:_tableView];
+    }
+    
+    if ([_tag isEqualToString:@"college"]){
+        dataSource = @[@"材料科学与工程学院",@"电子信息工程学院",@"自动化科学与电气工程学院 ",@"能源与动力工程学院",@"航空科学与工程学院 ",
+                       @"计算机学院",@"机械工程及自动化学院",@"经济管理学院",@"数学与系统工程学院",@"生物与医学工程学院",
+                       @"人文社会科学学院",@"外国语学院",@"交通科学与工程学院 ",@"可靠性与系统工程学院",@"宇航学院",
+                       @"飞行学院",@"仪器科学与光电工程学院",@"物理科学与核能工程学院 ",@"法学院 ",@"软件学院",
+                       @"高等工程学院",@"中法工程师学院",@"新媒体艺术与设计学院",@"化学与环境学院",@"人文与社会科学高等研究院"];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.bounces=NO;
+        _tableView.showsVerticalScrollIndicator = NO;//不显示右侧滑块
+        [self.view addSubview:_tableView];
+    }
+    
+    if ([_tag isEqualToString:@"accountSetting"]){
+        
+        self.navigationItem.rightBarButtonItem = save;
+        [save setTitle:@"注册"];
+        
+        UITextField *mailTextField = [[UITextField alloc] initWithFrame:CGRectMake(15, 100, 300, 30)];
+        UILabel *mailLine = [[UILabel alloc] initWithFrame:CGRectMake(mailTextField.frame.origin.x-5, mailTextField.frame.origin.y+mailTextField.frame.size.height+0.5, 300, 1)];
+        mailLine.layer.borderWidth = 0.5;
+        mailLine.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+        
+        [mailTextField setPlaceholder:@"在这里输入邮箱~"];
+        [self.view addSubview:mailTextField];
+        [self.view addSubview:mailLine];
+        
+        UITextField *psdTextField = [[UITextField alloc] initWithFrame:CGRectMake(mailTextField.frame.origin.x, mailTextField.frame.origin.y+35, 300, 30)];
+        UILabel *psdLine = [[UILabel alloc] initWithFrame:CGRectMake(psdTextField.frame.origin.x-5, psdTextField.frame.origin.y+psdTextField.frame.size.height+0.5, 300, 1)];
+        psdLine.layer.borderWidth = 0.5;
+        psdLine.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+        
+
+        [psdTextField setPlaceholder:@"在这里输入密码~"];
+        [self.view addSubview:psdTextField];
+        [self.view addSubview:psdLine];
+
+        UITextField *confirmTextField = [[UITextField alloc] initWithFrame:CGRectMake(mailTextField.frame.origin.x, psdTextField.frame.origin.y+35, 300, 30)];
+        UILabel *confirmLine = [[UILabel alloc] initWithFrame:CGRectMake(confirmTextField.frame.origin.x-5, confirmTextField.frame.origin.y+confirmTextField.frame.size.height+0.5, 300, 1)];
+        confirmLine.layer.borderWidth = 0.5;
+        confirmLine.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+        
+        [confirmTextField setPlaceholder:@"确认密码~"];
+        [self.view addSubview:confirmTextField];
+        [self.view addSubview:confirmLine];
+
+        [save setAction:@selector(saveWhatsUp)];
+    }
+    
+    if ([_tag isEqualToString:@"celanderSetting"]){
+        dataSource = @[@"沙河时间", @"学院路时间"];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.bounces=NO;
+        _tableView.showsVerticalScrollIndicator = NO;//不显示右侧滑块
+        [self.view addSubview:_tableView];
+    }
+}
+
+- (void) saveUsername{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:_textField.text forKey:@"username"];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void) saveWhatsUp{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:_textField.text forKey:@"whatsUp"];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,45 +181,55 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+//-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
+//    return 1;
+//}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+//    return [dataSource count];
+//}
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    UIFont *newFont = [UIFont fontWithName:@"Arial" size:16.0];
+//
+//    static NSString *identifer = @"cell";
+//    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
+//    
+//    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+//    [cell.textLabel setFont:newFont];
+//    cell.textLabel.text = dataSource[indexPath.row];
+//
+//    return cell;
+//}
+//
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    NSString *message = dataSource[indexPath.row];
+//    
+//    if ([self.tag isEqualToString:@"gender"]){
+//        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//        [userDefaults setObject:message forKey:@"gender"];
+//        NSLog(@"this is a %@", message);
+//        [self.navigationController popViewControllerAnimated:NO];
+//    }
+//}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-#pragma mark tableViewDelegate
 /*
  *  设置分组数
  */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;   // 分组数 3
+    return 1;   // 分组数 2
 }
 /*
  *  设置各组行数
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0){
-        return  1;
-    } else if (section == 1){
-        return 2;
-    } else if (section == 2){
-        return 1;
-    } else if (section == 3){
-        return 3;
-    } else {
-        return 0;
-    }
+    return [dataSource count];
 }
 /*
  *  每个分组上边预留的空白高度
  */
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    
     return 0;
 }
 /*
@@ -93,82 +244,48 @@
  */
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
-        return 40;
-    }
     return 40;
 }
-
-
 /*
  *  每行展示内容（cell）
  */
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UIFont *newFont = [UIFont fontWithName:@"Arial" size:14.0];
+    
+    UIFont *newFont = [UIFont fontWithName:@"Arial" size:16.0];
     
     static NSString *identifer = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
-    if (cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
-        
-        //创建完字体格式之后就告诉cell
-        cell.textLabel.font = newFont;
-        cell.detailTextLabel.font =newFont;
-    }
-    if (indexPath.section == 0){
-        KeyValue *keyValue = [KeyValue alloc];
-        if ([[dataSource objectAtIndex:indexPath.row] isKindOfClass:[KeyValue class]]){
-            keyValue = [keyValue initWithKey:[[dataSource objectAtIndex:indexPath.row] getKey] andValue:[[dataSource objectAtIndex:indexPath.row] getValue]];
-        }
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(240, 10, 60, 20)];
-        [textField setPlaceholder:keyValue.getValue];
-        [cell.contentView addSubview:textField];
-        
-        cell.textLabel.text = keyValue.getKey;
-        
-        NSLog(@"%@:%@",keyValue.getKey,keyValue.getValue);
-        
-        //        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(12, 0, 80, 80)];
-        //        imageView.image=[UIImage imageNamed:@"temp.jpg"];
-        //        [cell.contentView addSubview:imageView];
-        
-    } else if (indexPath.section ==1){
-        KeyValue *keyValue = [KeyValue alloc];
-        if ([[dataSource objectAtIndex:indexPath.row] isKindOfClass:[KeyValue class]]){
-            keyValue = [keyValue initWithKey:[[dataSource objectAtIndex:indexPath.row+1] getKey] andValue:[[dataSource objectAtIndex:indexPath.row] getValue]];
-        }
-        cell.textLabel.text = keyValue.getKey;
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(240, 10, 60, 20)];
-        [textField setPlaceholder:keyValue.getValue];
-        [cell.contentView addSubview:textField];
-        
-        NSLog(@"%@:%@",keyValue.getKey,keyValue.getValue);
-    } else if (indexPath.section ==2){
-        KeyValue *keyValue = [KeyValue alloc];
-        if ([[dataSource objectAtIndex:indexPath.row] isKindOfClass:[KeyValue class]]){
-            keyValue = [keyValue initWithKey:[[dataSource objectAtIndex:indexPath.row+3] getKey] andValue:[[dataSource objectAtIndex:indexPath.row] getValue]];
-        }
-        cell.textLabel.text = keyValue.getKey;
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(240, 10, 60, 20)];
-        [textField setPlaceholder:keyValue.getValue];
-        [cell.contentView addSubview:textField];
-        NSLog(@"%@:%@",keyValue.getKey,keyValue.getValue);
-    } else if (indexPath.section ==3){
-        KeyValue *keyValue = [KeyValue alloc];
-        if ([[dataSource objectAtIndex:indexPath.row] isKindOfClass:[KeyValue class]]){
-            keyValue = [keyValue initWithKey:[[dataSource objectAtIndex:indexPath.row+4] getKey] andValue:[[dataSource objectAtIndex:indexPath.row] getValue]];
-        }
-        cell.textLabel.text = keyValue.getKey;
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(240, 10, 60, 20)];
-        [textField setPlaceholder:keyValue.getValue];
-        [cell.contentView addSubview:textField];
-
-        NSLog(@"%@:%@",keyValue.getKey,keyValue.getValue);
-    }
-
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
     
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
-    return  cell;
+    [cell.textLabel setFont:newFont];
+    cell.textLabel.text = dataSource[indexPath.row];
+    
+    return cell;
+}
+/*
+ *  每行点击事件
+ */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *message = dataSource[indexPath.row];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([self.tag isEqualToString:@"gender"]){
+        [userDefaults setObject:message forKey:@"gender"];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if([self.tag isEqualToString:@"grade"]){
+        [userDefaults setObject:message forKey:@"grade"];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if ([self.tag isEqualToString:@"type"]){
+        [userDefaults setObject:message forKey:@"type"];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if ([self.tag isEqualToString:@"college"]){
+        [userDefaults setObject:message forKey:@"college"];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 @end

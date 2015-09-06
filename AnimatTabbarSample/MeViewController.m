@@ -8,6 +8,7 @@
 #import "MeModel.h"
 #import "MeViewController.h"
 #import "MeInfoViewController.h"
+#import "MeEditViewController.h"
 
 @interface MeViewController ()<UITableViewDelegate, UITableViewDataSource>{
     UITableView *_tableView;
@@ -31,6 +32,11 @@
     _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;//分割线
     
     [self.view addSubview:_tableView];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+    [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,9 +103,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifer = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
-    if (cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
-    }
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
     
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
@@ -118,19 +122,24 @@
         [cell.contentView addSubview:portraitImage];
      
         UILabel *usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(portraitImage.frame.size.width+margin*2, margin, 200, 40)];
+        NSString *username = [[NSString alloc] init];
         if ([userDefaults objectForKey:@"username"]==nil||[[userDefaults objectForKey:@"username"] isEqualToString:@""]){
-            [userDefaults setObject:@"未填写" forKey:@"username"];
+            username = @"未填写";
+        } else {
+            username = [userDefaults objectForKey:@"username"];
+
         }
-        NSString *username = [userDefaults objectForKey:@"username"];
         [usernameLabel setText:username];
         [cell.contentView addSubview:usernameLabel];
         
         UILabel *whatsupLabel = [[UILabel alloc] initWithFrame:CGRectMake(usernameLabel.frame.origin.x
                                                                          , usernameLabel.frame.origin.y+usernameLabel.frame.size.height, 200, 30)];
+        NSString *whatsUp = [[NSString alloc] init];
         if ([userDefaults objectForKey:@"whatsUp"]==nil||[[userDefaults objectForKey:@"whatsUp"] isEqualToString:@""]){
-            [userDefaults setObject:@"未填写" forKey:@"whatsUp"];
+            whatsUp = @"未填写";
+        } else {
+            whatsUp = [userDefaults objectForKey:@"whatsUp"];
         }
-        NSString *whatsUp = [userDefaults objectForKey:@"whatsUp"];
         [whatsupLabel setText:[NSString stringWithFormat:@"个性签名：%@",whatsUp]];
         [whatsupLabel setTextColor:[UIColor grayColor]];
         [whatsupLabel setFont:font];
@@ -155,6 +164,18 @@
     if (indexPath.section == 0){
         MeInfoViewController *info = [[MeInfoViewController alloc] init];
         [self.navigationController pushViewController:info animated:YES];
+    } else if (indexPath.section == 1){
+        MeEditViewController *edit = [[MeEditViewController alloc] init];
+        NSString *tag = [[NSString alloc] init];
+        if (indexPath.row == 0){
+            tag = @"accountSetting";
+            [edit setTag:tag];
+            [self.navigationController pushViewController:edit animated:YES];
+        } else if (indexPath.row == 1){
+            tag = @"celanderSetting";
+            [edit setTag:tag];
+            [self.navigationController pushViewController:edit animated:YES];
+        }
     }
 }
 
