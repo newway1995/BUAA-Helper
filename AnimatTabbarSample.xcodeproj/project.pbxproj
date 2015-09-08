@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072D79F01B9EEEDA00560E0B /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D79EF1B9EEEDA00560E0B /* NotificationViewController.m */; };
 		591CCC781B65BF7F0049F3F4 /* ManagedObjectSubClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC6F1B65BF7F0049F3F4 /* ManagedObjectSubClass.m */; };
 		591CCC791B65BF7F0049F3F4 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC711B65BF7F0049F3F4 /* Notification.m */; };
 		591CCC7B1B65BF7F0049F3F4 /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CCC751B65BF7F0049F3F4 /* Schedule.m */; };
@@ -78,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072D79EE1B9EEEDA00560E0B /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		072D79EF1B9EEEDA00560E0B /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		591CCC6E1B65BF7F0049F3F4 /* ManagedObjectSubClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedObjectSubClass.h; path = ManagedObjectSubClass/ManagedObjectSubClass.h; sourceTree = "<group>"; };
 		591CCC6F1B65BF7F0049F3F4 /* ManagedObjectSubClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedObjectSubClass.m; path = ManagedObjectSubClass/ManagedObjectSubClass.m; sourceTree = "<group>"; };
 		591CCC701B65BF7F0049F3F4 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Notification.h; path = ManagedObjectSubClass/Notification.h; sourceTree = "<group>"; };
@@ -212,6 +215,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		072D79ED1B9EEE7100560E0B /* notification */ = {
+			isa = PBXGroup;
+			children = (
+				072D79EE1B9EEEDA00560E0B /* NotificationViewController.h */,
+				072D79EF1B9EEEDA00560E0B /* NotificationViewController.m */,
+			);
+			name = notification;
+			sourceTree = "<group>";
+		};
 		591CCC6D1B65BF5B0049F3F4 /* ManagedObjectSubClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +408,7 @@
 		EDE6F2A318F4E3F5001C7755 /* AnimatTabbarSample */ = {
 			isa = PBXGroup;
 			children = (
+				072D79ED1B9EEE7100560E0B /* notification */,
 				860647BA1B82C139006C27E5 /* Me */,
 				8609F25F1B6FDA1700682928 /* GatewayLogin */,
 				EDE6F2AC18F4E3F5001C7755 /* AppDelegate.h */,
@@ -544,6 +557,7 @@
 				59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */,
 				867553BD1B6FF0F7001FE26B /* WZFlashButton.m in Sources */,
 				860647C31B84C121006C27E5 /* MeModel.m in Sources */,
+				072D79F01B9EEEDA00560E0B /* NotificationViewController.m in Sources */,
 				EDE6F2B418F4E3F5001C7755 /* ViewController.m in Sources */,
 				59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */,
 				860647C91B85016C006C27E5 /* MeEditViewController.m in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Msg-l2-GDc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Msg-l2-GDc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -169,6 +169,121 @@
             </objects>
             <point key="canvasLocation" x="1971" y="389"/>
         </scene>
+        <!--通知-->
+        <scene sceneID="9qp-N5-Uaw">
+            <objects>
+                <navigationController title="通知" id="M3K-D0-q9Y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="通知" image="IconNotification" id="58N-Hl-qpK"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vdv-So-9fk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="osK-r4-EUq" kind="relationship" relationship="rootViewController" id="bcH-fv-NF3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9q-LL-EKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-43" y="127"/>
+        </scene>
+        <!--Notification View Controller-->
+        <scene sceneID="F2m-pd-dky">
+            <objects>
+                <viewController id="osK-r4-EUq" customClass="NotificationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i5X-pR-RRf"/>
+                        <viewControllerLayoutGuide type="bottom" id="4S7-zE-eCv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zh0-gL-zPE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wBT-2G-GcP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zaf-Wa-tig" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="395" y="80"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xs7-7K-qcb">
+            <objects>
+                <viewController id="1pJ-aB-66o" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Huq-Lo-UKF"/>
+                        <viewControllerLayoutGuide type="bottom" id="exI-69-hkX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T5D-jc-7TD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60美元，黑掉无人驾驶汽车" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hy-2t-DmJ">
+                                <rect key="frame" x="14" y="24" width="207" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2015/09/06 16:34:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odB-CG-UFj">
+                                <rect key="frame" x="16" y="47" width="160" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="来源：新华网" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlb-mP-7Cz">
+                                <rect key="frame" x="189" y="47" width="102" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dnr-k4-cVr">
+                                <rect key="frame" x="7" y="76" width="305" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <string key="text">从去年开始，“拼体验”就成为了智能手机行业中的主旋律之一，而作为组成智能手机体验重要一部分的系统软件，自然也就成为了这股风气中的排头兵。
+
+而这其中，应用市场又以其软件世界的“入口”地位成为了重中之重——纵观各大应用市场就不难发现，应用市场早已从最初单纯的“商店”身份，变成了手机之中的核心系统组件，甚至在当下，通过对数以亿计的用户和内容资源的全面掌管，应用市场还已经成为了体现智能手机“软实力”的主力军。
+
+ 
+
+行业已经历大面积洗牌，势力逐步两极分化
+
+曾经，大大小小的Android应用市场数量最多时高达500余家。然而今天再看，很多当时活的很滋润的应用市场如今已不复存在了。决定着应用市场竞争力的因素，不外乎是内容数量、软件推力、流量导入、补贴政策以及终端布局等几项，通常小型企业在这几个方面都没有优势。终端厂商和运营商巨头抗争，小企业成为了率先被洗牌出场的一批。
+
+在之后，由于补贴和合约机政策大改，导致曾凭靠定制机与合约机预装而拿下不少市场份额的运营商分发渠道也逐渐失去了立足土壤，份额正在不断被互联网公司和终端厂商所侵占——而后两者，正在成为角逐行业顶尖的两级势力。
+
+ 
+
+应用商店走到当下，已到了拼体验的阶段
+
+相比较起来，终端厂商所推出的应用市场优势在于出厂预装，与需要用户自行安装的第三方应用市场相比，前者能有效减少割裂感和上手成本，相对更容易被用户接受；同时，终端厂商的自有市场，也更容易和系统本身融为一体，比如可以通过开放数据接口，实现应用与系统的深度整合，像华为应用市场所推出的预约WiFi下载、免提醒更新以及一键安装等功能，正是得益于与自有终端的软硬件配合，而这通常是第三方应用难以做到的——除此之外，开发者与终端厂商的直接合作，也使得对热门手机的适配工作能够变得更加简单快捷。
+
+再者，终端出货量也直接关联着应用的分发前景，强势的终端企业所能够带来的应用分发量无疑是可观的，比如此前小米对外公开称日分发量达到5000万，联想乐商店日分发也突破了3000万，而华为应用市场在2014年末的一触即发活动中甚至创造了6300万的日下载世界纪录，在今年6月举办的畅玩6.6活动中，华为应用市场的日分发量更是一举过亿。
+
+总体来看，相比较第三方应用市场，终端阵营的势力正凭靠着近水楼台的优势快速赶超着。但不可忽视的是，采取终端出厂预装的模式，并不能确保完全没有后顾无忧，因为消费者仍然只会依照自己的喜好与体验来选择产品，也就是说，无论行业怎么竞争，最后落实到用户手指间的最终选择，还是得靠体验说话。
+
+ 
+
+从功能到内容的全面竞争
+
+对于普通用户来说，应用市场的用户体验指标，最直观的体现莫过于应用数量与质量两方面——数量足够才能保证可玩性，而高质量的应用也才能保障优质和安全的体验，确保用户不受低质或不良应用的干扰和伤害。不过在当下这个已经趋向成熟的行业环境里，这两者已经成为了考验产品的基本关，而应用更新速度则成为了一个新的观察指标。
+
+事实上，应用尝鲜早已不是极客或行业内人士的专属需求，要知道在这个软件体验为王的年代里，率先体验到最新版本的产品，甚至不排除有革命性大改的惊喜，在某种程度上和购买一款新手机一样，也已经成为了普通用户都能够拿来炫耀的谈资，这也是为何现在人人都抢做App“尝鲜派”的缘故——毕竟谁都不希望自己用着最新的终端产品，却无缘最新的应用程序。
+
+或许正是捕捉到了这一点，华为近日宣布，旗下应用市场将在9月9日带来“超级首发日”活动，届时，将会有整整60个Top 100的Apps集体发布新版本，所有用户均可零门槛参与本次活动。而据悉，这将是史上第一个进行联合大规模集体首发活动，同时也是行业第一个用户集体焕新日，二这背后的直接受益者，则是那些渴望尝新，并注重体验的用户们。</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kab-Iw-pEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="744" y="-185"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="BXo-Xp-76l">
             <objects>
@@ -183,6 +298,7 @@
                         <segue destination="uTb-t3-I8N" kind="relationship" relationship="viewControllers" id="nzR-RA-GxM"/>
                         <segue destination="c2t-pi-DNn" kind="relationship" relationship="viewControllers" id="YSY-oJ-SYg"/>
                         <segue destination="zeK-ya-hZV" kind="relationship" relationship="viewControllers" id="eRc-nI-Tt4"/>
+                        <segue destination="M3K-D0-q9Y" kind="relationship" relationship="viewControllers" id="T2Y-Hi-3sT"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRg-im-EPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -193,7 +309,7 @@
         <scene sceneID="8Yw-vZ-dVJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uTb-t3-I8N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="网关认证" image="GatewayIcon" id="P45-PR-XQE"/>
+                    <tabBarItem key="tabBarItem" title="网关认证" image="IconWIFI" id="P45-PR-XQE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aOT-Y7-EZp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -206,7 +322,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZs-Sj-tCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="389"/>
+            <point key="canvasLocation" x="1046" y="472"/>
         </scene>
         <!--Me View Controller-->
         <scene sceneID="M6m-U3-gIq">
@@ -288,7 +404,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="课程表" image="GatewayUserIcon" id="A7T-jw-ge9"/>
+                    <tabBarItem key="tabBarItem" title="课程表" image="IconSchedule" id="A7T-jw-ge9"/>
                     <navigationItem key="navigationItem" title="课程表" id="lu7-yi-RBe">
                         <barButtonItem key="leftBarButtonItem" title="账号" id="50C-Ou-MJA">
                             <connections>
@@ -484,7 +600,7 @@
         <scene sceneID="JOC-0f-jSn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2t-pi-DNn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我" image="GatewayUserIcon" id="FJs-Gi-I01"/>
+                    <tabBarItem key="tabBarItem" title="我" image="IconMe" id="FJs-Gi-I01"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pPr-wG-9Br">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -508,6 +624,10 @@
         <image name="GatewayRocket" width="694" height="1546"/>
         <image name="GatewayRocketFailed" width="955" height="1197"/>
         <image name="GatewayUserIcon" width="44" height="44"/>
+        <image name="IconMe" width="33" height="33"/>
+        <image name="IconNotification" width="44" height="44"/>
+        <image name="IconSchedule" width="44" height="44"/>
+        <image name="IconWIFI" width="44" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
