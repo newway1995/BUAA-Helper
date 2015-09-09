@@ -118,44 +118,10 @@
         [self.view addSubview:_tableView];
     }
     
-    if ([_tag isEqualToString:@"accountSetting"]){
-        
-        self.navigationItem.rightBarButtonItem = save;
-        [save setTitle:@"注册"];
-        
-        UITextField *mailTextField = [[UITextField alloc] initWithFrame:CGRectMake(15, 100, 300, 30)];
-        UILabel *mailLine = [[UILabel alloc] initWithFrame:CGRectMake(mailTextField.frame.origin.x-5, mailTextField.frame.origin.y+mailTextField.frame.size.height+0.5, 300, 1)];
-        mailLine.layer.borderWidth = 0.5;
-        mailLine.layer.borderColor = [[UIColor darkGrayColor] CGColor];
-        
-        [mailTextField setPlaceholder:@"在这里输入邮箱~"];
-        [self.view addSubview:mailTextField];
-        [self.view addSubview:mailLine];
-        
-        UITextField *psdTextField = [[UITextField alloc] initWithFrame:CGRectMake(mailTextField.frame.origin.x, mailTextField.frame.origin.y+35, 300, 30)];
-        UILabel *psdLine = [[UILabel alloc] initWithFrame:CGRectMake(psdTextField.frame.origin.x-5, psdTextField.frame.origin.y+psdTextField.frame.size.height+0.5, 300, 1)];
-        psdLine.layer.borderWidth = 0.5;
-        psdLine.layer.borderColor = [[UIColor darkGrayColor] CGColor];
-        
-
-        [psdTextField setPlaceholder:@"在这里输入密码~"];
-        [self.view addSubview:psdTextField];
-        [self.view addSubview:psdLine];
-
-        UITextField *confirmTextField = [[UITextField alloc] initWithFrame:CGRectMake(mailTextField.frame.origin.x, psdTextField.frame.origin.y+35, 300, 30)];
-        UILabel *confirmLine = [[UILabel alloc] initWithFrame:CGRectMake(confirmTextField.frame.origin.x-5, confirmTextField.frame.origin.y+confirmTextField.frame.size.height+0.5, 300, 1)];
-        confirmLine.layer.borderWidth = 0.5;
-        confirmLine.layer.borderColor = [[UIColor darkGrayColor] CGColor];
-        
-        [confirmTextField setPlaceholder:@"确认密码~"];
-        [self.view addSubview:confirmTextField];
-        [self.view addSubview:confirmLine];
-
-        [save setAction:@selector(saveWhatsUp)];
-    }
+    
     
     if ([_tag isEqualToString:@"celanderSetting"]){
-        dataSource = @[@"沙河时间", @"学院路时间"];
+        dataSource = @[@"沙河", @"学院路"];
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.delegate = self;
@@ -281,6 +247,9 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.tag isEqualToString:@"college"]){
         [userDefaults setObject:message forKey:@"college"];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if ([self.tag isEqualToString:@"celanderSetting"]){
+        [userDefaults setObject:message forKey:@"Campus"];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
