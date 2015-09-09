@@ -45,8 +45,27 @@
 		860647C31B84C121006C27E5 /* MeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 860647C21B84C121006C27E5 /* MeModel.m */; };
 		860647C61B84ED9E006C27E5 /* KeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 860647C51B84ED9E006C27E5 /* KeyValue.m */; };
 		860647C91B85016C006C27E5 /* MeEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 860647C81B85016C006C27E5 /* MeEditViewController.m */; };
-		8609F2651B6FDB1C00682928 /* GatewayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8609F2641B6FDB1C00682928 /* GatewayViewController.m */; };
 		8609F2681B6FDB2D00682928 /* GatewayLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */; };
+		863929BB1B9E58FF008B5FF8 /* GatewayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863929BA1B9E58FF008B5FF8 /* GatewayViewController.m */; };
+		866741F31B9E8448000E1DAA /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866741F21B9E8448000E1DAA /* NotificationCenter.framework */; };
+		866741FB1B9E8448000E1DAA /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866741FA1B9E8448000E1DAA /* MainInterface.storyboard */; };
+		866741FE1B9E8448000E1DAA /* GatewayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 866741F11B9E8448000E1DAA /* GatewayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		866742071B9EC148000E1DAA /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 866741F81B9E8448000E1DAA /* TodayViewController.m */; };
+		866742AF1B9EC92B000E1DAA /* BUAAHLoginGW.m in Sources */ = {isa = PBXBuildFile; fileRef = 598A01281B7628460049E959 /* BUAAHLoginGW.m */; };
+		866742B01B9EC92B000E1DAA /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 866741F81B9E8448000E1DAA /* TodayViewController.m */; };
+		866742B11B9ECA92000E1DAA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CBB2601B64AFF800527B9C /* CoreData.framework */; };
+		866742B21B9ECA9F000E1DAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29D18F4E3F5001C7755 /* Foundation.framework */; };
+		866742B31B9ECB64000E1DAA /* BUAAHNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2571B64AEA400527B9C /* BUAAHNetworking.m */; };
+		866742B41B9ECBBA000E1DAA /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21F1B64AE5000527B9C /* AFHTTPRequestOperationManager.m */; };
+		866742B51B9ECC4B000E1DAA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB21D1B64AE5000527B9C /* AFHTTPRequestOperation.m */; };
+		866742B61B9ECC5B000E1DAA /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2241B64AE5000527B9C /* AFNetworkReachabilityManager.m */; };
+		866742B71B9ECCF3000E1DAA /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2211B64AE5000527B9C /* AFHTTPSessionManager.m */; };
+		866742B81B9ECCF3000E1DAA /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2261B64AE5000527B9C /* AFSecurityPolicy.m */; };
+		866742BA1B9ECCF3000E1DAA /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB22A1B64AE5000527B9C /* AFURLRequestSerialization.m */; };
+		866742BB1B9ECCF3000E1DAA /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB22C1B64AE5000527B9C /* AFURLResponseSerialization.m */; };
+		866742BC1B9ECCF3000E1DAA /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB22E1B64AE5000527B9C /* AFURLSessionManager.m */; };
+		866742BD1B9ECE92000E1DAA /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2281B64AE5000527B9C /* AFURLConnectionOperation.m */; };
+		866742BE1B9ECF6A000E1DAA /* BUAAHCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 593E37E51B7B2D9800524E76 /* BUAAHCommon.m */; };
 		867553BD1B6FF0F7001FE26B /* WZFlashButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 867553BC1B6FF0F7001FE26B /* WZFlashButton.m */; };
 		86ED21201B8D3E0F00B98DFA /* MeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86ED211F1B8D3E0F00B98DFA /* MeInfoViewController.m */; };
 		EDE6F29E18F4E3F5001C7755 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29D18F4E3F5001C7755 /* Foundation.framework */; };
@@ -66,6 +85,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		866741FC1B9E8448000E1DAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDE6F29218F4E3F5001C7755 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 866741F01B9E8448000E1DAA;
+			remoteInfo = GatewayWidget;
+		};
 		EDE6F2C018F4E3F6001C7755 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDE6F29218F4E3F5001C7755 /* Project object */;
@@ -74,6 +100,20 @@
 			remoteInfo = AnimatTabbarSample;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		866742021B9E8448000E1DAA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				866741FE1B9E8448000E1DAA /* GatewayWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		591CCC6E1B65BF7F0049F3F4 /* ManagedObjectSubClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedObjectSubClass.h; path = ManagedObjectSubClass/ManagedObjectSubClass.h; sourceTree = "<group>"; };
@@ -86,7 +126,7 @@
 		591CCC771B65BF7F0049F3F4 /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subscription.m; path = ManagedObjectSubClass/Subscription.m; sourceTree = "<group>"; };
 		593E37E51B7B2D9800524E76 /* BUAAHCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHCommon.m; path = AnimatTabbarSample/BUAAHCommon.m; sourceTree = "<group>"; };
 		598A01281B7628460049E959 /* BUAAHLoginGW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHLoginGW.m; path = AnimatTabbarSample/BUAAHLoginGW.m; sourceTree = "<group>"; };
-		598A012A1B7628730049E959 /* BUAAHLoginGW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAAHLoginGW.h; path = AnimatTabbarSample/BUAAHLoginGW.h; sourceTree = "<group>"; };
+		598A012A1B7628730049E959 /* BUAAHLoginGW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAAHLoginGW.h; path = AnimatTabbarSample/BUAAHLoginGW.h; sourceTree = SOURCE_ROOT; };
 		598A012E1B7637500049E959 /* BUAAHSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAAHSchedule.h; path = AnimatTabbarSample/BUAAHSchedule.h; sourceTree = "<group>"; };
 		598A012F1B7637500049E959 /* BUAAHSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHSchedule.m; path = AnimatTabbarSample/BUAAHSchedule.m; sourceTree = "<group>"; };
 		59AD1C101B84697D0035D218 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
@@ -153,9 +193,15 @@
 		860647C71B85016C006C27E5 /* MeEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeEditViewController.h; sourceTree = "<group>"; };
 		860647C81B85016C006C27E5 /* MeEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeEditViewController.m; sourceTree = "<group>"; };
 		8609F2631B6FDB1C00682928 /* GatewayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatewayViewController.h; sourceTree = "<group>"; };
-		8609F2641B6FDB1C00682928 /* GatewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayViewController.m; sourceTree = "<group>"; };
 		8609F2661B6FDB2D00682928 /* GatewayLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatewayLoginViewController.h; sourceTree = "<group>"; };
 		8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayLoginViewController.m; sourceTree = "<group>"; };
+		863929BA1B9E58FF008B5FF8 /* GatewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayViewController.m; sourceTree = "<group>"; };
+		866741F11B9E8448000E1DAA /* GatewayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GatewayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		866741F21B9E8448000E1DAA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		866741F61B9E8448000E1DAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		866741F71B9E8448000E1DAA /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		866741F81B9E8448000E1DAA /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		866741FA1B9E8448000E1DAA /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		867553BB1B6FF0F7001FE26B /* WZFlashButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZFlashButton.h; path = AnimatTabbarSample/WZFlashButton.h; sourceTree = "<group>"; };
 		867553BC1B6FF0F7001FE26B /* WZFlashButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZFlashButton.m; path = AnimatTabbarSample/WZFlashButton.m; sourceTree = "<group>"; };
 		86ED211E1B8D3E0F00B98DFA /* MeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeInfoViewController.h; sourceTree = "<group>"; };
@@ -182,6 +228,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		866741EE1B9E8448000E1DAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				866742B21B9ECA9F000E1DAA /* Foundation.framework in Frameworks */,
+				866742B11B9ECA92000E1DAA /* CoreData.framework in Frameworks */,
+				866741F31B9E8448000E1DAA /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDE6F29718F4E3F5001C7755 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,12 +385,31 @@
 			children = (
 				867553B81B6FF051001FE26B /* WZRippleButton */,
 				8609F2631B6FDB1C00682928 /* GatewayViewController.h */,
-				8609F2641B6FDB1C00682928 /* GatewayViewController.m */,
+				863929BA1B9E58FF008B5FF8 /* GatewayViewController.m */,
 				8609F2661B6FDB2D00682928 /* GatewayLoginViewController.h */,
 				8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */,
 			);
 			name = GatewayLogin;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		866741F41B9E8448000E1DAA /* GatewayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				866741F71B9E8448000E1DAA /* TodayViewController.h */,
+				866741F81B9E8448000E1DAA /* TodayViewController.m */,
+				866741FA1B9E8448000E1DAA /* MainInterface.storyboard */,
+				866741F51B9E8448000E1DAA /* Supporting Files */,
+			);
+			path = GatewayWidget;
+			sourceTree = "<group>";
+		};
+		866741F51B9E8448000E1DAA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				866741F61B9E8448000E1DAA /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		867553B81B6FF051001FE26B /* WZRippleButton */ = {
@@ -357,6 +432,7 @@
 				59CBB21B1B64AE3600527B9C /* AFNetworking */,
 				EDE6F2A318F4E3F5001C7755 /* AnimatTabbarSample */,
 				EDE6F2C218F4E3F6001C7755 /* AnimatTabbarSampleTests */,
+				866741F41B9E8448000E1DAA /* GatewayWidget */,
 				EDE6F29C18F4E3F5001C7755 /* Frameworks */,
 				EDE6F29B18F4E3F5001C7755 /* Products */,
 			);
@@ -367,6 +443,7 @@
 			children = (
 				EDE6F29A18F4E3F5001C7755 /* AnimatTabbarSample.app */,
 				EDE6F2BB18F4E3F6001C7755 /* AnimatTabbarSampleTests.xctest */,
+				866741F11B9E8448000E1DAA /* GatewayWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -379,6 +456,7 @@
 				EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */,
 				EDE6F2A118F4E3F5001C7755 /* UIKit.framework */,
 				EDE6F2BC18F4E3F6001C7755 /* XCTest.framework */,
+				866741F21B9E8448000E1DAA /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -431,6 +509,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		866741F01B9E8448000E1DAA /* GatewayWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 866741FF1B9E8448000E1DAA /* Build configuration list for PBXNativeTarget "GatewayWidget" */;
+			buildPhases = (
+				866741ED1B9E8448000E1DAA /* Sources */,
+				866741EE1B9E8448000E1DAA /* Frameworks */,
+				866741EF1B9E8448000E1DAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GatewayWidget;
+			productName = GatewayWidget;
+			productReference = 866741F11B9E8448000E1DAA /* GatewayWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EDE6F29918F4E3F5001C7755 /* AnimatTabbarSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDE6F2CC18F4E3F6001C7755 /* Build configuration list for PBXNativeTarget "AnimatTabbarSample" */;
@@ -438,10 +533,12 @@
 				EDE6F29618F4E3F5001C7755 /* Sources */,
 				EDE6F29718F4E3F5001C7755 /* Frameworks */,
 				EDE6F29818F4E3F5001C7755 /* Resources */,
+				866742021B9E8448000E1DAA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				866741FD1B9E8448000E1DAA /* PBXTargetDependency */,
 			);
 			name = AnimatTabbarSample;
 			productName = AnimatTabbarSample;
@@ -475,6 +572,9 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = chenyanming;
 				TargetAttributes = {
+					866741F01B9E8448000E1DAA = {
+						CreatedOnToolsVersion = 6.4;
+					};
 					EDE6F2BA18F4E3F6001C7755 = {
 						TestTargetID = EDE6F29918F4E3F5001C7755;
 					};
@@ -495,11 +595,20 @@
 			targets = (
 				EDE6F29918F4E3F5001C7755 /* AnimatTabbarSample */,
 				EDE6F2BA18F4E3F6001C7755 /* AnimatTabbarSampleTests */,
+				866741F01B9E8448000E1DAA /* GatewayWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		866741EF1B9E8448000E1DAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				866741FB1B9E8448000E1DAA /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDE6F29818F4E3F5001C7755 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -521,6 +630,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		866741ED1B9E8448000E1DAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				866742BE1B9ECF6A000E1DAA /* BUAAHCommon.m in Sources */,
+				866742BD1B9ECE92000E1DAA /* AFURLConnectionOperation.m in Sources */,
+				866742B71B9ECCF3000E1DAA /* AFHTTPSessionManager.m in Sources */,
+				866742B81B9ECCF3000E1DAA /* AFSecurityPolicy.m in Sources */,
+				866742BA1B9ECCF3000E1DAA /* AFURLRequestSerialization.m in Sources */,
+				866742BB1B9ECCF3000E1DAA /* AFURLResponseSerialization.m in Sources */,
+				866742BC1B9ECCF3000E1DAA /* AFURLSessionManager.m in Sources */,
+				866742B61B9ECC5B000E1DAA /* AFNetworkReachabilityManager.m in Sources */,
+				866742B51B9ECC4B000E1DAA /* AFHTTPRequestOperation.m in Sources */,
+				866742B41B9ECBBA000E1DAA /* AFHTTPRequestOperationManager.m in Sources */,
+				866742B31B9ECB64000E1DAA /* BUAAHNetworking.m in Sources */,
+				866742AF1B9EC92B000E1DAA /* BUAAHLoginGW.m in Sources */,
+				866742B01B9EC92B000E1DAA /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDE6F29618F4E3F5001C7755 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -528,11 +657,13 @@
 				59CBB22F1B64AE5000527B9C /* AFHTTPRequestOperation.m in Sources */,
 				598A01291B7628460049E959 /* BUAAHLoginGW.m in Sources */,
 				59CBB25B1B64AEA400527B9C /* BUAAHNetworking.m in Sources */,
+				863929BB1B9E58FF008B5FF8 /* GatewayViewController.m in Sources */,
 				591CCC7B1B65BF7F0049F3F4 /* Schedule.m in Sources */,
 				59CBB24E1B64AE6D00527B9C /* UIImageView+AFNetworking.m in Sources */,
 				59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */,
 				867553BD1B6FF0F7001FE26B /* WZFlashButton.m in Sources */,
 				860647C31B84C121006C27E5 /* MeModel.m in Sources */,
+				866742071B9EC148000E1DAA /* TodayViewController.m in Sources */,
 				EDE6F2B418F4E3F5001C7755 /* ViewController.m in Sources */,
 				59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */,
 				860647C91B85016C006C27E5 /* MeEditViewController.m in Sources */,
@@ -568,7 +699,6 @@
 				59CBB2371B64AE5000527B9C /* AFURLSessionManager.m in Sources */,
 				EDE6F2AE18F4E3F5001C7755 /* AppDelegate.m in Sources */,
 				EDE6F2AA18F4E3F5001C7755 /* main.m in Sources */,
-				8609F2651B6FDB1C00682928 /* GatewayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +713,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		866741FD1B9E8448000E1DAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 866741F01B9E8448000E1DAA /* GatewayWidget */;
+			targetProxy = 866741FC1B9E8448000E1DAA /* PBXContainerItemProxy */;
+		};
 		EDE6F2C118F4E3F6001C7755 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EDE6F29918F4E3F5001C7755 /* AnimatTabbarSample */;
@@ -618,6 +753,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		866742001B9E8448000E1DAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = GatewayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		866742011B9E8448000E1DAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = GatewayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
 		EDE6F2CA18F4E3F6001C7755 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -650,7 +828,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -682,7 +860,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -759,6 +937,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		866741FF1B9E8448000E1DAA /* Build configuration list for PBXNativeTarget "GatewayWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				866742001B9E8448000E1DAA /* Debug */,
+				866742011B9E8448000E1DAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		EDE6F29518F4E3F5001C7755 /* Build configuration list for PBXProject "AnimatTabbarSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
