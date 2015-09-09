@@ -77,7 +77,7 @@
     //NSLog(@"%@",frame);
     NSArray* date =[TableView date];
    // NSArray* time =[[NSArray alloc] initWithObjects:@"上午第一节\n8:00~8:50",@"上午第二节\n8:55~9:45",@"上午第三节\n9:50~10:40",@"上午第四节\n10:45~11:35",@"下午第一节\n14:00~14:50",@"下午第二节\n14:55~15:45",@"下午第三节\n15:50~16:40",@"下午第四节\n16:45~17:35",@"晚上第一节\n18:30~19:20",@"晚上第二节\n19:25~20:15",@"晚上第三节\n20:20~21:10",@"晚上第四节\n21:15~22:05" ,nil];
-    NSArray* time=[[NSArray alloc] initWithObjects:@"1\n8:00",@"2\n8:55",@"3\n9:50",@"4\n10:45",@"5\n14:00",@"6\n14:55",@"7\n15:50",@"8\n16:45",@"9\n18:30",@"10\n19:25",@"11\n20:20",@"12\n21:15" ,nil];
+    NSArray* time=[TableView classTime];
     // NSArray* time =[[NSArray alloc] initWithObjects:@"上一",@"上二",@"上三",@"上四",@"下一",@"下二",@"下三",@"下四",@"晚一",@"晚二",@"晚三",@"晚四" ,nil];
     float leftWidth = [[ProfileView alloc] getWidth:@"星期一"];
     float topHeight= [[HeaderView alloc] getHeight:@"12\n21:15"];
@@ -337,8 +337,8 @@
     NSArray* from ;
     if([campus isEqualToString:@"学院路"])
         from = [[NSArray alloc] initWithObjects:@"8:00",@"8:55",@"9:50",@"10:45",@"14:00",@"14:55",@"15:50",@"16:45",@"18:30",@"19:25",@"20:20",@"21:15",nil];
-//    else
-//        from = [NSArray alloc] initWithObjects:<#(id), ...#>, nil
+    else if([campus isEqualToString:@"沙河"])
+        from = [[NSArray alloc] initWithObjects:@"8:00",@"9:00",@"10:00",@"11:00",@"13:30",@"14:30",@"15:30",@"16:30",@"18:00",@"19:00",@"20:00",@"21:00",nil];
     return from;
 }
 
@@ -347,12 +347,26 @@
     NSArray* to ;
     if([campus isEqualToString:@"学院路"])
         to= [[NSArray alloc] initWithObjects:@"8:50",@"9:45",@"10:40",@"11:35",@"14:50",@"15:45",@"16:40",@"17:35",@"19:20",@"20:15",@"21:10",@"22:05",nil];
+    else if([campus isEqualToString:@"沙河"])
+        to=[[NSArray alloc] initWithObjects:@"8:50",@"9:50",@"10:50",@"11:50",@"14:20",@"15:20",@"16:20",@"17:20",@"18:50",@"19:50",@"20:50",@"21:50",nil];
+
     return to;
 }
 
 +(NSArray*)date{
     NSArray* date = [[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日", nil];
     return date;
+}
+
++(NSArray*)classTime{
+    NSString* campus =(NSString*)[BUAAHSetting getValue:EACampus];
+    NSArray* classTime ;
+    if([campus isEqualToString:@"学院路"])
+        classTime= [[NSArray alloc] initWithObjects:@"1\n8:50",@"2\n9:45",@"3\n10:40",@"4\n11:35",@"5\n14:50",@"6\n15:45",@"7\n16:40",@"8\n17:35",@"9\n19:20",@"10\n20:15",@"11\n21:10",@"12\n22:05",nil];
+    else if([campus isEqualToString:@"沙河"])
+        classTime=[[NSArray alloc] initWithObjects:@"1\n8:50",@"2\n9:50",@"3\n10:50",@"4\n11:50",@"5\n14:20",@"6\n15:20",@"7\n16:20",@"8\n17:20",@"9\n18:50",@"10\n19:50",@"11\n20:50",@"12\n21:50",nil];
+    
+    return classTime;
 }
 
 @end
