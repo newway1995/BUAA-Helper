@@ -12,5 +12,5 @@
 
 - (MeModel *) init;
 - (NSArray *) getDataSource;
-
+- (void) updateValue;
 @end

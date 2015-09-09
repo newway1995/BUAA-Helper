@@ -24,11 +24,10 @@
     if([isChanged isEqualToString:@"NO"])
         return ;
     
-    
     [BUAAHNetworking getHTML:scheduleUrl1 parameters:nil
     success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        //NSLog(@"1:%@",result);
+        NSLog(@"1:%@",result);
         [BUAAHSchedule setCookieForUrl:scheduleUrl2];
         NSDictionary* dict2=@{@"content":result};        //键会出问题
         //第二步开始
@@ -48,6 +47,12 @@
                 NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
                 NSLog(@"3:%@",result);
                 [BUAAHSchedule setCookieForUrl:scheduleUrl3];
+                if ([result rangeOfString:@"\"success_phone\""].location == NSNotFound){
+                    //提示用户名密码错误
+                    NSNotification *notification = [NSNotification notificationWithName:@"UsernameError" object:nil];
+                    [[NSNotificationCenter defaultCenter] postNotification:notification];
+                    return ;
+                }
                 //第四步开始
                 [BUAAHNetworking getHTML:scheduleUrl4 parameters:nil
                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -97,11 +102,13 @@
                                         [BUAAHCoredata insert:@"Schedule" forData:insertData];
                                     }
                                     [BUAAHSetting setValue:@"NO" forkey:EAChanged];
-                                    NSNotification *notification = [NSNotification notificationWithName:@"ViewControllerShouldReloadNotification" object:nil];
-                                    [[NSNotificationCenter defaultCenter] postNotification:notification];
+                                    NSNotification *notification1 = [NSNotification notificationWithName:@"ViewControllerShouldReloadNotification" object:nil];
+                                    [[NSNotificationCenter defaultCenter] postNotification:notification1];
+                                    NSNotification *notification2 = [NSNotification notificationWithName:@"Success" object:nil];
+                                    [[NSNotificationCenter defaultCenter] postNotification:notification2];
                                 }
                                 else{
-                                   //failure(nil,nil);
+                                  
                                 }
                             }
                             failure:failure];

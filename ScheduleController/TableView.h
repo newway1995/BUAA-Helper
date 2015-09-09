@@ -13,19 +13,24 @@
 @interface TableView : UIView <UIScrollViewDelegate,UIAlertViewDelegate>
 
 @property NSMutableArray* schedules;    //data
-@property NSMutableArray* cellColor;
 @property NSArray* colorArray;
 @property (nonatomic,strong) UIScrollView* rightScroll;
 @property (nonatomic,strong) UIScrollView* leftScroll;
 @property (nonatomic,strong) UIScrollView* topScroll;
 @property float widthScale;
 @property float heightScale;
+
+
 -(void)Schedules:(NSArray *)schedules;
 -(void)clear;
+-(void)needDisplay;
+
 
 +(NSArray*)from;
 +(NSArray*)to;
 +(NSArray*)date;
+
+
 @end
 
 #endif

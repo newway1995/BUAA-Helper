@@ -14,6 +14,7 @@
 
 extern NSString* const baseUrl;
 extern NSString* const loginUrl;
+extern NSString* const logoutUrl;
 extern NSString* const testUrl;
 extern NSString* const scheduleUrl1;
 extern NSString* const scheduleUrl2;

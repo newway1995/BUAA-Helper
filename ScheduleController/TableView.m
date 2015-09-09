@@ -18,7 +18,8 @@
 
 @interface TableView()
 @property TableCell* willDeleteCell;
-
+@property NSMutableDictionary* nameColor;
+@property NSInteger colorIndex;
 @end
 
 
@@ -33,9 +34,10 @@
     self = [super initWithFrame:frame];
 
     self.colorArray = [[NSArray alloc] initWithObjects:[UIColor colorWithRed:255.0f/255.0f green:73.0f/255.0f blue:129.0f/255.0f alpha:1.0f],[UIColor colorWithRed:88.0f/255.0f green:202.0f/255.0f blue:255.0f/255.0f alpha:1.0f],[UIColor colorWithRed:79.0f/255.0f green:217.0f/255.0f blue:100.0f/255.0f alpha:1.0f],[UIColor colorWithRed:137.0f/255.0f green:140.0f/255.0f blue:144.0f/255.0f alpha:1.0f],[UIColor colorWithRed:255.0f/255.0f green:204.0f/255.0f blue:0.0f/255.0f alpha:1.0f],[UIColor colorWithRed:198.0f/255.0f green:67.0f/255.0f blue:252.0f/255.0f alpha:1.0f],nil];
-    self.cellColor = [[NSMutableArray alloc] init];
+    self.nameColor = [[NSMutableDictionary alloc] init];
     self.widthScale = 1.5;
     self.heightScale =1.5;
+    self.colorIndex=0;
     [self addGestureRecognizer:[[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchView:)]];
     [self frameDraw];
     //为这些滚动条注册事件
@@ -52,6 +54,13 @@
 
 }
 
+-(void)needDisplay{
+    [self clear];
+    [self frameDraw];
+    [BUAAHCoredata initialize];
+    NSArray* s = [BUAAHCoredata query:@"Schedule" forSort:nil forPredicate:nil];
+    [self Schedules:s];
+}
 
 
 -(void)frameDraw{
@@ -148,6 +157,10 @@
     self.rightScroll.delegate = self;
     self.rightScroll.tag=2;
     [self addSubview:self.rightScroll];
+    
+  //  NSDate* date = [NSDate date];
+    
+    
 }
 
 -(void)schedulesDraw{
@@ -191,24 +204,33 @@
             r.size.height=(schedule.last)*height-(schedule.last-1);
             r.origin.x=width*(date-1)-(date-1);
             r.origin.y=(schedule.from-1)*height-(schedule.from+1);
-                
+            
             TableCell* c = [[TableCell alloc] initWithFrame:r];
+            if([self.nameColor objectForKey:schedule.name]==nil){
+              
+                UIColor* color = [self.colorArray objectAtIndex:self.colorIndex];
+                [self.nameColor setObject:color forKey:schedule.name];
+                [c setColor:color];
+                self.colorIndex++;
+                if(self.colorIndex>=[self.colorArray count]){
+                    self.colorIndex=0;
+                }
+            }
+            else{
+                UIColor* color = [self.nameColor objectForKey:schedule.name];
+                [c setColor:color];
+            }
             c.from=schedule.from;
             c.last = schedule.last;
             c.date=date;
             c.index= i;
-                while([self.cellColor count]<[self.schedules count]){
-                    int j=arc4random()%[self.colorArray count];
-                    [self.cellColor addObject:[[NSNumber alloc] initWithInt:j]];
-                }
-                NSNumber* index = [self.cellColor objectAtIndex:i];
-                [c setColor:[self.colorArray objectAtIndex:[index intValue]]];
-                NSString* text = [[NSString alloc] initWithFormat:@"%@,%@,%@,%@",schedule.name,schedule.classroom,schedule.teacher,schedule.time];
-                // NSLog(@"%@",text);
-                [c setText:text];
-                [c addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)]];
-                [self.rightScroll addSubview:c];
-                [self.rightScroll bringSubviewToFront:c];
+            
+            NSString* text = [[NSString alloc] initWithFormat:@"%@,%@,%@,%@",schedule.name,schedule.classroom,schedule.teacher,schedule.time];
+            // NSLog(@"%@",text);
+            [c setText:text];
+            [c addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)]];
+            [self.rightScroll addSubview:c];
+            [self.rightScroll bringSubviewToFront:c];
             
             
         }
@@ -217,6 +239,21 @@
         }
         
     }
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *now;
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
+    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    now=[NSDate date];
+
+    comps = [calendar components:unitFlags fromDate:now];
+    NSInteger week = [comps weekday];
+    float offsetX= width*(week-1)-(week-1);
+    offsetX = offsetX+self.topScroll.frame.size.width > self.topScroll.contentSize.width ? self.topScroll.contentSize.width-self.topScroll.frame.size
+    .width : offsetX;
+    [self.topScroll setContentOffset:CGPointMake(offsetX,0)];
+    [self.rightScroll setContentOffset:CGPointMake(offsetX, 0)];
     
 }
 

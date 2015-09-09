@@ -17,6 +17,7 @@
 @interface ScheduleController()
 
 -(void)getSchedule;
+@property UIActivityIndicatorView *activity;
 @end
 
 @implementation ScheduleController
@@ -31,9 +32,7 @@
         [BUAAHSetting setValue:@"YES" forkey:EAChanged];
     }
     
-    [BUAAHSetting setValue:@"YES" forkey:EAChanged];
-    //[BUAAHCoredata initialize];
-    //[BUAAHCoredata insert:@"Schedule" forData:@{@"classroom":@"主M123",@"from":@"8:00",@"to":@"8:50",@"name":@"大学生职业生规划与心理辅导",@"teacher":@"郭耀星asasddqwdqwdxascasdqwd",@"date":[[NSNumber alloc] initWithInt:5]}];
+
 
     
 }
@@ -41,11 +40,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     //[BUAAHCoredata initialize];
 //    [BUAAHCoredata insert:@"Schedule" forData:@{@"classroom":@"主M123",@"from":[NSNumber numberWithInt:1],@"last":[NSNumber numberWithInt:2],@"name":@"大学生职业生规划与心理辅导",@"teacher":@"郭耀星",@"date":[[NSNumber alloc] initWithInt:1],@"time":@"1-16"}];
-
+  
     NSThread* myThread = [[NSThread alloc] initWithTarget:self selector:@selector(getSchedule) object:nil];
     [myThread start];
     NSArray* arr = [BUAAHCoredata query:@"Schedule" forSort:nil forPredicate:nil];
-    NSLog(@"%d",[arr count]);
+   // NSLog(@"%d",[arr count]);
     [self.tableView Schedules:arr];
     [self.baseView addSubview:self.tableView];
     
@@ -68,14 +67,32 @@
         [self.navigationController pushViewController:schedulePassController animated:YES];
     }
     else{
+        NSString* isChanged = (NSString*)[BUAAHSetting getValue:EAChanged];
+        if([isChanged isEqualToString:@"NO"])
+            return ;
+        
+        self.activity = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];//指定进度轮的大小
+        
+        [self.activity setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2)];//指定进度轮中心点
+        
+        [self.activity setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];//设置进度轮显示类型
+        
+        [self.view addSubview:self.activity];
+        
+        [self.activity startAnimating];
+
         [BUAAHSchedule getWithUsername:username password:password failure:^(AFHTTPRequestOperation *operation, NSError* error) {
-            UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"" message:@"发生了未知错误" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alter show];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+            [self removeActivityIndicatorView];
             NSLog(@"%@",error);
         }];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(setNeedsDisplay) name:@"ViewControllerShouldReloadNotification" object:nil];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(needDisplay) name:@"ViewControllerShouldReloadNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usernameError) name:@"UsernameError" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActivityIndicatorView) name:@"Success" object:nil];
     }
 }
 
@@ -84,5 +101,21 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self ];
 }
 
+-(void)usernameError{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:@"用户名密码错误" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+- (IBAction)refresh:(id)sender {
+    [BUAAHSetting setValue:@"YES" forkey:EAChanged];
+    [self getSchedule];
+}
 
+-(void)removeActivityIndicatorView{
+    if(self.activity !=nil){
+        [self.activity removeFromSuperview];
+        self.activity=nil;
+    }
+}
 @end
