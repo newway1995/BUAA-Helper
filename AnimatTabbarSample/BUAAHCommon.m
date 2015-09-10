@@ -11,6 +11,7 @@
 
  NSString* const baseUrl =@"https://alpha-api.app.net/stream/0/posts/stream/global";
  NSString* const loginUrl =@"http://202.112.136.131/cgi-bin/do_login";
+ NSString* const logoutUrl =@"http://202.112.136.131/cgi-bin/do_logout";
  NSString* const testUrl=@"http://1.gyxpost.sinaapp.com";
  NSString* const scheduleUrl1=@"https://sso.buaa.edu.cn/login";
  NSString* const scheduleUrl2=@"http://192.168.199.102:5000/getima";

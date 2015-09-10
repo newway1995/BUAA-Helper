@@ -9,6 +9,7 @@
 #import "BlankView.h"
 #import "InsertController.h"
 #import "TableView.h"
+#import "SchedulePassController.h"
 @implementation BlankView
 
 /*
@@ -37,11 +38,10 @@
 
 -(void)tapView:(UITapGestureRecognizer*)tap{
     
-    InsertController *insertController = [[InsertController alloc] init];
-    insertController.from =self.from;
-    insertController.to=self.to;
-    insertController.date=[[TableView date] objectAtIndex:self.date];
-   // [[self viewController] presentModalViewController:insertController animated:YES];
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    //由storyboard根据myView的storyBoardID来获取我们要切换的视图
+    SchedulePassController *schedulePassController = [story instantiateViewControllerWithIdentifier:@"SchedulePass"];
+    [[self viewController].navigationController pushViewController:schedulePassController animated:YES];
 }
 
 - (UIViewController *)viewController {
