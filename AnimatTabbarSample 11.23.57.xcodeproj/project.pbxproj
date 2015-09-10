@@ -857,7 +857,10 @@
 				598A01291B7628460049E959 /* BUAAHLoginGW.m in Sources */,
 				59CBB25B1B64AEA400527B9C /* BUAAHNetworking.m in Sources */,
 				863929BB1B9E58FF008B5FF8 /* GatewayViewController.m in Sources */,
+<<<<<<< HEAD
 				0739AE3B1BA12C0C0087A0AA /* MJRefreshGifHeader.m in Sources */,
+=======
+>>>>>>> e52948b5390445d1408d2f8e3ab81142692c47a4
 				591CCC7B1B65BF7F0049F3F4 /* Schedule.m in Sources */,
 				59CBB24E1B64AE6D00527B9C /* UIImageView+AFNetworking.m in Sources */,
 				59CBB25C1B64AEA400527B9C /* BUAAHSetting.m in Sources */,
@@ -865,6 +868,10 @@
 				0739AE341BA12C0C0087A0AA /* MJRefreshHeader.m in Sources */,
 				860647C31B84C121006C27E5 /* MeModel.m in Sources */,
 				866742071B9EC148000E1DAA /* TodayViewController.m in Sources */,
+<<<<<<< HEAD
+=======
+				072D79F01B9EEEDA00560E0B /* NotificationViewController.m in Sources */,
+>>>>>>> e52948b5390445d1408d2f8e3ab81142692c47a4
 				EDE6F2B418F4E3F5001C7755 /* ViewController.m in Sources */,
 				59CBB2301B64AE5000527B9C /* AFHTTPRequestOperationManager.m in Sources */,
 				0739AE351BA12C0C0087A0AA /* MJRefreshAutoGifFooter.m in Sources */,
@@ -883,7 +890,10 @@
 				0739AE331BA12C0C0087A0AA /* MJRefreshFooter.m in Sources */,
 				59AD1C1A1B84697D0035D218 /* HeaderView.m in Sources */,
 				59AD1C1C1B84697D0035D218 /* ScheduleController.m in Sources */,
+<<<<<<< HEAD
 				0739AE401BA12C0C0087A0AA /* UIScrollView+MJExtension.m in Sources */,
+=======
+>>>>>>> e52948b5390445d1408d2f8e3ab81142692c47a4
 				86ED21201B8D3E0F00B98DFA /* MeInfoViewController.m in Sources */,
 				59CBB2341B64AE5000527B9C /* AFURLConnectionOperation.m in Sources */,
 				59CBB24D1B64AE6D00527B9C /* UIButton+AFNetworking.m in Sources */,
@@ -1166,7 +1176,10 @@
 				866742011B9E8448000E1DAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+<<<<<<< HEAD
 			defaultConfigurationName = Release;
+=======
+>>>>>>> e52948b5390445d1408d2f8e3ab81142692c47a4
 		};
 		EDE6F29518F4E3F5001C7755 /* Build configuration list for PBXProject "AnimatTabbarSample" */ = {
 			isa = XCConfigurationList;

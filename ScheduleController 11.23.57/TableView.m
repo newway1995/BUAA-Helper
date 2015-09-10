@@ -362,9 +362,15 @@
     NSString* campus =(NSString*)[BUAAHSetting getValue:EACampus];
     NSArray* classTime ;
     if([campus isEqualToString:@"学院路"])
+<<<<<<< HEAD
         classTime = [[NSArray alloc] initWithObjects:@"1\n8:00",@"2\n8:55",@"3\n9:50",@"4\n10:45",@"5\n14:00",@"6\n14:55",@"7\n15:50",@"8\n16:45",@"9\n18:30",@"10\n19:25",@"11\n20:20",@"12\n21:15",nil];
     else if([campus isEqualToString:@"沙河"])
         classTime= [[NSArray alloc] initWithObjects:@"1\n8:00",@"2\n9:00",@"3\n10:00",@"4\n11:00",@"5\n13:30",@"6\n14:30",@"7\n15:30",@"8\n16:30",@"9\n18:00",@"10\n19:00",@"11\n20:00",@"12\n21:00",nil];
+=======
+        classTime= [[NSArray alloc] initWithObjects:@"1\n8:50",@"2\n9:45",@"3\n10:40",@"4\n11:35",@"5\n14:50",@"6\n15:45",@"7\n16:40",@"8\n17:35",@"9\n19:20",@"10\n20:15",@"11\n21:10",@"12\n22:05",nil];
+    else if([campus isEqualToString:@"沙河"])
+        classTime=[[NSArray alloc] initWithObjects:@"1\n8:50",@"2\n9:50",@"3\n10:50",@"4\n11:50",@"5\n14:20",@"6\n15:20",@"7\n16:20",@"8\n17:20",@"9\n18:50",@"10\n19:50",@"11\n20:50",@"12\n21:50",nil];
+>>>>>>> e52948b5390445d1408d2f8e3ab81142692c47a4
     
     return classTime;
 }
