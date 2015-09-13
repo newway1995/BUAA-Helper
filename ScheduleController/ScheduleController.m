@@ -38,11 +38,10 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    //[BUAAHCoredata initialize];
-//    [BUAAHCoredata insert:@"Schedule" forData:@{@"classroom":@"主M123",@"from":[NSNumber numberWithInt:1],@"last":[NSNumber numberWithInt:2],@"name":@"大学生职业生规划与心理辅导",@"teacher":@"郭耀星",@"date":[[NSNumber alloc] initWithInt:1],@"time":@"1-16"}];
   
     NSThread* myThread = [[NSThread alloc] initWithTarget:self selector:@selector(getSchedule) object:nil];
     [myThread start];
+    [BUAAHCoredata initializeCoredata];
     NSArray* arr = [BUAAHCoredata query:@"Schedule" forSort:nil forPredicate:nil];
    // NSLog(@"%d",[arr count]);
     [self.tableView Schedules:arr];
@@ -117,5 +116,10 @@
         [self.activity removeFromSuperview];
         self.activity=nil;
     }
+}
+
++(void)addSchedule:(NSDictionary*)data{
+    [BUAAHCoredata initializeCoredata];
+    [BUAAHCoredata insert:@"Schedule" forData:data];
 }
 @end

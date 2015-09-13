@@ -87,7 +87,8 @@
                                 NSString* state=[result objectForKey:@"state"];
                                 if([state isEqualToString:@"success"]){
                                     NSArray* data = [result objectForKey:@"data"];
-                                    [BUAAHCoredata initialize];
+                                    [BUAAHCoredata initializeCoredata];
+                                    [BUAAHCoredata clear:@"Schedule"];
                                                       //可能出问题
                                     for(NSDictionary* dict in data){
                                         NSNumber* from = [NSNumber numberWithInt:[[dict objectForKey:@"jie"] intValue]];
@@ -131,19 +132,19 @@
 //
 
 +(void)delete:(Schedule*)object{
-    [BUAAHCoredata initialize];
+    [BUAAHCoredata initializeCoredata];
     [BUAAHCoredata delete:object];
 }
 
 +(void)clear{
-    [BUAAHCoredata initialize];
+    [BUAAHCoredata initializeCoredata];
     [BUAAHCoredata clear:@"Schedule"];
 }
 
 
 
 +(void)insert:(NSDictionary*)data{
-    [BUAAHCoredata initialize];
+    [BUAAHCoredata initializeCoredata];
     [BUAAHCoredata insert:@"Schedule" forData:data];
 }
 

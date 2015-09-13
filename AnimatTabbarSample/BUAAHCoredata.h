@@ -16,7 +16,7 @@
 
 
 
-+(void)initialize;
++(void)initializeCoredata;
 
 +(void)insert:(NSString*)managedObjectName forData:(NSDictionary*)data;
 

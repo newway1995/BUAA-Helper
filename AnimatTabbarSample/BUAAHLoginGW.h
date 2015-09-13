@@ -14,7 +14,7 @@
 
 @interface BUAAHLoginGW : NSObject
 
-+(void)LoginGWWithUsername:(NSString*)username password:(NSString*)password success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
++(void)LoginGWWithUsername:(NSString*__nonnull)username password:(NSString*__nonnull)password success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
 
 
 

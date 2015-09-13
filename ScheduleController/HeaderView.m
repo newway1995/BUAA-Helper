@@ -46,9 +46,9 @@
 
 
 -(CGFloat)getHeight:(NSString*)text{
-    CGSize labelsize = [text sizeWithFont:[UIFont systemFontOfSize:10] constrainedToSize:self.content.frame.size lineBreakMode:UILineBreakModeWordWrap];
-    return labelsize.height+10;
-}
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:10]};
+    CGSize labelsize = [text boundingRectWithSize:self.content.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil].size;
+    return labelsize.width+10;}
 
 
 -(NSString*)getText{

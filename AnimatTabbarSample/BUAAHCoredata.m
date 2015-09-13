@@ -21,7 +21,7 @@ static NSManagedObjectContext *context=nil;
 @implementation BUAAHCoredata
 
 
-+(void)initialize{
++(void)initializeCoredata{
     // 从应用程序包中加载模型文件
     NSManagedObjectModel *model = [NSManagedObjectModel mergedModelFromBundles:nil];
     // 传入模型对象，初始化NSPersistentStoreCoordinator

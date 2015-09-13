@@ -34,7 +34,7 @@ static NSArray* colorArray=nil;
         self.content.font=[UIFont systemFontOfSize:10];
         self.content.center=CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
         self.content.numberOfLines = 0;
-        self.content.lineBreakMode = UILineBreakModeWordWrap;
+        self.content.lineBreakMode = NSLineBreakByWordWrapping;
         //self.content.sizeToFit;
         self.content.textColor = [UIColor whiteColor];
         [self addSubview:self.content];

@@ -17,7 +17,6 @@
     self.selectedYear = @"2009-2010";
     self.selectedTerm = @"1";
     NSMutableString* year = [[NSMutableString alloc] initWithString:self.selectedYear];
-    [year appendString:@"-"];
     [year appendString:self.selectedTerm];
     self.termField.text =year;
     self.termField.delegate=self;
@@ -37,7 +36,7 @@
         [BUAAHSetting setValue:self.termField.text forkey:EATerm];
         [BUAAHSetting setValue:@"YES" forkey:EAChanged];
         [self.navigationController popViewControllerAnimated:YES];
-        [BUAAHCoredata initialize];
+        [BUAAHCoredata initializeCoredata];
         [BUAAHCoredata clear:@"Schedule"];
     }
     else{
@@ -82,7 +81,6 @@
         case 0:
             year = [[NSMutableString alloc]initWithString:[self.year objectAtIndex:row]];
             self.selectedYear=[[NSString alloc] initWithString:year];
-            [year appendString:@"-"];
             [year appendString:self.selectedTerm];
             self.termField.text =year;
             break;
@@ -90,7 +88,6 @@
             term =[NSString stringWithFormat:@"%d",row+1];
             self.selectedTerm=term;
             year = [[NSMutableString alloc] initWithString:self.selectedYear];
-            [year appendString:@"-"];
             [year appendString:self.selectedTerm];
             self.termField.text =year;
             break;

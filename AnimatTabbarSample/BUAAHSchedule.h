@@ -15,17 +15,17 @@
 #import "Schedule.h"
 @interface BUAAHSchedule : NSObject
 
-+(void)getWithUsername:(NSString*)username password:(NSString*)password failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))failure;
++(void)getWithUsername:(NSString*__nonnull)username password:(NSString*__nonnull)password failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))failure;
 
 
-+(void)delete:(Schedule*)object;
++(void)delete:(Schedule*__nonnull)object;
 
 +(void)clear;
 
-+(void)insert:(NSDictionary*)data;
++(void)insert:(NSDictionary*__nonnull)data;
 
 
-+(void)setCookieForUrl:(NSString*)url;
++(void)setCookieForUrl:(NSString*__nonnull)url;
 @end
 
 #endif

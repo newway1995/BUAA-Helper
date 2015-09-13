@@ -57,7 +57,7 @@
 -(void)needDisplay{
     [self clear];
     [self frameDraw];
-    [BUAAHCoredata initialize];
+    [BUAAHCoredata initializeCoredata];
     NSArray* s = [BUAAHCoredata query:@"Schedule" forSort:nil forPredicate:nil];
     [self Schedules:s];
 }
@@ -194,7 +194,7 @@
     
     for(int i=0;i<[self.schedules count];i++){
         Schedule* schedule = [self.schedules objectAtIndex:i];
-        NSInteger date =schedule.date;
+        int date =(int)schedule.date;
         if(schedule.from>=1&&schedule.from<=12&&
            schedule.last+schedule.from-1<=12&&
            date>=1&&date<=7){
@@ -240,11 +240,11 @@
         
     }
     
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *now;
     NSDateComponents *comps = [[NSDateComponents alloc] init];
-    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
-    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday |
+    NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     now=[NSDate date];
 
     comps = [calendar components:unitFlags fromDate:now];
@@ -260,7 +260,7 @@
 -(void)longPress:(UILongPressGestureRecognizer*)press{
     if([press.view isMemberOfClass:[TableCell class]]){
         if (press.state == UIGestureRecognizerStateBegan) {
-            self.willDeleteCell = press.view;
+            self.willDeleteCell = (TableCell*)press.view;
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"确定要删除？" message:@"确认要删除此处的课程么？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"删除", nil];
             alertView.delegate=self;
             [alertView show];
@@ -271,7 +271,7 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex==1){
-        [BUAAHCoredata initialize];
+        [BUAAHCoredata initializeCoredata];
         
         [BUAAHCoredata delete:[self.schedules objectAtIndex:self.willDeleteCell.index]];
         [self.schedules removeObjectAtIndex:self.willDeleteCell.index];

@@ -14,26 +14,26 @@
 
 @interface BUAAHNetworking : NSObject
 
-+(void)getHTML:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
++(void)getHTML:(NSString*__nonnull)url parameters:(NSDictionary*__nullable)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
 (nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
 
 
-+(void)getJSON:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
++(void)getJSON:(NSString*__nonnull)url parameters:(NSDictionary*__nullable)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
 (nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
 
 
-+(void)postHTML:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
++(void)postHTML:(NSString*__nonnull)url parameters:(NSDictionary*__nullable)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
 (nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
 
 
-+(void)postJSON:(NSString*)url parameters:(NSDictionary*)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
++(void)postJSON:(NSString*__nonnull)url parameters:(NSDictionary*__nullable)param success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
 (nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
 
-+(void)postImage:(NSString*)url parameters:(NSDictionary*)param filepath:(NSURL*)path success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
++(void)postImage:(NSString*__nonnull)url parameters:(NSDictionary*__nullable)param filepath:(NSURL*__nonnull)path success:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:
 (nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure;
 
 
-+ (NSString *)md5:(NSString*)input;
++ (NSString*__nonnull)md5:(NSString*__nonnull)input;
 
 @end
 
