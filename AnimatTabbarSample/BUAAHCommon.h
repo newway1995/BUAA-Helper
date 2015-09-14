@@ -23,6 +23,8 @@ extern NSString* const scheduleUrl4;
 extern NSString* const scheduleUrl5;
 extern NSString* const scheduleUrl6;
 extern NSString* const scheduleUrl7;
+extern NSString* const mapKey;
+
 extern NSString* const EATerm ;
 extern NSString* const EAUsername ;
 extern NSString* const EAPassword ;

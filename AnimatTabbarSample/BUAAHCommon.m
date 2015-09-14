@@ -20,6 +20,7 @@
  NSString* const scheduleUrl5=@"http://10.200.21.61:7001/ieas2.1/welcome";
  NSString* const scheduleUrl6=@"http://10.200.21.61:7001/ieas2.1/kbcx/queryGrkb";
  NSString* const scheduleUrl7=@"http://218.241.236.84:25612/getcla";
+ NSString* const mapKey=@"b121792b92f1bacba6efb369ee231b2c";
 
 
  NSString* const EATerm = @"EATerm";
