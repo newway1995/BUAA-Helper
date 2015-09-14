@@ -41,9 +41,7 @@ static BOOL gatewayStatus = NO;
             [self rocketComeBack];
             [button setText:@"认 证" withTextColor:[UIColor whiteColor]];
             button.backgroundColor = [UIColor colorWithRed:153.0f/255.0f green:204.0f/255.0f blue:0 alpha:1.0f];
-            /*
-             * 断开连接
-             */
+            [BUAAHLoginGW LogoutGW:nil failure:nil];
             gatewayStatus = NO;
         } else {
             [self rocketLaunch];
