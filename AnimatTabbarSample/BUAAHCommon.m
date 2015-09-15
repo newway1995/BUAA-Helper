@@ -11,14 +11,16 @@
 
  NSString* const baseUrl =@"https://alpha-api.app.net/stream/0/posts/stream/global";
  NSString* const loginUrl =@"http://202.112.136.131/cgi-bin/do_login";
+ NSString* const logoutUrl =@"http://202.112.136.131/cgi-bin/do_logout";
  NSString* const testUrl=@"http://1.gyxpost.sinaapp.com";
  NSString* const scheduleUrl1=@"https://sso.buaa.edu.cn/login";
- NSString* const scheduleUrl2=@"http://192.168.199.102:5000/getima";
+ NSString* const scheduleUrl2=@"http://218.241.236.84:25612/getima";
  NSString* const scheduleUrl3=@"https://sso.buaa.edu.cn/login";
  NSString* const scheduleUrl4=@"http://10.200.21.61:7001/ieas2.1/";
  NSString* const scheduleUrl5=@"http://10.200.21.61:7001/ieas2.1/welcome";
- NSString* const scheduleUrl6=@"http://10.200.21.61:7001/ieas2.1/cxkb/queryxskb";
- NSString* const scheduleUrl7=@"http://192.168.199.102:5000/getcla";
+ NSString* const scheduleUrl6=@"http://10.200.21.61:7001/ieas2.1/kbcx/queryGrkb";
+ NSString* const scheduleUrl7=@"http://218.241.236.84:25612/getcla";
+ NSString* const mapKey=@"b121792b92f1bacba6efb369ee231b2c";
 
 
  NSString* const EATerm = @"EATerm";

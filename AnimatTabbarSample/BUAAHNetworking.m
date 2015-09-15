@@ -28,23 +28,12 @@
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-//    manager.requestSerializer.timeoutInterval = 10.f;
-//    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 10.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager GET:url parameters:param success:success failure:failure];
     
     
-//    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-//    NSArray* cookies= [cookieJar cookies];
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-//    [request setHTTPMethod:@"GET"];
-//    NSDictionary *sheaders = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
-//    [request setAllHTTPHeaderFields:sheaders];
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    operation.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    
-//    [operation setCompletionBlockWithSuccess:success failure:failure];
-//    [operation start];
 }
 
 
@@ -56,9 +45,9 @@
     // 设置返回格式
     //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    //    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    //    manager.requestSerializer.timeoutInterval = 10.f;
-    //    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 10.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     //  [BUAAHSchedule setCookieForUrl:scheduleUrl1];
     [manager POST:url parameters:param success:success failure:failure];
     
@@ -81,9 +70,9 @@
     // 设置返回格式
     //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-//    manager.requestSerializer.timeoutInterval = 10.f;
-//    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 10.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
           //  [BUAAHSchedule setCookieForUrl:scheduleUrl1];
    [manager POST:url parameters:param success:success failure:failure];
 
@@ -110,22 +99,14 @@
     // 设置返回格式
     //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    //    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    //    manager.requestSerializer.timeoutInterval = 10.f;
-    //    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 10.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     //  [BUAAHSchedule setCookieForUrl:scheduleUrl1];
     [manager POST:url parameters:param success:success failure:failure];
     
     
     
-    
-    
-    //    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    //    operation.responseSerializer = [AFHTTPResponseSerializer serializer];
-    //
-    //    [operation setCompletionBlockWithSuccess:success failure:failure];
-    //    [operation start];
-    //    
 }
 
 
@@ -158,7 +139,7 @@ success failure:
 {
     const char *cStr = [str UTF8String];
     unsigned char result[16];
-    CC_MD5( cStr, strlen(cStr), result ); // This is the md5 call
+    CC_MD5( cStr, (CC_LONG)strlen(cStr), result ); // This is the md5 call
     return [NSString stringWithFormat:
             @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
             result[0], result[1], result[2], result[3],

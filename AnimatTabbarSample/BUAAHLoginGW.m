@@ -22,6 +22,13 @@
     
 }
 
+
++(void)LogoutGW:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))success failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,NSError *__nonnull __strong))failure
+{
+    [BUAAHNetworking getHTML:logoutUrl parameters:nil success:success failure:failure];
+    
+}
+
 @end
 
 /**
