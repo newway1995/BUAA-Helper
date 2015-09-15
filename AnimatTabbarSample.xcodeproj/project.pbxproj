@@ -209,6 +209,7 @@
 		8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayLoginViewController.m; sourceTree = "<group>"; };
 		863929BA1B9E58FF008B5FF8 /* GatewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayViewController.m; sourceTree = "<group>"; };
 		865AD6241BA83CD400AB6CA8 /* AnimatTabbarSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AnimatTabbarSample.entitlements; sourceTree = "<group>"; };
+		865AD6251BA845FC00AB6CA8 /* GatewayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GatewayWidget.entitlements; sourceTree = "<group>"; };
 		866741F11B9E8448000E1DAA /* GatewayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GatewayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		866741F21B9E8448000E1DAA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		866741F61B9E8448000E1DAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -424,6 +425,7 @@
 		866741F41B9E8448000E1DAA /* GatewayWidget */ = {
 			isa = PBXGroup;
 			children = (
+				865AD6251BA845FC00AB6CA8 /* GatewayWidget.entitlements */,
 				866741F71B9E8448000E1DAA /* TodayViewController.h */,
 				866741F81B9E8448000E1DAA /* TodayViewController.m */,
 				866741FA1B9E8448000E1DAA /* MainInterface.storyboard */,
@@ -604,6 +606,12 @@
 				TargetAttributes = {
 					866741F01B9E8448000E1DAA = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = PF8XVCXLSV;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					EDE6F29918F4E3F5001C7755 = {
 						DevelopmentTeam = PF8XVCXLSV;
@@ -799,6 +807,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = GatewayWidget/GatewayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -813,6 +824,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -822,6 +834,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = GatewayWidget/GatewayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -833,6 +848,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
