@@ -99,6 +99,23 @@
 {
     NSError *serializationError = nil;
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method URLString:[[NSURL URLWithString:URLString relativeToURL:self.baseURL] absoluteString] parameters:parameters error:&serializationError];
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    
+    
+    
+    NSArray* cookies= [cookieJar cookies];
+    if([cookies count]>0){
+        NSDictionary *sheaders = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
+        [request setAllHTTPHeaderFields:sheaders];
+        
+    }
+//    for(NSHTTPCookie* cookie in cookies){
+//        NSLog(@"%@",cookies);
+//    }
+
+    
+    
+    
     if (serializationError) {
         if (failure) {
 #pragma clang diagnostic push
@@ -139,8 +156,8 @@
                         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
+    
     AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithHTTPMethod:@"GET" URLString:URLString parameters:parameters success:success failure:failure];
-
     [self.operationQueue addOperation:operation];
 
     return operation;

@@ -24,13 +24,15 @@
         
         self.content=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         self.content.textAlignment=NSTextAlignmentCenter;
-        self.content.font=[UIFont systemFontOfSize:12];
+        self.content.font=[UIFont systemFontOfSize:10];
         self.content.center=CGPointMake(self.frame.size.width*0.5, self.frame.size.height-self.frame.size.height*0.5);
         self.content.numberOfLines = 0;
         [self addSubview:self.content];
         self.layer.borderWidth = 1;
-        self.layer.borderColor = [[UIColor blackColor] CGColor];
-        self.backgroundColor = [UIColor colorWithRed:245.0f/255.0f green:245.0f/255.0f blue:245.0f/255.0f alpha:1];
+        self.layer.borderColor = [[UIColor colorWithRed:245.0f/255.0f green:245.0f/255.0f blue:245.0f/255.0f alpha:1] CGColor];
+        self.backgroundColor = [UIColor colorWithRed:224.0f/255.0f green:248.0/255.0f blue:232.0f/255.0f alpha:1];
+        
+
 
 
     }
@@ -38,6 +40,9 @@
 }
 
 
+-(void)setColor:(UIColor*)color{
+    self.backgroundColor =color;
+}
 
 -(void)setText:(NSString*)text{
     if(text!=nil)
@@ -49,5 +54,12 @@
 -(NSString*)getText{
     return self.content.text;
 }
+
+
+-(CGFloat)getWidth:(NSString*)text{
+    CGSize labelsize = [text sizeWithFont:[UIFont systemFontOfSize:10] constrainedToSize:self.content.frame.size lineBreakMode:UILineBreakModeWordWrap];
+    return labelsize.width+10;
+}
+
 
 @end

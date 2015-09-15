@@ -18,6 +18,8 @@
 
 -(void)setText:(NSString*)text;
 -(NSString*)getText;
+-(CGFloat)getWidth:(NSString*)text;
+-(void)setColor:(UIColor*)color;
 @end
 
 #endif

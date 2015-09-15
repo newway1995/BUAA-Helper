@@ -68,7 +68,7 @@
     if (section == 0){
         return  1;
     } else if (section == 1){
-        return 2;
+        return 1;
     }  else {
         return 0;
     }
@@ -149,8 +149,6 @@
         UIFont *font = [UIFont fontWithName:@"Arial" size:16];
         [cell.textLabel setFont:font];
         if (indexPath.row == 0){
-            cell.textLabel.text = @"账号设置";
-        } else if (indexPath.row == 1){
             cell.textLabel.text = @"课表设置";
         }
     }
@@ -168,10 +166,6 @@
         MeEditViewController *edit = [[MeEditViewController alloc] init];
         NSString *tag = [[NSString alloc] init];
         if (indexPath.row == 0){
-            tag = @"accountSetting";
-            [edit setTag:tag];
-            [self.navigationController pushViewController:edit animated:YES];
-        } else if (indexPath.row == 1){
             tag = @"celanderSetting";
             [edit setTag:tag];
             [self.navigationController pushViewController:edit animated:YES];

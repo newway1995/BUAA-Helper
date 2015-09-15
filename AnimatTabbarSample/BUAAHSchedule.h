@@ -15,7 +15,7 @@
 #import "Schedule.h"
 @interface BUAAHSchedule : NSObject
 
-+(void)getWithUsername:(NSString*)username password:password;
++(void)getWithUsername:(NSString*)username password:(NSString*)password failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))failure;
 
 
 +(void)delete:(Schedule*)object;
@@ -23,6 +23,9 @@
 +(void)clear;
 
 +(void)insert:(NSDictionary*)data;
+
+
++(void)setCookieForUrl:(NSString*)url;
 @end
 
 #endif

@@ -8,7 +8,7 @@
 
 #ifndef BUAAHSetting_h
 #define BUAAHSetting_h
-
+#import "BUAAHCommon.h"
 
 @interface BUAAHSetting:NSObject
 
