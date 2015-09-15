@@ -208,6 +208,7 @@
 		8609F2661B6FDB2D00682928 /* GatewayLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatewayLoginViewController.h; sourceTree = "<group>"; };
 		8609F2671B6FDB2D00682928 /* GatewayLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayLoginViewController.m; sourceTree = "<group>"; };
 		863929BA1B9E58FF008B5FF8 /* GatewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayViewController.m; sourceTree = "<group>"; };
+		865AD6241BA83CD400AB6CA8 /* AnimatTabbarSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AnimatTabbarSample.entitlements; sourceTree = "<group>"; };
 		866741F11B9E8448000E1DAA /* GatewayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GatewayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		866741F21B9E8448000E1DAA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		866741F61B9E8448000E1DAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -491,6 +492,7 @@
 		EDE6F2A318F4E3F5001C7755 /* AnimatTabbarSample */ = {
 			isa = PBXGroup;
 			children = (
+				865AD6241BA83CD400AB6CA8 /* AnimatTabbarSample.entitlements */,
 				072D79ED1B9EEE7100560E0B /* notification */,
 				860647BA1B82C139006C27E5 /* Me */,
 				8609F25F1B6FDA1700682928 /* GatewayLogin */,
@@ -602,6 +604,14 @@
 				TargetAttributes = {
 					866741F01B9E8448000E1DAA = {
 						CreatedOnToolsVersion = 6.4;
+					};
+					EDE6F29918F4E3F5001C7755 = {
+						DevelopmentTeam = PF8XVCXLSV;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					EDE6F2BA18F4E3F6001C7755 = {
 						TestTargetID = EDE6F29918F4E3F5001C7755;
@@ -903,10 +913,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = AnimatTabbarSample/AnimatTabbarSample.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnimatTabbarSample/AnimatTabbarSample-Prefix.pch";
 				INFOPLIST_FILE = "AnimatTabbarSample/AnimatTabbarSample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -917,10 +931,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = AnimatTabbarSample/AnimatTabbarSample.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnimatTabbarSample/AnimatTabbarSample-Prefix.pch";
 				INFOPLIST_FILE = "AnimatTabbarSample/AnimatTabbarSample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -976,6 +994,7 @@
 				866742011B9E8448000E1DAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EDE6F29518F4E3F5001C7755 /* Build configuration list for PBXProject "AnimatTabbarSample" */ = {
 			isa = XCConfigurationList;
