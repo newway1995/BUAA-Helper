@@ -67,6 +67,9 @@
                                   [self alertWithMessage:message];
                               }];
 }
+- (IBAction)disconnect:(id)sender {
+    [BUAAHLoginGW LogoutGW:nil failure:nil];
+}
 
 
 -(UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets{

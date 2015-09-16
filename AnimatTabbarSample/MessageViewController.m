@@ -8,6 +8,7 @@
 
 #import "MessageViewController.h"
 #import "MapViewController.h"
+#import "BusScheduleViewController.h"
 
 @interface MessageViewController ()<UITableViewDelegate,UITableViewDataSource>{
     UITableView *_tableView;
@@ -22,14 +23,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _tableView.delegate =self;
     _tableView.dataSource =self;
     _tableView.bounces=NO;
     _tableView.showsVerticalScrollIndicator = NO;//不显示右侧滑块
     _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;//分割线
-
+    
     [self.view addSubview:_tableView];
 }
 
@@ -86,6 +86,7 @@
         UIFont *newFont = [UIFont fontWithName:@"Arial" size:16.0];
         //创建完字体格式之后就告诉cell
         cell.textLabel.font = newFont;
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     if (indexPath.section == 0){
@@ -110,6 +111,9 @@
         if (indexPath.row == 0){
             MapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
             [self.navigationController pushViewController:mapViewController animated:YES];
+        } else if (indexPath.row == 1){
+            BusScheduleViewController *busScheduleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BusScheduleViewController"];
+            [self.navigationController pushViewController:busScheduleViewController animated:YES];
         }
     }
 }

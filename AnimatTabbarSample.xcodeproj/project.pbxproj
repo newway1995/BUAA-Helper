@@ -104,6 +104,8 @@
 		866742BE1B9ECF6A000E1DAA /* BUAAHCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 593E37E51B7B2D9800524E76 /* BUAAHCommon.m */; };
 		867553BD1B6FF0F7001FE26B /* WZFlashButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 867553BC1B6FF0F7001FE26B /* WZFlashButton.m */; };
 		867D902A1BA93A4C00C6C533 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 867D90291BA93A4C00C6C533 /* MessageViewController.m */; };
+		86E86D9F1BA984D700AC44F0 /* BusScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E86D9E1BA984D700AC44F0 /* BusScheduleViewController.m */; };
+		86E86DA21BA991FF00AC44F0 /* BusSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E86DA11BA991FF00AC44F0 /* BusSchedule.m */; };
 		86ED21201B8D3E0F00B98DFA /* MeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86ED211F1B8D3E0F00B98DFA /* MeInfoViewController.m */; };
 		EDE6F29E18F4E3F5001C7755 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29D18F4E3F5001C7755 /* Foundation.framework */; };
 		EDE6F2A018F4E3F5001C7755 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */; };
@@ -306,6 +308,10 @@
 		867553BC1B6FF0F7001FE26B /* WZFlashButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZFlashButton.m; path = AnimatTabbarSample/WZFlashButton.m; sourceTree = "<group>"; };
 		867D90281BA93A4C00C6C533 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		867D90291BA93A4C00C6C533 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		86E86D9D1BA984D700AC44F0 /* BusScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusScheduleViewController.h; sourceTree = "<group>"; };
+		86E86D9E1BA984D700AC44F0 /* BusScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusScheduleViewController.m; sourceTree = "<group>"; };
+		86E86DA01BA991FF00AC44F0 /* BusSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusSchedule.h; sourceTree = "<group>"; };
+		86E86DA11BA991FF00AC44F0 /* BusSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusSchedule.m; sourceTree = "<group>"; };
 		86ED211E1B8D3E0F00B98DFA /* MeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeInfoViewController.h; sourceTree = "<group>"; };
 		86ED211F1B8D3E0F00B98DFA /* MeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeInfoViewController.m; sourceTree = "<group>"; };
 		EDE6F29A18F4E3F5001C7755 /* AnimatTabbarSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatTabbarSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -652,6 +658,17 @@
 			name = Message;
 			sourceTree = "<group>";
 		};
+		86E86D9C1BA984C000AC44F0 /* BusSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				86E86D9D1BA984D700AC44F0 /* BusScheduleViewController.h */,
+				86E86D9E1BA984D700AC44F0 /* BusScheduleViewController.m */,
+				86E86DA01BA991FF00AC44F0 /* BusSchedule.h */,
+				86E86DA11BA991FF00AC44F0 /* BusSchedule.m */,
+			);
+			name = BusSchedule;
+			sourceTree = "<group>";
+		};
 		EDE6F29118F4E3F5001C7755 = {
 			isa = PBXGroup;
 			children = (
@@ -711,6 +728,7 @@
 		EDE6F2A318F4E3F5001C7755 /* AnimatTabbarSample */ = {
 			isa = PBXGroup;
 			children = (
+				86E86D9C1BA984C000AC44F0 /* BusSchedule */,
 				867D90271BA93A2900C6C533 /* Message */,
 				865AD6241BA83CD400AB6CA8 /* AnimatTabbarSample.entitlements */,
 				072D79ED1B9EEE7100560E0B /* notification */,
@@ -932,6 +950,7 @@
 				867D902A1BA93A4C00C6C533 /* MessageViewController.m in Sources */,
 				865AD65A1BA84E8F00AB6CA8 /* MJRefreshAutoNormalFooter.m in Sources */,
 				591CCC7B1B65BF7F0049F3F4 /* Schedule.m in Sources */,
+				86E86D9F1BA984D700AC44F0 /* BusScheduleViewController.m in Sources */,
 				865AD6661BA84E8F00AB6CA8 /* UIView+MJExtension.m in Sources */,
 				59CBB24E1B64AE6D00527B9C /* UIImageView+AFNetworking.m in Sources */,
 				865AD65D1BA84E8F00AB6CA8 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -977,6 +996,7 @@
 				59AD1C1B1B84697D0035D218 /* ProfileView.m in Sources */,
 				865AD6841BA8628000AB6CA8 /* CustomCell.m in Sources */,
 				598A01301B7637500049E959 /* BUAAHSchedule.m in Sources */,
+				86E86DA21BA991FF00AC44F0 /* BusSchedule.m in Sources */,
 				59CBB24C1B64AE6D00527B9C /* UIAlertView+AFNetworking.m in Sources */,
 				59CBB2351B64AE5000527B9C /* AFURLRequestSerialization.m in Sources */,
 				59CBB24A1B64AE6D00527B9C /* AFNetworkActivityIndicatorManager.m in Sources */,
