@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordText; // 密码
 @property (weak, nonatomic) IBOutlet UIImageView *accountIcon;  // 账号图标
 @property (weak, nonatomic) IBOutlet UIImageView *passwordIcon; // 密码图标
-@property (weak, nonatomic) NSUserDefaults *userDefaults;        // 存储信息
 @end
 
 @implementation GatewayLoginViewController
@@ -71,9 +70,9 @@ static float cornerRadius = 5.0;    // View圆角大小
             NSString *password = self.passwordText.text;
             
             // 储存用户账号密码
-            _userDefaults = [NSUserDefaults standardUserDefaults];
-            [_userDefaults setObject:account forKey:@"gatewayAccount"];
-            [_userDefaults setObject:password forKey:@"gatewayPassword"];
+            NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.BUAA.BUAAHelper"];
+            [userDefaults setObject:account forKey:@"gatewayAccount"];
+            [userDefaults setObject:password forKey:@"gatewayPassword"];
             
             alert.message = @"保存成功";
             [self presentViewController:alert animated:YES completion:nil]; // 保存成功提示
@@ -87,9 +86,9 @@ static float cornerRadius = 5.0;    // View圆角大小
  *  更新UI所需信息
  */
 - (void)updateUI{
-    _userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *account = [_userDefaults objectForKey:@"gatewayAccount"];
-    NSString *password = [_userDefaults objectForKey:@"gatewayPassword"];
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.BUAA.BUAAHelper"];
+    NSString *account = [userDefaults objectForKey:@"gatewayAccount"];
+    NSString *password = [userDefaults objectForKey:@"gatewayPassword"];
     
     NSLog(@"the account is %@",account);
     NSLog(@"the password is %@",password);

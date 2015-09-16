@@ -249,11 +249,7 @@
         [userDefaults setObject:message forKey:@"college"];
         [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.tag isEqualToString:@"celanderSetting"]){
-<<<<<<< HEAD
-        [userDefaults setObject:message forKey:@"Campus"];
-=======
         [userDefaults setObject:message forKey:@"EACampus"];
->>>>>>> 880d787d0c45e07520ad20091a8e5e8833bc73f6
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.navigationController popViewControllerAnimated:YES];

@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "IconNotification.png"
+      "filename" : "通知icon 44*44.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "信息icon 44*44-1.png"
+      "filename" : "通知icon 44*44-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "信息icon 44*44-1-1.png"
+      "filename" : "通知icon 64*64.png"
     }
   ],
   "info" : {

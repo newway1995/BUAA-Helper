@@ -46,7 +46,7 @@ static BOOL gatewayStatus = NO;
         } else {
             [self rocketLaunch];
             
-            _userDefaults = [NSUserDefaults standardUserDefaults];
+            _userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.BUAA.BUAAHelper"];
             NSString *username = [_userDefaults objectForKey:@"gatewayAccount"];
             NSString *password = [_userDefaults objectForKey:@"gatewayPassword"];
             
