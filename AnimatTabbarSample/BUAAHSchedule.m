@@ -153,7 +153,7 @@
     success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
         NSString* result = [[NSString alloc] initWithData:responseObject encoding:gbkEncoding];
-        //NSLog(@"1:%@",result);
+        NSLog(@"1:%@",result);
         //判断是否成功登陆，如果不成功要返回。
         if([result rangeOfString:@"indexForm"].location!=NSNotFound){
             NSNotification *notification = [NSNotification notificationWithName:@"EAUsernameError" object:nil];
@@ -164,7 +164,7 @@
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
             NSString* result = [[NSString alloc] initWithData:responseObject encoding:gbkEncoding];
-            NSLog(@"2:%@",result);
+            NSLog(@"2:%@",responseObject);
             
             NSString* term = (NSString*)[BUAAHSetting getValue:EATerm];
             NSString* xq=[term substringWithRange:NSMakeRange(9, 1)];

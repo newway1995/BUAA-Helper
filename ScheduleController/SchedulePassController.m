@@ -14,12 +14,13 @@
 
 @interface SchedulePassController()
 @property GType gtype;
+@property BOOL getImage;
 @end
 
 @implementation SchedulePassController
 
 - (IBAction)findSY:(id)sender {
-    if(self.gtype!=Graduated){
+    if(self.getImage==NO){
         if([self.usernameField.text rangeOfString:@"sy"].location!=NSNotFound||
            [self.usernameField.text rangeOfString:@"SY"].location!=NSNotFound){
             self.gtype = Graduated;
@@ -29,6 +30,7 @@
             self.identifyingImage.image=result;
             self.identifyingField.hidden=NO;
             self.identifyingImage.hidden=NO;
+            self.getImage=YES;
         }
     }
     
@@ -36,6 +38,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+
     self.year = [[NSArray alloc] initWithObjects:@"2014-2015",@"2015-2016", nil];
     self.selectedYear = @"2014-2015";
     self.selectedTerm = @"2";
@@ -50,6 +53,14 @@
     self.gtype= Undergraduate;
     self.identifyingImage.hidden=YES;
     self.identifyingField.hidden=YES;
+
+   [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapView:)]];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.getImage=NO;
     if([BUAAHSetting getValue:EAUsername]!=nil){
         self.usernameField.text = (NSString*)[BUAAHSetting getValue:EAUsername];
         if([self.usernameField.text rangeOfString:@"sy"].location!=NSNotFound||
@@ -61,14 +72,13 @@
             self.identifyingImage.image=result;
             self.identifyingField.hidden=NO;
             self.identifyingImage.hidden=NO;
+            self.getImage=YES;
         }
     }
     if([BUAAHSetting getValue:EAPassword]!=nil){
         self.passwordField.text = (NSString*)[BUAAHSetting getValue:EAPassword];
         
     }
-   [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapView:)]];
-
 }
 
 -(void)tapView:(UITapGestureRecognizer *)tap
