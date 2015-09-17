@@ -9,13 +9,36 @@
 #import "SchedulePassController.h"
 #import "BUAAHSetting.h"
 #import "BUAAHCoredata.h"
+
+
+
+@interface SchedulePassController()
+@property GType gtype;
+@end
+
 @implementation SchedulePassController
+
+- (IBAction)findSY:(id)sender {
+    if(self.gtype!=Graduated){
+        if([self.usernameField.text rangeOfString:@"sy"].location!=NSNotFound||
+           [self.usernameField.text rangeOfString:@"SY"].location!=NSNotFound){
+            self.gtype = Graduated;
+            UIImage * result;
+            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:identifyingImageUrl]];
+            result = [UIImage imageWithData:data];
+            self.identifyingImage.image=result;
+            self.identifyingField.hidden=NO;
+            self.identifyingImage.hidden=NO;
+        }
+    }
+    
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    self.year = [[NSArray alloc] initWithObjects:@"2009-2010",@"2010-2011",@"2011-2012",@"2012-2013",@"2013-2014",@"2014-2015",@"2015-2016", nil];
-    self.selectedYear = @"2009-2010";
-    self.selectedTerm = @"1";
+    self.year = [[NSArray alloc] initWithObjects:@"2014-2015",@"2015-2016", nil];
+    self.selectedYear = @"2014-2015";
+    self.selectedTerm = @"2";
     NSMutableString* year = [[NSMutableString alloc] initWithString:self.selectedYear];
     [year appendString:self.selectedTerm];
     self.termField.text =year;
@@ -24,8 +47,44 @@
     self.picker.dataSource = self;
     self.picker.delegate = self;
     self.picker.hidden=YES;
+    self.gtype= Undergraduate;
+    self.identifyingImage.hidden=YES;
+    self.identifyingField.hidden=YES;
+    if([BUAAHSetting getValue:EAUsername]!=nil){
+        self.usernameField.text = (NSString*)[BUAAHSetting getValue:EAUsername];
+        if([self.usernameField.text rangeOfString:@"sy"].location!=NSNotFound||
+           [self.usernameField.text rangeOfString:@"SY"].location!=NSNotFound){
+            self.gtype=Graduated;
+            UIImage * result;
+            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:identifyingImageUrl]];
+            result = [UIImage imageWithData:data];
+            self.identifyingImage.image=result;
+            self.identifyingField.hidden=NO;
+            self.identifyingImage.hidden=NO;
+        }
+    }
+    if([BUAAHSetting getValue:EAPassword]!=nil){
+        self.passwordField.text = (NSString*)[BUAAHSetting getValue:EAPassword];
+        
+    }
+   [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapView:)]];
 
 }
+
+-(void)tapView:(UITapGestureRecognizer *)tap
+{
+    
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    CATransition *animation = [CATransition animation];
+    animation.type = kCATransitionPush;
+    animation.subtype= kCATransitionFromBottom;
+    animation.duration = 0.4;
+    [self.picker.layer addAnimation:animation forKey:nil];
+    self.picker.hidden=true;
+}
+
+
 
 - (IBAction)confirm:(id)sender {
     if(![self isBlankString:self.usernameField.text ]&&
@@ -38,6 +97,10 @@
         [self.navigationController popViewControllerAnimated:YES];
         [BUAAHCoredata initializeCoredata];
         [BUAAHCoredata clear:@"Schedule"];
+        if(self.gtype==Graduated){
+            [BUAAHSetting setValue:self.identifyingField.text forkey:EAIdentifying];
+        }
+       
     }
     else{
         UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"" message:@"您输入的信息不完整" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -85,7 +148,7 @@
             self.termField.text =year;
             break;
         case 1:
-            term =[NSString stringWithFormat:@"%d",row+1];
+            term =[NSString stringWithFormat:@"%ld",row+1];
             self.selectedTerm=term;
             year = [[NSMutableString alloc] initWithString:self.selectedYear];
             [year appendString:self.selectedTerm];

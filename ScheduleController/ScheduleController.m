@@ -14,6 +14,10 @@
 #import "BUAAHCommon.h"
 #import "SchedulePassController.h"
 
+
+
+#import "BUAAHGrade.h"
+
 @interface ScheduleController()
 
 -(void)getSchedule;
@@ -31,8 +35,6 @@
     if([BUAAHSetting getValue:EAChanged]==nil){
         [BUAAHSetting setValue:@"YES" forkey:EAChanged];
     }
-    
-
 
     
 }
@@ -45,6 +47,7 @@
     NSArray* arr = [BUAAHCoredata query:@"Schedule" forSort:nil forPredicate:nil];
    // NSLog(@"%d",[arr count]);
     [self.tableView Schedules:arr];
+   
     [self.baseView addSubview:self.tableView];
     
 
@@ -70,6 +73,7 @@
         if([isChanged isEqualToString:@"NO"])
             return ;
         
+        
         self.activity = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];//指定进度轮的大小
         
         [self.activity setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2)];//指定进度轮中心点
@@ -80,18 +84,35 @@
         
         [self.activity startAnimating];
 
-        [BUAAHSchedule getWithUsername:username password:password failure:^(AFHTTPRequestOperation *operation, NSError* error) {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
-            [alertController addAction:okAction];
-            [self presentViewController:alertController animated:YES completion:nil];
-            [self removeActivityIndicatorView];
-            NSLog(@"%@",error);
-        }];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(needDisplay) name:@"ViewControllerShouldReloadNotification" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usernameError) name:@"UsernameError" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActivityIndicatorView) name:@"Success" object:nil];
+        if([username rangeOfString:@"sy"].location==NSNotFound&&[username rangeOfString:@"SY"].location==NSNotFound){
+            //本科生
+            [BUAAHSchedule getWithUsernameUndergraduate:username password:password failure:^(AFHTTPRequestOperation *operation, NSError* error) {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:okAction];
+                [self presentViewController:alertController animated:YES completion:nil];
+                [self removeActivityIndicatorView];
+                NSLog(@"%@",error);
+            }];
+        }
+        else{
+            //研究生
+            [BUAAHSchedule getWithUsernameGraduated:username password:password failure:^(AFHTTPRequestOperation *operation, NSError* error) {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:okAction];
+                [self presentViewController:alertController animated:YES completion:nil];
+                [self removeActivityIndicatorView];
+                NSLog(@"%@",error);
+            }];
+        }
+
+ 
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(needDisplay) name:@"EANeedDisplay" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usernameError) name:@"EAUsernameError" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActivityIndicatorView) name:@"EASuccess" object:nil];
     }
 }
 
@@ -101,10 +122,23 @@
 }
 
 -(void)usernameError{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:@"用户名密码错误" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController;
+    NSString* username = (NSString*)[BUAAHSetting getValue:EAUsername];
+    if([username rangeOfString:@"sy"].location==NSNotFound&&[username rangeOfString:@"SY"].location==NSNotFound){
+        //本科生
+        alertController= [UIAlertController alertControllerWithTitle:@"错误" message:@"用户名密码错误" preferredStyle:UIAlertControllerStyleAlert];
+    }
+    else{
+        alertController= [UIAlertController alertControllerWithTitle:@"错误" message:@"用户名密码或验证码错误，请重新填写验证码" preferredStyle:UIAlertControllerStyleAlert];
+    }
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
+    [self removeActivityIndicatorView];
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    //由storyboard根据myView的storyBoardID来获取我们要切换的视图
+    SchedulePassController *schedulePassController = [story instantiateViewControllerWithIdentifier:@"SchedulePass"];
+    [self.navigationController pushViewController:schedulePassController animated:YES];
 }
 - (IBAction)refresh:(id)sender {
     [BUAAHSetting setValue:@"YES" forkey:EAChanged];
@@ -122,4 +156,6 @@
     [BUAAHCoredata initializeCoredata];
     [BUAAHCoredata insert:@"Schedule" forData:data];
 }
+
+
 @end

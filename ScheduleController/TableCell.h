@@ -9,13 +9,11 @@
 #ifndef config_TableCell_h
 #define config_TableCell_h
 #import <UIKit/UIKit.h>
+#import "ScheduleData.h"
 
 @interface TableCell : UIView
 
-@property NSInteger from;
-@property NSInteger last;
-@property int date;    //时间所对应的表格列数
-@property uint index;
+@property ScheduleData* data;
 
 -(void)setText:(NSString*)text;
 -(NSString*)getText;

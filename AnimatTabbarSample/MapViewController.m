@@ -9,8 +9,8 @@
 #import "MapViewController.h"
 #import <MAMapKit/MAMapKit.h>
 #import "BUAAHCommon.h"
-
-@interface MapViewController () <MAMapViewDelegate>
+#import <AMapSearchKit/AMapSearchAPI.h>
+@interface MapViewController () <MAMapViewDelegate,AMapSearchDelegate>
 
 
 @property MAMapView *mapView;
@@ -18,6 +18,13 @@
 @property CLLocationCoordinate2D xueyuanlu;
 @property MACoordinateRegion region;
 @property CLLocationManager* locationManager;
+@property AMapSearchAPI* search;
+@property NSString* searchingStr;
+@property NSMutableArray* hints;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property CGFloat cellHeight;
+@property BOOL first;
 @end
 
 
@@ -34,10 +41,18 @@
 }
 
 - (void)viewDidLoad {
+   // [[self.searchBar.subviews objectAtIndex:0] setHidden:YES];
+    //[[self.searchBar.subviews objectAtIndex:0] removeFromSuperview];
+    for (UIView *view in self.searchBar.subviews) {
+        if ([view isKindOfClass:NSClassFromString(@"UIView")] && view.subviews.count > 0) {
+            [[view.subviews objectAtIndex:0] removeFromSuperview];
+            break;
+        }
+    }
+    self.first=YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    
     _xueyuanlu.latitude = 39.98156573996107f;
     _xueyuanlu.longitude = 116.34779244661331f;
     
@@ -50,43 +65,87 @@
     [MAMapServices sharedServices].apiKey = mapKey;
     self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
     self.mapView.delegate = self;
-
-    self.mapView.showsScale =YES;
     
     [self.mapView setUserTrackingMode: MAUserTrackingModeNone animated:YES];
     //[self.mapView setCameraDegree:45.0f];
     [self.mapView setCenterCoordinate:_xueyuanlu animated:YES];
     [self.mapView setZoomLevel:18 animated:YES];
-    
+     self.mapView.showsUserLocation=YES;
     
     [self.mapView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(limitZoom:)]];
     [self.mapView addGestureRecognizer:[[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotate:)]];
     [self.view addSubview:self.mapView];
     
-    // fix ios8 location issue
-    self.locationManager =[[CLLocationManager alloc] init];
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-#ifdef __IPHONE_8_0
-        if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
-        {
-            [self.locationManager performSelector:@selector(requestAlwaysAuthorization)];//用这个方法，plist中需要NSLocationAlwaysUsageDescription
-        }
-        
-        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
-        {
-            [self.locationManager performSelector:@selector(requestWhenInUseAuthorization)];//用这个方法，plist里要加字段NSLocationAlwaysUsageDescription
-        }
-#endif
-    }
- 
+    
+    [self.view bringSubviewToFront:self.searchBar];
+
+    [self.view bringSubviewToFront:self.tableView];
+    [self.tableView setHidden:YES];
+    [self.mapView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapView:)]];
+    
 }
+
+-(void)tapView:(UITapGestureRecognizer *)tap{
+    [self.searchBar resignFirstResponder];
+    [self tableViewHidden];
+}
+
+
+
+-(void)searchLocation:(NSString*)place{
+    _search = [[AMapSearchAPI alloc] initWithSearchKey:mapKey Delegate:self];
+    AMapGeocodeSearchRequest *geoRequest = [[AMapGeocodeSearchRequest alloc] init];
+    geoRequest.searchType = AMapSearchType_Geocode;
+    geoRequest.address = place;
+    geoRequest.city = @[@"beijing"];
+    
+    //发起正向地理编码
+    [_search AMapGeocodeSearch: geoRequest];
+}
+//实现正向地理编码的回调函数
+- (void)onGeocodeSearchDone:(AMapGeocodeSearchRequest *)request response:(AMapGeocodeSearchResponse *)response
+{
+    [self.mapView setZoomLevel:17];
+    NSLog(@"%ld",[response.geocodes count]);
+    AMapGeocode * location = [response.geocodes objectAtIndex:0];
+    MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+    pointAnnotation.coordinate = CLLocationCoordinate2DMake(location.location.latitude, location.location.longitude);
+    pointAnnotation.title = self.searchingStr;
+    CLLocationCoordinate2D poi;
+    poi.latitude=location.location.latitude;
+    poi.longitude=location.location.longitude;
+    [self.mapView setCenterCoordinate:poi animated:YES];
+     [self.mapView addAnnotation:pointAnnotation];
+    
+}
+
+
+
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id <MAAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    {
+        static NSString *pointReuseIndentifier = @"pointReuseIndentifier";
+        MAPinAnnotationView*annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
+        if (annotationView == nil)
+        {
+            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
+        }
+        annotationView.canShowCallout= YES;       //设置气泡可以弹出，默认为NO
+        annotationView.animatesDrop = YES;        //设置标注动画显示，默认为NO
+        annotationView.draggable = YES;        //设置标注可以拖动，默认为NO
+        annotationView.pinColor = MAPinAnnotationColorPurple;
+        return annotationView;
+    }
+    return nil;
+}
+
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
 
-    self.mapView.showsUserLocation=YES;
-     _mapView.userTrackingMode = MAUserTrackingModeFollowWithHeading;
+ 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,14 +159,18 @@ updatingLocation:(BOOL)updatingLocation
 {
     if(updatingLocation)
     {
-        //取出当前位置的坐标
+        //取出当前位置的坐标'
+        if(self.first){
+            [self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
+            self.first=NO;
+        }
         NSLog(@"latitude : %f,longitude: %f",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
     }
 }
 
 - (void) limitZoom:(UIPinchGestureRecognizer *)pinchGestureRecognizer
 {
-    if([pinchGestureRecognizer state] == UIGestureRecognizerStateBegan ||[pinchGestureRecognizer state] == UIGestureRecognizerStateChanged){
+    
         float i = [self.mapView zoomLevel];
         float scale= pinchGestureRecognizer.scale;
         if(scale>1.005) scale=1.005;
@@ -122,7 +185,7 @@ updatingLocation:(BOOL)updatingLocation
         else {
             [self.mapView setZoomLevel:i*scale];
         }
-    }
+    
 }
 
 - (void)rotate:(UIRotationGestureRecognizer *)gestureRecognizer
@@ -146,5 +209,127 @@ updatingLocation:(BOOL)updatingLocation
     // Pass the selected object to the new view controller.
 }
 */
+
+
+//实现输入提示的回调函数
+-(void)onInputTipsSearchDone:(AMapInputTipsSearchRequest*)request response:(AMapInputTipsSearchResponse *)response
+{
+    if(response.tips.count == 0)
+    {
+        return;
+    }
+    
+    //通过AMapInputTipsSearchResponse对象处理搜索结果
+    self.hints = [[NSMutableArray alloc] init];
+    for (AMapTip *p in response.tips) {
+        [self.hints addObject:p.name];
+    }
+    [self.tableView reloadData];
+
+    
+}
+
+
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:14]};
+    CGSize labelsize = [[self.hints objectAtIndex:[indexPath row]] boundingRectWithSize:cell.frame.size options:NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    self.cellHeight= labelsize.height+10;
+    return self.cellHeight;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.hints count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *TableSampleIdentifier = @"hintCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                             TableSampleIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:TableSampleIdentifier];
+    }
+    if (self.hints != nil && self.hints.count >0) {
+        NSUInteger row = [indexPath row];
+        cell.textLabel.text = [self.hints objectAtIndex:row];
+        cell.textLabel.font=[UIFont systemFontOfSize:14];
+           }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    self.searchBar.text = cell.textLabel.text;
+    [self tableViewHidden];
+    [self searchLocation:self.searchBar.text];
+}
+
+
+-(void)tableViewShow{
+    CATransition *animation = [CATransition animation];
+    animation.type = kCATransitionPush;
+    animation.subtype= kCATransitionMoveIn;
+    animation.duration = 0.4;
+    [self.tableView.layer addAnimation:animation forKey:nil];
+    self.tableView.hidden=NO;
+}
+
+-(void)tableViewHidden{
+    CATransition *animation = [CATransition animation];
+    animation.type = kCATransitionPush;
+    animation.subtype= kCATransitionMoveIn;
+    animation.duration = 0.4;
+    [self.tableView.layer addAnimation:animation forKey:nil];
+    self.tableView.hidden=YES;
+}
+
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;
+{
+    if (searchText!=nil && searchText.length>0) {
+        //初始化检索对象
+        _search = [[AMapSearchAPI alloc] initWithSearchKey:mapKey Delegate:self];
+        
+        //构造AMapInputTipsSearchRequest对象，keywords为必选项，city为可选项
+        AMapInputTipsSearchRequest *tipsRequest= [[AMapInputTipsSearchRequest alloc] init];
+        tipsRequest.searchType = AMapSearchType_InputTips;
+         tipsRequest.keywords = searchText;
+        tipsRequest.city = @[@"北京"];
+        
+        //发起输入提示搜索
+        [_search AMapInputTipsSearch: tipsRequest];
+        if(self.tableView.hidden){
+            [self tableViewShow];
+
+        }
+        else{
+            CGRect frame = self.tableView.frame;
+            [self.tableView setFrame:CGRectMake(frame.origin.x ,frame.origin.y, frame.size.width,(frame.size.height>5*self.cellHeight?self.cellHeight:frame.size.height))];
+        }
+       
+    }
+    
+}
+
+-(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self searchBar:self.searchBar textDidChange:nil];
+    [_searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
+{
+    [self searchBar:self.searchBar textDidChange:nil];
+    [_searchBar resignFirstResponder];
+}
+
+
 
 @end

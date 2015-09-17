@@ -14,6 +14,7 @@
 
 @property NSMutableArray* schedules;    //data
 @property NSArray* colorArray;
+@property NSMutableArray*  scheduleViews;
 @property (nonatomic,strong) UIScrollView* rightScroll;
 @property (nonatomic,strong) UIScrollView* leftScroll;
 @property (nonatomic,strong) UIScrollView* topScroll;

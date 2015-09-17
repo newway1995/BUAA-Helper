@@ -37,11 +37,11 @@
 
 
 -(void)tapView:(UITapGestureRecognizer*)tap{
-    
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    //由storyboard根据myView的storyBoardID来获取我们要切换的视图
-    SchedulePassController *schedulePassController = [story instantiateViewControllerWithIdentifier:@"SchedulePass"];
-    [[self viewController].navigationController pushViewController:schedulePassController animated:YES];
+//    
+//    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//    //由storyboard根据myView的storyBoardID来获取我们要切换的视图
+//    SchedulePassController *schedulePassController = [story instantiateViewControllerWithIdentifier:@"SchedulePass"];
+//    [[self viewController].navigationController pushViewController:schedulePassController animated:YES];
 }
 
 - (UIViewController *)viewController {

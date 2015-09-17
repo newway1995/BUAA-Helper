@@ -23,9 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.ID = @"123";
-    [self getContentByID];    
+    self.articleSource.hidden = YES;
+    self.articleTitle.numberOfLines = 0;
+    self.articleTitle.lineBreakMode = NSLineBreakByWordWrapping;
+    
+    [self getContentByID];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -41,18 +45,23 @@
     //3. 设置参数
     NSDictionary *param = @{@"id":self.ID};
     //4. 发起请求
-    [manager GET:@"http://1.newway.sinaapp.com/index.php" parameters:param success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://218.241.236.84:25612/getjiaowude" parameters:param success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         //解析的结果
-        NSDictionary *result = [self jsonToDict:responseObject];
-        self.articleContent.text = [result objectForKey:@"content"];
-        self.articleSource.text = [result objectForKey:@"com"];
-        self.articleTitle.text = [result objectForKey:@"title"];
-        self.publishTime.text = [result objectForKey:@"pub"];
-        NSLog(@"ResponseDictionary = %@", result);
+        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        NSDictionary *jsonData = [jsonArray objectAtIndex:0];
+        self.articleContent.attributedText = [self parseCode:[jsonData objectForKey:@"content"]];
+        self.articleSource.attributedText = [self parseCode:[jsonData objectForKey:@"com"]];
+        self.articleTitle.text = [jsonData objectForKey:@"title"];
+        NSMutableString *time = [[NSMutableString alloc] initWithFormat:@"发布时间: %@",[jsonData objectForKey:@"pub"]];
+        self.publishTime.text = time;
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error = \n%@", error);
     }];
     
+}
+
+- (NSAttributedString *) parseCode:(NSString *) htmlString {
+    return [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
 }
 
 // 将JSON串转化为字典或者数组

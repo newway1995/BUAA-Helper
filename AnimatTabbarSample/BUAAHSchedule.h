@@ -15,8 +15,10 @@
 #import "Schedule.h"
 @interface BUAAHSchedule : NSObject
 
-+(void)getWithUsername:(NSString*__nonnull)username password:(NSString*__nonnull)password failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))failure;
++(void)getWithUsernameUndergraduate:(NSString*__nonnull)username password:(NSString*__nonnull)password failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))failure;
 
+
++(void)getWithUsernameGraduated:(NSString*__nonnull)username password:(NSString*__nonnull)password failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))failure;
 
 +(void)delete:(Schedule*__nonnull)object;
 

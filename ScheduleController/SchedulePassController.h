@@ -8,9 +8,18 @@
 
 #import "ViewController.h"
 
+
+typedef enum{
+    Undergraduate,
+    Graduated
+}GType;
+
 @interface SchedulePassController : ViewController  <UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
+
+@property (weak, nonatomic) IBOutlet UIImageView *identifyingImage;
+@property (weak, nonatomic) IBOutlet UITextField *identifyingField;
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 

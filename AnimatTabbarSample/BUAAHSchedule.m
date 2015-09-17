@@ -18,11 +18,16 @@
 
 
 
-+(void)getWithUsername:(NSString *)username password:(NSString*)password failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))failure{
++(void)getWithUsernameUndergraduate:(NSString *)username password:(NSString*)password failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))failure{
     //第一步开始
     NSString* isChanged = (NSString*)[BUAAHSetting getValue:EAChanged];
-    if([isChanged isEqualToString:@"NO"])
+    if([isChanged isEqualToString:@"NO"]){
+        NSNotification *notification2 = [NSNotification notificationWithName:@"EASuccess" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification2];
         return ;
+    }
+    
+    
     
     [BUAAHNetworking getHTML:scheduleUrl1 parameters:nil
     success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -35,12 +40,17 @@
         success:^(AFHTTPRequestOperation *operation, id responseObject){
             NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSLog(@"2:%@",result);
+            NSDictionary *dict3;
             NSDictionary *data2 = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];   //可能有问题
-            NSString* lt = (NSString*)[data2 objectForKey:@"lt"];
-            NSString* execution = (NSString*)[data2 objectForKey:@"execution"];
-            NSDictionary *dict3=@{@"string":result,@"username":username,@"password":password,@"lt":lt,@"execution":execution,@"_eventId":@"submit"};     //键会出现问题
+            if([data2 objectForKey:@"state"]&&[(NSString*)[data2 objectForKey:@"state"] isEqualToString:@"failed"]){
+                
+            }
+            else{
+                NSString* lt = (NSString*)[data2 objectForKey:@"lt"];
+                NSString* execution = (NSString*)[data2 objectForKey:@"execution"];
+                dict3=@{@"string":result,@"username":username,@"password":password,@"lt":lt,@"execution":execution,@"_eventId":@"submit"};     //键会出现问题
+            }
                 //第三步开始
-            
             [BUAAHNetworking getHTML:scheduleUrl3 parameters:dict3
             success:^(AFHTTPRequestOperation *operation, id responseObject){
                 
@@ -49,7 +59,7 @@
                 [BUAAHSchedule setCookieForUrl:scheduleUrl3];
                 if ([result rangeOfString:@"\"success_phone\""].location == NSNotFound){
                     //提示用户名密码错误
-                    NSNotification *notification = [NSNotification notificationWithName:@"UsernameError" object:nil];
+                    NSNotification *notification = [NSNotification notificationWithName:@"EAUsernameError" object:nil];
                     [[NSNotificationCenter defaultCenter] postNotification:notification];
                     return ;
                 }
@@ -84,6 +94,7 @@
                             [BUAAHNetworking postHTML:scheduleUrl7 parameters:dict7
                             success:^(AFHTTPRequestOperation *operation, id responseObject){
                                 NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+                                NSLog(@"%@",result);
                                 NSString* state=[result objectForKey:@"state"];
                                 if([state isEqualToString:@"success"]){
                                     NSArray* data = [result objectForKey:@"data"];
@@ -103,9 +114,9 @@
                                         [BUAAHCoredata insert:@"Schedule" forData:insertData];
                                     }
                                     [BUAAHSetting setValue:@"NO" forkey:EAChanged];
-                                    NSNotification *notification1 = [NSNotification notificationWithName:@"ViewControllerShouldReloadNotification" object:nil];
+                                    NSNotification *notification1 = [NSNotification notificationWithName:@"EANeedDisplay" object:nil];
                                     [[NSNotificationCenter defaultCenter] postNotification:notification1];
-                                    NSNotification *notification2 = [NSNotification notificationWithName:@"Success" object:nil];
+                                    NSNotification *notification2 = [NSNotification notificationWithName:@"EASuccess" object:nil];
                                     [[NSNotificationCenter defaultCenter] postNotification:notification2];
                                 }
                                 else{
@@ -129,7 +140,84 @@
 }
 
 
-//
++(void)getWithUsernameGraduated:(NSString *)username password:(NSString*)password failure:(nullable void (^)(AFHTTPRequestOperation *__nonnull __strong,id __nonnull __strong))failure{
+    NSString* isChanged = (NSString*)[BUAAHSetting getValue:EAChanged];
+    if([isChanged isEqualToString:@"NO"]){
+        NSNotification *notification2 = [NSNotification notificationWithName:@"EASuccess" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification2];
+        return ;
+    }
+    NSString* checkcode=(NSString*)[BUAAHSetting getValue:EAIdentifying];
+    NSDictionary* dict1 = @{@"id":username,@"password":password,@"checkcode":checkcode};
+    [BUAAHNetworking getHTML:scheduleGraduateUrl1 parameters:dict1
+    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSString* result = [[NSString alloc] initWithData:responseObject encoding:gbkEncoding];
+        //NSLog(@"1:%@",result);
+        //判断是否成功登陆，如果不成功要返回。
+        if([result rangeOfString:@"indexForm"].location!=NSNotFound){
+            NSNotification *notification = [NSNotification notificationWithName:@"EAUsernameError" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+            return ;
+        }
+        [BUAAHNetworking getHTML:scheduleGraduateUrl2 parameters:nil
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+            NSString* result = [[NSString alloc] initWithData:responseObject encoding:gbkEncoding];
+            NSLog(@"2:%@",result);
+            
+            NSString* term = (NSString*)[BUAAHSetting getValue:EATerm];
+            NSString* xq=[term substringWithRange:NSMakeRange(9, 1)];
+            NSString* year;
+            if([xq isEqualToString:@"1"]){
+                year=[term substringToIndex:4];
+            }
+            else{
+                year=[term substringWithRange:NSMakeRange(5, 4)];
+            }
+            NSDictionary* dict3 =@{@"year":year,@"xq":xq,@"html":result};
+            [BUAAHNetworking postHTML:scheduleGraduateUrl3 parameters:dict3
+            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+                NSString* state=[result objectForKey:@"state"];
+                if([state isEqualToString:@"success"]){
+                    NSArray* data = [result objectForKey:@"data"];
+                    [BUAAHCoredata initializeCoredata];
+                    [BUAAHCoredata clear:@"Schedule"];
+                    //可能出问题
+                    for(NSDictionary* dict in data){
+                        NSNumber* from = [NSNumber numberWithInt:[[dict objectForKey:@"jie"] intValue]];
+                        NSNumber* last = [NSNumber numberWithInt:[[dict objectForKey:@"se"] intValue]];
+                        NSNumber* date = [NSNumber numberWithInt:[[dict objectForKey:@"day"] intValue]];
+                        NSString* name = [dict objectForKey:@"name"];
+                        NSString* teacher = [dict objectForKey:@"teacher"];
+                        NSString* classroom = [dict objectForKey:@"classroom"];
+                        NSString* time  = [dict objectForKey:@"time"];
+                        NSDictionary* insertData = @{@"from":from,@"last":last,@"date":date,@"name":name,@"teacher":teacher,@"classroom":classroom,@"time":time};
+                        
+                        [BUAAHCoredata insert:@"Schedule" forData:insertData];
+                    }
+                    [BUAAHSetting setValue:@"NO" forkey:EAChanged];
+                    NSNotification *notification1 = [NSNotification notificationWithName:@"EANeedDisplay" object:nil];
+                    [[NSNotificationCenter defaultCenter] postNotification:notification1];
+                    NSNotification *notification2 = [NSNotification notificationWithName:@"EASuccess" object:nil];
+                    [[NSNotificationCenter defaultCenter] postNotification:notification2];
+                }
+                else{
+                    
+                }
+
+                
+            }
+            failure:failure];
+            
+        }
+        failure:failure];
+    }
+    failure:failure];
+}
+
+//zdnf=2015&kkjj=1
 
 +(void)delete:(Schedule*)object{
     [BUAAHCoredata initializeCoredata];
@@ -160,23 +248,4 @@
 
 
 
-+ (void)saveCookies{
-    
-    NSData *cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject: cookiesData forKey: @"sessionCookies"];
-    [defaults synchronize];
-    
-}
-
-+ (void)loadCookies{
-    
-    NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData: [[NSUserDefaults standardUserDefaults] objectForKey: @"sessionCookies"]];
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    
-    for (NSHTTPCookie *cookie in cookies){
-        [cookieStorage setCookie: cookie];
-    }
-    
-}
 @end

@@ -20,6 +20,8 @@
 @dynamic date;
 
 
+
+
 -(BOOL)insert:(NSDictionary *)data{
     NSArray* objs = [BUAAHCoredata query:@"Schedule" forSort:nil forPredicate:nil];
     for(Schedule* obj in objs){
@@ -62,10 +64,10 @@
 -(BOOL)isEqualToDictionary:(NSDictionary *)data{
     if([self.name isEqualToString:[data valueForKey:@"name"]]&&
        [self.teacher isEqualToString:[data valueForKey:@"teacher"]]&&
-       ((self.from==(NSInteger)[data valueForKey:@"from"]&&
-        self.last==(NSInteger)[data valueForKey:@"to"])&&
-        self.date==(NSInteger)[data valueForKey:@"date"]&&
-        [self.time isEqualToString:[data valueForKey:@"time"]]))
+        self.from==[(NSNumber*)[data valueForKey:@"from"] intValue]&&
+        self.last==[(NSNumber*)[data valueForKey:@"to"] intValue]&&
+        self.date==[(NSNumber*)[data valueForKey:@"date"] intValue]&&
+        [self.time isEqualToString:[data valueForKey:@"time"]])
         return YES;
     return NO;
 }

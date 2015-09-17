@@ -34,14 +34,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pageSize = [NSNumber numberWithInt:15];
-    self.pageNO = [NSNumber numberWithInt:0];
+    self.pageNO = [NSNumber numberWithInt:1];
     [self updateData];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSAttributedString *) parseCode:(NSString *) htmlString {
+    return [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
 }
 
 - (void)updateData {
@@ -83,6 +87,7 @@
     self.arrayTitle = [NSMutableArray array];
     self.arrayTime = [NSMutableArray array];
     self.arrayID = [NSMutableArray array];
+    self.pageNO = [NSNumber numberWithInt:1];
     
     //1. 请求管理器
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -91,16 +96,20 @@
     //3. 设置参数
     NSDictionary *param = @{@"pageNo":_pageNO, @"pageSize":_pageSize};
     //4. 发起请求
-    [manager GET:@"http://1.newway.sinaapp.com/index.php" parameters:param success: ^(AFHTTPRequestOperation *operation, id responseObject) {
-        for (int i = 0; i < [_pageSize intValue]; i++) {
-            [self.arrayTitle addObject:MJRandomData];
-            [self.arrayTime addObject:[NSString stringWithFormat:@"2015/09/%d", i]];
-            [self.arraySource addObject:@"图书馆"];
+    [manager POST:@"http://218.241.236.84:25612/getjiaowulist" parameters:param success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        NSArray *jsonArray = [jsonData objectForKey:@"data"];
+        NSDictionary *jsonDict = [jsonArray objectAtIndex:0];
+        jsonArray = [jsonDict objectForKey:@"data"];
+        for (NSDictionary *article in jsonArray) {
+            [self.arrayTitle addObject:[article objectForKey:@"title"]];
+            [self.arrayTime addObject:[article objectForKey:@"pub"]];
+            [self.arraySource addObject:@"北航教务处"];
+            [self.arrayID addObject:[article objectForKey:@"id"]];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
             [self.tableView.header endRefreshing];
-            NSLog(@"OH Success = \n%@", param);
         });
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error = \n%@", error);
@@ -118,11 +127,16 @@
     _pageNO = [NSNumber numberWithInt:[_pageNO intValue] + 1];
     NSDictionary *param = @{@"pageNo":_pageNO, @"pageSize":_pageSize};
     //4. 发起请求
-    [manager GET:@"http://1.newway.sinaapp.com/index.php" parameters:param success: ^(AFHTTPRequestOperation *operation, id responseObject) {
-        for (int i = 0; i < [_pageSize intValue]; i++) {
-            [self.arrayTitle addObject:MJRandomData];
-            [self.arrayTime addObject:[NSString stringWithFormat:@"2015/09/%d", i*10]];
-            [self.arraySource addObject:@"食堂"];
+    [manager POST:@"http://218.241.236.84:25612/getjiaowulist" parameters:param success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        NSArray *jsonArray = [jsonData objectForKey:@"data"];
+        NSDictionary *jsonDict = [jsonArray objectAtIndex:0];
+        jsonArray = [jsonDict objectForKey:@"data"];
+        for (NSDictionary *article in jsonArray) {
+            [self.arrayTitle addObject:[article objectForKey:@"title"]];
+            [self.arrayTime addObject:[article objectForKey:@"pub"]];
+            [self.arraySource addObject:@"BUAA"];
+            [self.arrayID addObject:[article objectForKey:@"id"]];
         }
         // 刷新表格
         [self.tableView reloadData];
@@ -159,10 +173,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *ID = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-//    }
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.customCellTitle.text = self.arrayTitle[indexPath.row];
     cell.customCellSource.text = self.arraySource[indexPath.row];
@@ -176,7 +186,7 @@
     //由storyboard根据myView的storyBoardID来获取我们要切换的视图
     NotificationDetailViewController *detailController = [story instantiateViewControllerWithIdentifier:@"notificationDetail"];
     //传值
-    detailController.ID = [NSString stringWithFormat:@"%ld", indexPath.row];
+    detailController.ID = [self.arrayID objectAtIndex:indexPath.row];
     detailController.title = self.arrayTitle[indexPath.row];
     [self.navigationController pushViewController:detailController animated:YES];
 }

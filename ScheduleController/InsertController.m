@@ -33,6 +33,7 @@
     self.toField.text = self.to;
     self.date=[[TableView date] objectAtIndex:0];
     self.dateField.text = self.date;
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapView:)]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +41,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)tapView:(UITapGestureRecognizer *)tap
+{
+    
+    [self.dateField resignFirstResponder];
+    [self.fromField resignFirstResponder];
+    [self.toField resignFirstResponder];
+    [self.nameField resignFirstResponder];
+    [self.teacherField resignFirstResponder];
+    [self.classroomField resignFirstResponder];
+    [self.timeField resignFirstResponder];
+    CATransition *animation = [CATransition animation];
+    animation.type = kCATransitionPush;
+    animation.subtype= kCATransitionFromBottom;
+    animation.duration = 0.4;
+    [self.picker.layer addAnimation:animation forKey:nil];
+    self.picker.hidden=true;
+}
 
 
 
