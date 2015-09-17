@@ -101,7 +101,7 @@
  *  每行展示内容（cell）
  */
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identifer = @"cell";
+    static NSString *identifer = @"MeInfoCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
     

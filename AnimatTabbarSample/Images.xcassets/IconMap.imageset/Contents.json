@@ -3,12 +3,11 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "地图icon 44*44.png"
+      "filename" : "IconMap.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "地图icon 44*44-1.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",

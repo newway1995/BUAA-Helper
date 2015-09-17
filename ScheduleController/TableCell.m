@@ -52,12 +52,10 @@ static NSArray* colorArray=nil;
 
 -(void)tapView:(UITapGestureRecognizer *)tap
 {
- 
-    //NSArray* date=[[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日" ,nil];
-    NSString* message = [[NSString alloc] initWithFormat:@"%@",[self getText] ];
-    UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alter show];
-
+    NSArray* date=[[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日" ,nil];
+//    NSString* message = [[NSString alloc] initWithFormat:@"%@至%@\n%@",self.from,self.to,[self getText] ];
+//    UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alter show];
 }
 
 

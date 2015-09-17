@@ -70,12 +70,13 @@
         [self.activity startAnimating];
         
         [BUAAHGrade getWithUsernameUndergraduate:username password:password failure:^(AFHTTPRequestOperation *operation, NSError* error) {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
-            [alertController addAction:okAction];
-            [self presentViewController:alertController animated:YES completion:nil];
-            [self removeActivityIndicatorView];
+//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
+//            [alertController addAction:okAction];
+//            [self presentViewController:alertController animated:YES completion:nil];
+//            [self removeActivityIndicatorView];
             NSLog(@"%@",error);
+            [self removeActivityIndicatorView];
         }];
         
         [[NSNotificationCenter defaultCenter] addObserver:self.view selector:@selector(setNeedsDisplay) name:@"GANeedDisplay" object:nil];
