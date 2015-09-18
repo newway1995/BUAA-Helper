@@ -181,6 +181,7 @@
 		591CCC761B65BF7F0049F3F4 /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Subscription.h; path = ManagedObjectSubClass/Subscription.h; sourceTree = "<group>"; };
 		591CCC771B65BF7F0049F3F4 /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subscription.m; path = ManagedObjectSubClass/Subscription.m; sourceTree = "<group>"; };
 		593E37E51B7B2D9800524E76 /* BUAAHCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHCommon.m; path = AnimatTabbarSample/BUAAHCommon.m; sourceTree = "<group>"; };
+		5978F32E1BAB185A00FD3EF1 /* 助航.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "助航.entitlements"; sourceTree = "<group>"; };
 		598A01281B7628460049E959 /* BUAAHLoginGW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUAAHLoginGW.m; path = AnimatTabbarSample/BUAAHLoginGW.m; sourceTree = "<group>"; };
 		598A012A1B7628730049E959 /* BUAAHLoginGW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAAHLoginGW.h; path = AnimatTabbarSample/BUAAHLoginGW.h; sourceTree = SOURCE_ROOT; };
 		598A012E1B7637500049E959 /* BUAAHSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAAHSchedule.h; path = AnimatTabbarSample/BUAAHSchedule.h; sourceTree = "<group>"; };
@@ -357,7 +358,7 @@
 		86E86DA11BA991FF00AC44F0 /* BusSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusSchedule.m; sourceTree = "<group>"; };
 		86ED211E1B8D3E0F00B98DFA /* MeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeInfoViewController.h; sourceTree = "<group>"; };
 		86ED211F1B8D3E0F00B98DFA /* MeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeInfoViewController.m; sourceTree = "<group>"; };
-		EDE6F29A18F4E3F5001C7755 /* AnimatTabbarSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatTabbarSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDE6F29A18F4E3F5001C7755 /* 助航.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "助航.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE6F29D18F4E3F5001C7755 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDE6F29F18F4E3F5001C7755 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EDE6F2A118F4E3F5001C7755 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -793,7 +794,7 @@
 		EDE6F29B18F4E3F5001C7755 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EDE6F29A18F4E3F5001C7755 /* AnimatTabbarSample.app */,
+				EDE6F29A18F4E3F5001C7755 /* 助航.app */,
 				EDE6F2BB18F4E3F6001C7755 /* AnimatTabbarSampleTests.xctest */,
 				866741F11B9E8448000E1DAA /* GatewayWidget.appex */,
 			);
@@ -828,6 +829,7 @@
 		EDE6F2A318F4E3F5001C7755 /* AnimatTabbarSample */ = {
 			isa = PBXGroup;
 			children = (
+				5978F32E1BAB185A00FD3EF1 /* 助航.entitlements */,
 				59C03B0A1BAA789300086C26 /* Tousu */,
 				59C03B001BAA764800086C26 /* Start */,
 				865AD6271BA84E8F00AB6CA8 /* MJRefresh */,
@@ -914,7 +916,7 @@
 			);
 			name = AnimatTabbarSample;
 			productName = AnimatTabbarSample;
-			productReference = EDE6F29A18F4E3F5001C7755 /* AnimatTabbarSample.app */;
+			productReference = EDE6F29A18F4E3F5001C7755 /* 助航.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EDE6F2BA18F4E3F6001C7755 /* AnimatTabbarSampleTests */ = {
@@ -1310,7 +1312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = AnimatTabbarSample/AnimatTabbarSample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "AnimatTabbarSample/助航.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1325,7 +1327,7 @@
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "AnimatTabbarSample/AnimatTabbarSample-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "助航";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1337,7 +1339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = AnimatTabbarSample/AnimatTabbarSample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "AnimatTabbarSample/助航.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1352,7 +1354,7 @@
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "AnimatTabbarSample/AnimatTabbarSample-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "助航";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;

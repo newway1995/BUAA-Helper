@@ -29,6 +29,8 @@ extern NSString* const mapKey;
 extern NSString* const scheduleGraduateUrl1;
 extern NSString* const scheduleGraduateUrl2;
 extern NSString* const scheduleGraduateUrl3;
+extern NSString* const scheduleGraduateUrl4;
+
 
 
 extern NSString* const EAIdentifying;

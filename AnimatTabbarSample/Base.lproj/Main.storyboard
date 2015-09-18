@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Msg-l2-GDc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Msg-l2-GDc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="2428" y="744"/>
         </scene>
-        <!--Gateway Login View Controller-->
+        <!--上网账号-->
         <scene sceneID="sWu-vP-bB1">
             <objects>
                 <viewController id="Ttd-QO-O99" customClass="GatewayLoginViewController" sceneMemberID="viewController">
@@ -155,7 +155,7 @@
                             <constraint firstItem="DD7-gO-YTg" firstAttribute="top" secondItem="l9J-qe-jms" secondAttribute="bottom" constant="30" id="ymp-8Q-omY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8Q5-Mb-lo5"/>
+                    <navigationItem key="navigationItem" title="上网账号" id="8Q5-Mb-lo5"/>
                     <connections>
                         <outlet property="accountIcon" destination="HHQ-4J-tny" id="x3N-jw-K5G"/>
                         <outlet property="accountText" destination="GFw-pl-yTx" id="x3K-Fc-4uf"/>
@@ -324,9 +324,10 @@
                                 <segue destination="t7v-ec-n15" kind="push" id="OuN-DB-ePS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="刷新" id="a8n-GE-c1R">
+                        <barButtonItem key="rightBarButtonItem" title="添加" id="a8n-GE-c1R">
                             <connections>
                                 <action selector="refresh:" destination="8y3-gn-EUy" id="Kqv-XG-94H"/>
+                                <segue destination="K50-5C-fPn" kind="push" id="H1b-7l-9Qe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -839,6 +840,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableVlew" destination="UyP-zI-0ML" id="xSr-j3-bpo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QaJ-8o-1Wi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -915,7 +919,7 @@
             </objects>
             <point key="canvasLocation" x="-1029" y="1628"/>
         </scene>
-        <!--Schedule Pass Controller-->
+        <!--教务账号-->
         <scene sceneID="iBW-Z4-Svs">
             <objects>
                 <viewController storyboardIdentifier="SchedulePass" id="t7v-ec-n15" customClass="SchedulePassController" sceneMemberID="viewController">
@@ -979,7 +983,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="4co-h4-1Yw"/>
+                    <navigationItem key="navigationItem" title="教务账号" id="4co-h4-1Yw"/>
                     <connections>
                         <outlet property="identifyingField" destination="H34-Ic-5fG" id="9VA-uu-Eqd"/>
                         <outlet property="identifyingImage" destination="Trj-i2-ebU" id="9Tk-kF-Dli"/>

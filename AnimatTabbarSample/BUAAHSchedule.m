@@ -153,8 +153,9 @@
     success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
         NSString* result = [[NSString alloc] initWithData:responseObject encoding:gbkEncoding];
-        NSLog(@"1:%@",result);
+        //NSLog(@"1:%@",result);
         //判断是否成功登陆，如果不成功要返回。
+        //[BUAAHSchedule setCookieForUrl:scheduleGraduateUrl1];
         if([result rangeOfString:@"indexForm"].location!=NSNotFound){
             NSNotification *notification = [NSNotification notificationWithName:@"EAUsernameError" object:nil];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
@@ -164,50 +165,61 @@
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
             NSString* result = [[NSString alloc] initWithData:responseObject encoding:gbkEncoding];
-            NSLog(@"2:%@",responseObject);
-            
-            NSString* term = (NSString*)[BUAAHSetting getValue:EATerm];
-            NSString* xq=[term substringWithRange:NSMakeRange(9, 1)];
-            NSString* year;
-            if([xq isEqualToString:@"1"]){
-                year=[term substringToIndex:4];
-            }
-            else{
-                year=[term substringWithRange:NSMakeRange(5, 4)];
-            }
-            NSDictionary* dict3 =@{@"year":year,@"xq":xq,@"html":result};
-            [BUAAHNetworking postHTML:scheduleGraduateUrl3 parameters:dict3
-            success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-                NSString* state=[result objectForKey:@"state"];
-                if([state isEqualToString:@"success"]){
-                    NSArray* data = [result objectForKey:@"data"];
-                    [BUAAHCoredata initializeCoredata];
-                    [BUAAHCoredata clear:@"Schedule"];
-                    //可能出问题
-                    for(NSDictionary* dict in data){
-                        NSNumber* from = [NSNumber numberWithInt:[[dict objectForKey:@"jie"] intValue]];
-                        NSNumber* last = [NSNumber numberWithInt:[[dict objectForKey:@"se"] intValue]];
-                        NSNumber* date = [NSNumber numberWithInt:[[dict objectForKey:@"day"] intValue]];
-                        NSString* name = [dict objectForKey:@"name"];
-                        NSString* teacher = [dict objectForKey:@"teacher"];
-                        NSString* classroom = [dict objectForKey:@"classroom"];
-                        NSString* time  = [dict objectForKey:@"time"];
-                        NSDictionary* insertData = @{@"from":from,@"last":last,@"date":date,@"name":name,@"teacher":teacher,@"classroom":classroom,@"time":time};
-                        
-                        [BUAAHCoredata insert:@"Schedule" forData:insertData];
-                    }
-                    [BUAAHSetting setValue:@"NO" forkey:EAChanged];
-                    NSNotification *notification1 = [NSNotification notificationWithName:@"EANeedDisplay" object:nil];
-                    [[NSNotificationCenter defaultCenter] postNotification:notification1];
-                    NSNotification *notification2 = [NSNotification notificationWithName:@"EASuccess" object:nil];
-                    [[NSNotificationCenter defaultCenter] postNotification:notification2];
+            NSLog(@"2:%@",result);
+            //[BUAAHSchedule setCookieForUrl:scheduleGraduateUrl2];
+            [BUAAHNetworking getHTML:scheduleGraduateUrl3 parameters:nil
+            success:^(AFHTTPRequestOperation *operaion,id responseObject){
+                NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                NSString* result = [[NSString alloc] initWithData:responseObject encoding:gbkEncoding];
+                NSLog(@"3:%@",result);
+                NSString* term = (NSString*)[BUAAHSetting getValue:EATerm];
+                NSString* xq=[term substringWithRange:NSMakeRange(9, 1)];
+                NSString* year;
+                if([xq isEqualToString:@"1"]){
+                    year=[term substringToIndex:4];
                 }
                 else{
-                    
+                    year=[term substringWithRange:NSMakeRange(5, 4)];
                 }
+                NSString *year2 = [NSString stringWithCString:[year UTF8String] encoding:NSUnicodeStringEncoding];
+                NSString *xq2 = [NSString stringWithCString:[xq UTF8String] encoding:NSUnicodeStringEncoding];
+                NSString *result2 = [NSString stringWithCString:[result UTF8String] encoding:NSUnicodeStringEncoding];
+                NSDictionary* dict4 =@{@"year":year2,@"xq":xq2,@"html":result2};
+                [BUAAHNetworking postHTML:scheduleGraduateUrl4 parameters:dict4
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+                    NSString* state=[result objectForKey:@"state"];
+                    if([state isEqualToString:@"success"]){
+                        NSArray* data = [result objectForKey:@"data"];
+                        [BUAAHCoredata initializeCoredata];
+                        [BUAAHCoredata clear:@"Schedule"];
+                        //可能出问题
+                        for(NSDictionary* dict in data){
+                            NSNumber* from = [NSNumber numberWithInt:[[dict objectForKey:@"jie"] intValue]];
+                            NSNumber* last = [NSNumber numberWithInt:[[dict objectForKey:@"se"] intValue]];
+                            NSNumber* date = [NSNumber numberWithInt:[[dict objectForKey:@"day"] intValue]];
+                            NSString* name = [dict objectForKey:@"name"];
+                            NSString* teacher = [dict objectForKey:@"teacher"];
+                            NSString* classroom = [dict objectForKey:@"classroom"];
+                            NSString* time  = [dict objectForKey:@"time"];
+                            NSDictionary* insertData = @{@"from":from,@"last":last,@"date":date,@"name":name,@"teacher":teacher,@"classroom":classroom,@"time":time};
+                                              
+                            [BUAAHCoredata insert:@"Schedule" forData:insertData];
+                        }
+                        [BUAAHSetting setValue:@"NO" forkey:EAChanged];
+                        NSNotification *notification1 = [NSNotification notificationWithName:@"EANeedDisplay" object:nil];
+                        [[NSNotificationCenter defaultCenter] postNotification:notification1];
+                        NSNotification *notification2 = [NSNotification notificationWithName:@"EASuccess" object:nil];
+                        [[NSNotificationCenter defaultCenter] postNotification:notification2];
+                    }
+                    else{
+                                          
+                    }
+                                      
+                                      
+                }
+                failure:failure];
 
-                
             }
             failure:failure];
             

@@ -104,8 +104,11 @@
 //                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
 //                [alertController addAction:okAction];
 //                [self presentViewController:alertController animated:YES completion:nil];
-//                [self removeActivityIndicatorView];
+                [self removeActivityIndicatorView];
                 NSLog(@"%@",error);
+                NSData* data= [error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"];
+                NSString* dataInfo = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSLog(@"%@",dataInfo);
                 [self removeActivityIndicatorView];
             }];
         }
@@ -141,10 +144,6 @@
     //由storyboard根据myView的storyBoardID来获取我们要切换的视图
     SchedulePassController *schedulePassController = [story instantiateViewControllerWithIdentifier:@"SchedulePass"];
     [self.navigationController pushViewController:schedulePassController animated:YES];
-}
-- (IBAction)refresh:(id)sender {
-    [BUAAHSetting setValue:@"YES" forkey:EAChanged];
-    [self getSchedule];
 }
 
 -(void)removeActivityIndicatorView{

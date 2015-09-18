@@ -24,9 +24,9 @@
  NSString* const mapKey=@"b121792b92f1bacba6efb369ee231b2c";
  NSString* const identifyingImageUrl = @"http://gsmis.graduate.buaa.edu.cn/gsmis/Image.do";
  NSString* const scheduleGraduateUrl1 = @"http://gsmis.graduate.buaa.edu.cn/gsmis/indexAction.do";
- NSString* const scheduleGraduateUrl2 = @"http://gsmis.graduate.buaa.edu.cn/gsmis/py/pyYiXuanKeCheng.do";
- NSString* const scheduleGraduateUrl3 = @"http://218.241.236.84:25612/getycla";
-
+ NSString* const scheduleGraduateUrl2 = @"http://gsmis.graduate.buaa.edu.cn/gsmis/toModule.do?prefix=/py&page=/pySelectCourses.do?do=xsXuanKe";
+ NSString* const scheduleGraduateUrl3 = @"http://gsmis.graduate.buaa.edu.cn/gsmis/py/pyYiXuanKeCheng.do";
+ NSString* const scheduleGraduateUrl4 = @"http://218.241.236.84:25612/getycla";
 
  NSString* const EAIdentifying = @"EAIdentifying";
 

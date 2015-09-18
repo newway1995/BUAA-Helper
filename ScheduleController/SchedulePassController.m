@@ -32,6 +32,11 @@
             self.identifyingImage.hidden=NO;
             self.getImage=YES;
         }
+        else{
+            self.identifyingField.hidden=YES;
+            self.identifyingImage.hidden=YES;
+            
+        }
     }
     
 }
@@ -104,6 +109,7 @@
         [BUAAHSetting setValue:self.passwordField.text forkey:EAPassword];
         [BUAAHSetting setValue:self.termField.text forkey:EATerm];
         [BUAAHSetting setValue:@"YES" forkey:EAChanged];
+        [BUAAHSetting setValue:@"YES" forkey:GAChanged];
         [self.navigationController popViewControllerAnimated:YES];
         [BUAAHCoredata initializeCoredata];
         [BUAAHCoredata clear:@"Schedule"];

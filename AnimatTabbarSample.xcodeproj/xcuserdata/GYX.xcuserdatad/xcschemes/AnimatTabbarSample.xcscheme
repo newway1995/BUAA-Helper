@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EDE6F29918F4E3F5001C7755"
-               BuildableName = "AnimatTabbarSample.app"
+               BuildableName = "&#x52a9;&#x822a;.app"
                BlueprintName = "AnimatTabbarSample"
                ReferencedContainer = "container:AnimatTabbarSample.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EDE6F29918F4E3F5001C7755"
-            BuildableName = "AnimatTabbarSample.app"
+            BuildableName = "&#x52a9;&#x822a;.app"
             BlueprintName = "AnimatTabbarSample"
             ReferencedContainer = "container:AnimatTabbarSample.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EDE6F29918F4E3F5001C7755"
-            BuildableName = "AnimatTabbarSample.app"
+            BuildableName = "&#x52a9;&#x822a;.app"
             BlueprintName = "AnimatTabbarSample"
             ReferencedContainer = "container:AnimatTabbarSample.xcodeproj">
          </BuildableReference>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EDE6F29918F4E3F5001C7755"
-            BuildableName = "AnimatTabbarSample.app"
+            BuildableName = "&#x52a9;&#x822a;.app"
             BlueprintName = "AnimatTabbarSample"
             ReferencedContainer = "container:AnimatTabbarSample.xcodeproj">
          </BuildableReference>

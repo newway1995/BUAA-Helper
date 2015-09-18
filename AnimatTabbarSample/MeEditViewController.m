@@ -10,6 +10,7 @@
 #import "MeModel.h"
 #import "KeyValue.h"
 #import "MeInfoViewController.h"
+#import "BUAAHSetting.h"
 
 @interface MeEditViewController ()<UITableViewDelegate, UITableViewDataSource>{
     UITableView *_tableView;
@@ -223,11 +224,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
     
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    //[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     [cell.textLabel setFont:newFont];
     cell.textLabel.text = dataSource[indexPath.row];
-    
+    NSString* campus = (NSString*)[BUAAHSetting getValue:EACampus];
+    if([cell.textLabel.text isEqualToString:campus]){
+        cell.detailTextLabel.text=@"√";
+    }
     return cell;
 }
 /*
@@ -250,7 +254,20 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.tag isEqualToString:@"celanderSetting"]){
         [userDefaults setObject:message forKey:@"EACampus"];
-        [self.navigationController popViewControllerAnimated:YES];
+        NSInteger row = [indexPath row];
+        if(row==0){
+            [tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text=@"√";
+            NSIndexPath* other = [NSIndexPath indexPathForRow:1 inSection:indexPath.section];
+            [tableView cellForRowAtIndexPath:other].detailTextLabel.text=@"";
+            
+        }
+        else{
+            [tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text=@"√";
+            NSIndexPath* other = [NSIndexPath indexPathForRow:0 inSection:indexPath.section];
+            [tableView cellForRowAtIndexPath:other].detailTextLabel.text=@"";
+        }
+        [tableView cellForRowAtIndexPath:indexPath].selected=NO;
+        //[self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }

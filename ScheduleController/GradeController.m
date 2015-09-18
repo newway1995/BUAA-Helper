@@ -15,6 +15,7 @@
 
 @interface GradeController()
 @property UIActivityIndicatorView *activity;
+@property (weak, nonatomic) IBOutlet UITableView *tableVlew;
 @property NSMutableArray* grades;
 @end
 
@@ -79,14 +80,18 @@
             [self removeActivityIndicatorView];
         }];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self.view selector:@selector(setNeedsDisplay) name:@"GANeedDisplay" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needDisplay) name:@"GANeedDisplay" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usernameError) name:@"GAUsernameError" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeActivityIndicatorView) name:@"GASuccess" object:nil];
     }
 }
 
 
-
+-(void)needDisplay{
+    
+    self.grades = [[NSMutableArray alloc] initWithArray:[BUAAHCoredata query:@"Grade" forSort:nil forPredicate:nil]];
+    [self.tableVlew reloadData];
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -104,7 +109,9 @@
     
     NSUInteger row = [indexPath row];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.textLabel.text = ((Grade*)[self.grades objectAtIndex:row]).name ;
+    Grade * grade = (Grade*)[self.grades objectAtIndex:row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@(%@学分)",grade.name,grade.credit] ;
+    cell.textLabel.font =[UIFont systemFontOfSize:12];
     cell.detailTextLabel.text = ((Grade*)[self.grades objectAtIndex:row]).score;
     return cell;
 }
